@@ -1,28 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Cintakins,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
 To log into the Heroku toolbelt CLI:
 
@@ -108,14 +83,76 @@ Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` f
 Happy coding!
 
 
+# Periodic - A menstrual tracking website
 
+The idea to create this website has been born from the need for women to track their period for physical health, mental health and family planning. There are many menstrual tracking apps out there, but they mostly aim their content towards adults and there is a need for more child friendly versions or versions that are sensitive toward cultural and religious attitudes toward sex, therefore providing minimal sexual content. 
+The website aims to provide information relevant to various stages of the menstrual cycle, to educate women and girls on how it effects them and how to make the most of each phase. The website will also do product reviews and sell products as a source of revenue. 
+The website will present itself a in a gender neutral way to be inclusive of all menstruating people.
 
-user goal - subscribe to get personalised emails about menstrual cycle
-            buy menstrual products
-            learn about cycle
-            search function
-            forum
+## Features
+
+* Navigation bar
+* menstrual calendar
+* registration and account
+* shop
+* subscription payment for personal emails and reminders
+* Product reviews
+
+## Possible Future Features
+
+* Community Forum
+* More accurate tracking capabilities (keeping it simple for the time being)
+
+## user goals
+### First time user
+Discover information about menstrual cycle
+Read Product reviews
+Buy products
+Search information
+Learn about cycle
+
+### Regular User
+Get personalised timed emails about menstrual cycle via subscription
+Buy menstrual products
+Learn about cycle
+Search Information
+Edit details
+Have personal information stored (for tracker, payment details and address for postage)
             
-site owner goal - sell products
-            get payment via subscriptions for information
-            advertise products
+## site owner goal 
+sell products
+get payment via subscriptions for information
+advertise products
+
+## Wireframes
+(use images of site and describe them and what they're for)
+
+## Development
+
+#### Problem
+#### Solution
+
+#### Problem
+#### Solution
+
+#### Problem
+#### Solution
+
+## Testing
+### Validators
+
+
+### Ongoing Problems
+
+## Deployment
+
+## Credits
+### Content
+
+### Media
+
+### Libraries
+
+### Languages Used
+
+### References (code, tutors, other help)
