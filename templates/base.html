@@ -2,16 +2,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    {% block meta %} 
-    <!-- does it need this block? -->     
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta %}
+    <!-- does it need this block? -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     {% endblock %}
 
     {% block extra_css %}
@@ -20,7 +21,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     {% block corejs %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -28,11 +29,32 @@
 
     <title>Periodic {% block extra_title %}{% endblock %}</title>
 </head>
+
 <body>
-    <header></header>
-   
+    <header>
+        <div>
+            <nav>
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!">three</a></li>
+                </ul>
+                <div class="nav-wrapper">
+                    <a href="{% url 'home' %}" class="brand-logo center">Logo</a>
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="sass.html">Sass</a></li>
+                        <li><a href="badges.html">Components</a></li>
+                        <li><a href="collapsible.html">JavaScript</a></li>
+                        <li><a class="dropdown-trigger right" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     {% if messages %}
-        <div class="messages"></div>
+    <div class="messages"></div>
     {% endif %}
 
     {% block page_header %}
@@ -44,4 +66,5 @@
     {% block postloadjs %}
     {% endblock %}
 </body>
+
 </html>

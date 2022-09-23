@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block page_header %}
+{% endblock %}
+
 {% block content %}
-    <div class="card-panel light-green accent-3">
+    <div class="card-panel lime accent-3">
         <h1>Home</h1>
     </div>
+
+    <form method="GET" action="">
+        <div class="search">
+            <input class="" type="text" name="query" placeholder="Search The Site">
+            <div>
+                <button type="submit">
+                    <span>
+                        <i class="material-icons">Search</i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </form>
 {% endblock %}
