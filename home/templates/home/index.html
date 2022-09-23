@@ -5,20 +5,21 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card-panel lime accent-3">
-        <h1>Home</h1>
-    </div>
-
-    <form method="GET" action="">
-        <div class="search">
-            <input class="" type="text" name="query" placeholder="Search The Site">
-            <div>
-                <button type="submit">
-                    <span>
-                        <i class="material-icons">Search</i>
-                    </span>
-                </button>
-            </div>
+    <div class="row card-panel black">
+        <div class="lime accent-3 col m2 offset-m5">
+            <h1 class="center">Home</h1>
         </div>
-    </form>
+    </div>
+    <div class="row black">
+        <div class="col m4 offset-m4 black">
+            <form method="GET" action="">
+                <div class="search">
+                    <input class="" type="text" name="query" placeholder="Search The Site">
+                    <div class="center">
+                        <a class="waves-effect waves-light lime accent-3 black-text btn"><i class="material-icons right">search</i>Search</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}

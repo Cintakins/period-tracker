@@ -1,0 +1,14 @@
+.brand-logo {
+    font-family: 'Rubik Dirt', cursive;
+}
+body {
+    background-color: black;
+    font-family: 'Indie Flower', cursive;
+}
+
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {}
