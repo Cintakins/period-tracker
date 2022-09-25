@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+    <div class="row card-panel black">
+        <div class="lime accent-3 col m2 offset-m5">
+            <h1 class="center">Products</h1>
+        </div>
+    </div>
+    <div class="row black container">
+        <div class="col m4 offset-m4 black">
+            <form method="GET" action="">
+                <div class="search">
+                    <input class="" type="text" name="query" placeholder="Search Products">
+                    <div class="center">
+                        <a class="waves-effect waves-light lime accent-3 black-text btn"><i class="material-icons right">search</i>Search</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row container black">
+        <p class="white-text">{{ products }}</p>
+    </div>
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 
 class Category(models.Model):
@@ -11,7 +12,7 @@ class Category(models.Model):
     def get_friendly_name(self):
         return self.friendly_name
 
-
+@admin.display(ordering='sku')
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=20, null=True, blank=True)
