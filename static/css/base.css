@@ -4,6 +4,14 @@
 body {
     background-color: black;
     font-family: 'Indie Flower', cursive;
+    color: black;
+}
+
+.product-label {
+    background-color: #c8ff00b5;
+    width: 100%;
+    border-style: solid;
+    border-color: black;
 }
 
 
