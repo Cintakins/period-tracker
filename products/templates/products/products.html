@@ -36,12 +36,23 @@
                 <li><a class="black-text" href="{% url 'products' %}?category=other">Other</a></li>
             </ul>
             <div class="nav-wrapper">
-                    <a class="dropdown-trigger black-text" href="#!" data-target="dropdown2">
-                        Categories
-                    <i class="material-icons right">arrow_drop_down</i></a>
+                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown2">
+                    Categories
+                <i class="material-icons right">arrow_drop_down</i></a>
             </div>
         </div>
-    </div>
+        <div class="col lime accent-3 offset-s1">
+            <ul id="dropdown3" class="dropdown-content">
+                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=asc">Price: Lowest First</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=desc">Price: Highest First</a></li>
+            </ul>
+            <div class="nav-wrapper">
+                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown3">
+                    Sort
+                <i class="material-icons right">arrow_drop_down</i></a>
+            </div>
+        </div>
+        </div>
     <div class="row">
         {% for product in products %}
         <div class="col s12 m6 l4">
