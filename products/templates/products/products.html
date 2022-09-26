@@ -25,30 +25,46 @@
     </div>
 </div>
 <div class="row container black">
-    <div class="row"></div>
+    <div class="row">
+        <div class="col lime accent-3">
+            <ul id="dropdown2" class="dropdown-content">
+                <li><a class="black-text" href="{% url 'products' %}">All Products</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?category=short-pants">Flattering Pants</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?category=full-pants">Full Coverage</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?category=other">Other</a></li>
+            </ul>
+            <div class="nav-wrapper">
+                    <a class="dropdown-trigger black-text" href="#!" data-target="dropdown2">
+                        Categories
+                    <i class="material-icons right">arrow_drop_down</i></a>
+            </div>
+        </div>
+    </div>
     <div class="row">
         {% for product in products %}
-            <div class="col s12 m7 l4">
-                <div class="card">
-                    <div class="card-image">
-                        {% if product.image %}
-                            <a href="">
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                            </a>
-                        {% endif %}
-                        <span class="card-title black-text product-label truncate">{{ product.name }}</span>
-                    </div>
-                    <div class="card-content">
-                        <!-- <p>{{ category.friendly_name</p> -->
-                        <p class="">{{ product.description }}</p>
-                    </div>
-                    <div class="card-action lime accent-3">
-                        <a href="#" class="black-text">£{{ product.price }}</a>
-                        <a href="#" class="black-text">More info...</a>
-                        <input type="radio" value="red">
-                    </div>
+        <div class="col s12 m6 l4">
+            <div class="card large">
+                <div class="card-image">
+                    {% if product.image %}
+                    <a href="">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                    {% endif %}
+                    <span class="card-title black-text product-label truncate">{{ product.name }}</span>
+                </div>
+                <div class="card-content">
+                    <!-- <p>{{ category.friendly_name</p> -->
+                    <p class="product-page-descriptions">{{ product.description }}</p>
+                </div>
+                <div class="card-action lime accent-3">
+                    <a href="#" class="black-text">£{{ product.price }}</a>
+                    <a href="#" class="black-text">More info...</a>
+                    <input type="radio" value="red">
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
 </div>

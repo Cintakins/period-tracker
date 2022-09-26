@@ -28,6 +28,16 @@ button {
 #input-style::placeholder {
     color: rgb(45, 45, 45);
 }
+
+img {
+    object-fit: cover;
+}
+.product-page-descriptions {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {}
 

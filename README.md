@@ -130,6 +130,7 @@ advertise products
 ## Development
 
 #### Problem
+Could not get the navbar dropdown menu to display the options. I ensured the javasciprt was working by adding another elsewehere and checked multiple times that the format matched the documentation and the working example on the products page (categories selection box), I shifted the elements around and tried them in different places.
 #### Solution
 
 #### Problem
