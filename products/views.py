@@ -41,7 +41,7 @@ def products(request):
             if direction == 'desc':
                 price_sort = f'-{sort}'
             else:
-                price_sort = f'+{sort}'
+                price_sort = sort
 
         products = products.order_by(price_sort)
 

@@ -28,6 +28,7 @@
     <div class="row">
         <div class="col lime accent-3">
             <ul id="dropdown2" class="dropdown-content">
+                <!-- write javascript to handle default and selected texts -->
                 <li><a class="black-text" href="{% url 'products' %}">All Products</a></li>
                 <li><a class="black-text" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
                 <li><a class="black-text" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></li>
@@ -43,8 +44,8 @@
         </div>
         <div class="col lime accent-3 offset-s1">
             <ul id="dropdown3" class="dropdown-content">
-                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=asc">Price: Lowest First</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=desc">Price: Highest First</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=asc" value="price_asc">Price: Lowest First</a></li>
+                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=desc" value="price_desc">Price: Highest First</a></li>
             </ul>
             <div class="nav-wrapper">
                 <a class="dropdown-trigger black-text" href="#!" data-target="dropdown3">
