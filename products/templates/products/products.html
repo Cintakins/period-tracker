@@ -7,17 +7,18 @@
 {% block content %}
 <div class="row card-panel black">
     <div class="lime accent-3 col m2 offset-m5">
-        <h1 class="center">Products</h1>
+        <h3 class="center">Products</h3>
     </div>
 </div>
 <div class="row black container">
     <div class="col m4 offset-m4 black">
-        <form method="GET" action="">
+        <form method="GET" action="{% url 'products' %}">
             <div class="search">
-                <input class="" type="text" name="query" placeholder="Search Products">
+                <input id="input-style" type="text" name="query" placeholder="Search Products">
                 <div class="center">
-                    <a class="waves-effect waves-light lime accent-3 black-text btn"><i
-                            class="material-icons right">search</i>Search</a>
+                    <button class="waves-effect waves-light lime accent-3 black-text btn" type="submit">
+                        <i class="material-icons right">search</i>Search
+                    </button>
                 </div>
             </div>
         </form>
@@ -44,6 +45,7 @@
                     <div class="card-action lime accent-3">
                         <a href="#" class="black-text">£{{ product.price }}</a>
                         <a href="#" class="black-text">More info...</a>
+                        <input type="radio" value="red">
                     </div>
                 </div>
             </div>

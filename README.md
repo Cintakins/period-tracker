@@ -150,6 +150,7 @@ advertise products
 ### Content
 
 ### Media
+Product item images were taken from PixaBay
 
 ### Libraries
 Materializecss.com

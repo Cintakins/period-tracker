@@ -7,6 +7,10 @@ body {
     color: black;
 }
 
+button {
+    font-family: 'Indie Flower', cursive;;
+}
+
 .product-label {
     background-color: #c8ff00b5;
     width: 100%;
@@ -14,7 +18,16 @@ body {
     border-color: black;
 }
 
+#input-style {
+    border: 2px solid #c8ff00b5;
+    border-radius: 4px;
+    color: aqua;
+    text-align: center;
+}
 
+#input-style::placeholder {
+    color: rgb(45, 45, 45);
+}
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {}
 
