@@ -12,15 +12,20 @@
 </div>
 <div class="row container black">
     <div class="row">
-        <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
-            <span class="black-text">
-                <i class="large material-icons">chevron_left</i>
-            </span>
-            <span class="black-text">Continue Shopping</span>
-        </a>
-    <div class="row">
         <div class="col">
-            <div class="container">
+            <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
+                <span class="black-text">
+                    <i class="large material-icons">chevron_left</i>
+                </span>
+                <span class="black-text">Continue Shopping</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="">
                 {% if product.image %}
                     <a href="{{ product.image.url }}" target="_blank">
                         <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -44,33 +49,32 @@
                 </form>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="container white-text">
+        <div class="col-4">
+            <div class="white-text">
                 <h5>{{ product.name }}</h5>
                 <p>{{ product.description }}</p>
                 <P>{{ product.price }}</P>
-                <form class="form" action="" method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="white-text"><strong>Quantity:</strong></p>
-                            <div class="">
-                                <div class="">
-                                    <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <input type="submit" class="lime accent-3 waves-effect waves-light btn" value="Add to Bag">
-                        </div>
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                    </div>
-                </form>
             </div>
         </div>
     </div>
+    <form class="form" action="{% url 'add_to_basket' product.id%}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-10 offset-1">
+                <p class="white-text"><strong>Quantity:</strong></p>
+                <div class="">
+                    <div class="">
+                        <input class="form-control qty_input white-text" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <input type="submit" class="lime accent-3 waves-effect waves-light btn" value="Add to Bag">
+            </div>
+            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        </div>
+    </form>
 </div>
+
 {% endblock %}
