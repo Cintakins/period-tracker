@@ -28,27 +28,28 @@
     <div class="row">
         <div class="col lime accent-3">
             <ul id="dropdown2" class="dropdown-content">
-                <!-- write javascript to handle default and selected texts -->
-                <li><a class="black-text" href="{% url 'products' %}">All Products</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?category=short-pants">Flattering Pants</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?category=full-pants">Full Coverage</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?category=other">Other</a></li>
+                <!-- change to select element? -->
+                <li><a class="black-text products-category" href="{% url 'products' %}">All Products</a></li>
+                <li><a class="black-text products-category" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
+                <li><a class="black-text products-category" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></li>
+                <li><a class="black-text products-category" href="{% url 'products' %}?category=short-pants">Flattering Pants</a></li>
+                <li><a class="black-text products-category" href="{% url 'products' %}?category=full-pants">Full Coverage</a></li>
+                <li><a class="black-text products-category" href="{% url 'products' %}?category=other">Other</a></li>
             </ul>
             <div class="nav-wrapper">
-                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown2">
+                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown2" id="categories-box">
                     Categories
                 <i class="material-icons right">arrow_drop_down</i></a>
             </div>
         </div>
         <div class="col lime accent-3 offset-s1">
             <ul id="dropdown3" class="dropdown-content">
-                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=asc" value="price_asc">Price: Lowest First</a></li>
-                <li><a class="black-text" href="{% url 'products' %}?sort=price&direction=desc" value="price_desc">Price: Highest First</a></li>
+                <li><a class="black-text price-sort" href="{% url 'products' %}" value="any">None</a></li>
+                <li><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=asc" value="price_asc">Price: Lowest First</a></li>
+                <li><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=desc" value="price_desc">Price: Highest First</a></li>
             </ul>
             <div class="nav-wrapper">
-                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown3">
+                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown3" id="sort-box">
                     Sort
                 <i class="material-icons right">arrow_drop_down</i></a>
             </div>
@@ -80,4 +81,48 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+    <script type="text/javascript">
+        var selectedBoxCategory = document.getElementsByClassName('products-category');
+        var selectedBoxPrice = document.getElementsByClassName('price-sort');
+        var priceBox = document.getElementById('sort-box');
+        var categoriesBox = document.getElementById('categories-box');
+        var currentUrl = new URL(window.location);
+
+        for (let i = 0; i < selectedBoxCategory.length; i++) {
+            selectedBoxCategory[i].addEventListener('click', function(event) {
+                displaySelectedOption(this);
+            });
+        };
+
+        for (let i = 0; i < selectedBoxPrice.length; i++) {
+            selectedBoxPrice[i].addEventListener('click', function(event) {
+                displaySelectedOption(this);
+            });
+        };
+
+        function displaySelectedOption() {
+            console.log('is this working?', this);
+            var selector = this;
+            var selectorText = selector.innerHTML;
+            if (selector.classList.contains('price-sort')) {
+                if (this.value == 'any') {
+                    priceBox.innerHTML = 'Sort';
+                } else {
+                    // priceBox.innerHTML = selectorText
+                    // nothing is working, come back and replace it with boutique ado jquery
+                    currentUrl.searchParams.set(selectorText);
+                };
+            } else if (selector.classList.contains('products-category')) {
+                if (this.value == 'all-products') {
+                    categoriesBox.innerHTML = 'Categories';
+                } else {
+                    categoriesBox.innerHTML = selectorText
+                };
+            };
+        };
+    </script>
 {% endblock %}

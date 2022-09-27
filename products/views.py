@@ -43,7 +43,7 @@ def products(request):
             else:
                 price_sort = sort
 
-        products = products.order_by(price_sort)
+            products = products.order_by(price_sort)
 
 
     context = {

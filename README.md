@@ -103,23 +103,25 @@ The website will present itself a in a gender neutral way to be inclusive of all
 * Community Forum
 * More accurate tracking capabilities (keeping it simple for the time being)
 
-## user goals
+## User goals
 ### First time user
 Discover information about menstrual cycle
 Read Product reviews
 Buy products
+Sort through products
 Search information
 Learn about cycle
 
 ### Regular User
 Get personalised timed emails about menstrual cycle via subscription
 Buy menstrual products
+Sort through products
 Learn about cycle
 Search Information
 Edit details
 Have personal information stored (for tracker, payment details and address for postage)
             
-## site owner goal 
+## Site owner goal 
 sell products
 get payment via subscriptions for information
 advertise products
@@ -134,9 +136,15 @@ Could not get the navbar dropdown menu to display the options. I ensured the jav
 #### Solution
 
 #### Problem
+price sort was not working with category sort. It was resetting the category selection.
 #### Solution
 
 #### Problem
+Could not get the innerHTML to change when selecting sorting options
+#### Solution
+
+#### Problem
+Pants category only shows a few pants in main search area because there needs to be an overall 'pants' category
 #### Solution
 
 ## Testing

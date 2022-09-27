@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="{% if grand_total %}text-black font-weight-bold{% else %}text-grey{% endif %}" href="">
+                            <a class="{% if grand_total %}text-black font-weight-bold{% else %}text-grey{% endif %}" href="{% url 'view_basket' %}">
                                 <i class="material-icons black-text">shopping_basket</i>
                                 <p class="white-text">
                                     {% if grand_total %}
