@@ -61,9 +61,11 @@
             <div class="card large">
                 <div class="card-image">
                     {% if product.image %}
-                    <a href="">
+                    <a href="{% url 'product_detail' product.id %}">
                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
                     </a>
+                    {% else %}
+                    <a href="{% url 'product_detail' product.id %}" alt="{{ product.name }}"></a>
                     {% endif %}
                     <span class="card-title black-text product-label truncate">{{ product.name }}</span>
                 </div>
@@ -72,8 +74,9 @@
                     <p class="product-page-descriptions">{{ product.description }}</p>
                 </div>
                 <div class="card-action lime accent-3">
-                    <a href="#" class="black-text">£{{ product.price }}</a>
-                    <a href="#" class="black-text">More info...</a>
+                    <p class="clack-text">£{{ product.price }}</p>
+                    <a href="#" class="black-text">Add to Basket</a>
+                    <a href="{% url 'product_detail' product.id %}" class="black-text">More info...</a>
                     <input type="radio" value="red">
                 </div>
             </div>
