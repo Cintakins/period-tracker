@@ -1,11 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
 
 {% block page_header %}
 {% endblock %}
 
 {% block content %}
-    <div class="row card-panel black">
-        <div class="lime accent-3 col m2 offset-m5">
-            <h3 class="center">Basket</h3>
+    <div class="container">
+        <div class="row card-panel black">
+            <div class="lime accent-3 col m2 offset-m5">
+                <h3 class="center">Basket</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                    <ul class="collection with-header">
+                        <li class="collection-header lime accent-3"><h4>Your Basket</h4></li>
+                        {% if bag_items %}
+                        <li class="collection-item white-text">Alvin</li>
+                    </ul>
+                {% else %}
+                    <p class="white-text mb-5">Your bag is empty.</p>
+                    <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
+                        <span class="black-text">
+                            <i class="large material-icons">chevron_left</i>
+                        </span>
+                        <span class="black-text">Keep Shopping</span>
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

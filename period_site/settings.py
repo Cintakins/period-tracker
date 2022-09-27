@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', # allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'basket.contexts.basket_contents',
             ],
         },
     },
@@ -167,3 +168,5 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu68.gitpod.io',
     'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu67.gitpod.io',
     ]
+
+STANDARD_DELIVERY_PERCENTAGE = 10
