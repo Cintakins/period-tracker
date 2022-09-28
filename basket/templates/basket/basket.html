@@ -17,10 +17,13 @@
             <div class="col">
                     <ul class="collection with-header">
                         <li class="collection-header lime accent-3"><h4>Your Basket</h4></li>
-                        {% if bag_items %}
-                        <li class="collection-item white-text">Alvin</li>
+                        {% if basket_items %}
+                        {% for basket_item in basket_items %}
+                        <li class="collection-item">{{ basket_item }}</li>
+                        {% endfor %}
                     </ul>
                 {% else %}
+                </ul>
                     <p class="white-text mb-5">Your basket is empty.</p>
                     <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
                         <span class="black-text">
