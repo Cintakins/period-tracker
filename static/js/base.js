@@ -1,7 +1,7 @@
-// $(document).ready(function(){
-//     $('.sidenav').sidenav();
-//     $(".dropdown-trigger").dropdown();
-//     $('select').formSelect();
-// });
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+    $(".dropdown-trigger").dropdown();
+    $('select').formSelect();
+});
 
-M.AutoInit();
+// M.AutoInit();

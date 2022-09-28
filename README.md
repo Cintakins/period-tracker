@@ -147,6 +147,19 @@ Could not get the innerHTML to change when selecting sorting options
 Pants category only shows a few pants in main search area because there needs to be an overall 'pants' category
 #### Solution
 
+#### Problem
+The paragraph breaks were not working in the descriptions of the products.
+#### Solution
+A bit of research into tamplate language documentation revealed that I needed to use "product.description|linebreaksbr"
+
+#### Problem
+The materialize select box is not working
+#### Solution
+
+#### Problem
+
+#### Solution
+
 ## Testing
 ### Validators
 

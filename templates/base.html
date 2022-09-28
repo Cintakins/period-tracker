@@ -45,17 +45,17 @@
                 <li class="divider"></li>
                 <li><a class="black-text" href="#!">three</a></li>
             </ul>
+            <ul id="nav-mobile" class="left sidenav">
+                <li><a class="black-text" href="sass.html">Your Cycle</a></li>
+                <li><a class="black-text" href="badges.html">Articles</a></li>
+                <li><a class="black-text" href="{% url 'products' %}">Products</a></li>
+                <li><a class="black-text" href="collapsible.html">Product Reviews</a></li>
+            </ul>
             <nav>
                 <div class="nav-wrapper lime accent-3">
                     <a href="{% url 'home' %}" class="brand-logo center black-text">Periodic</a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+                    <a href="#" data-target="nav-mobile" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li><a class="black-text" href="sass.html">Your Cycle</a></li>
-                        <li><a class="black-text" href="badges.html">Articles</a></li>
-                        <li><a class="black-text" href="{% url 'products' %}">Products</a></li>
-                        <li><a class="black-text" href="collapsible.html">Product Reviews</a></li>
-                    </ul>
-                    <ul id="nav-mobile" class="left sidenav black-text">
                         <li><a class="black-text" href="sass.html">Your Cycle</a></li>
                         <li><a class="black-text" href="badges.html">Articles</a></li>
                         <li><a class="black-text" href="{% url 'products' %}">Products</a></li>
@@ -63,7 +63,7 @@
                     </ul>
                     <ul class="right">
                         <li>
-                            <a class="black-text" class="dropdown-trigger" href="#!" data-target="dropdown1">
+                            <a class="black-text dropdown-trigger" href="#!" data-target="dropdown1">
                                 Account<i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>

@@ -46,6 +46,14 @@ img {
     -webkit-box-orient: vertical; 
     overflow: hidden;
 }
+
+.color-select {
+    border: solid;
+    border: 1px;
+    border: grey;
+}
+
+
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {}
 
