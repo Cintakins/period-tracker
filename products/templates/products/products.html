@@ -71,11 +71,10 @@
                 </div>
                 <div class="card-content">
                     <!-- <p>{{ category.friendly_name</p> -->
-                    <p class="product-page-descriptions">{{ product.description }}</p>
+                    <p class="product-page-descriptions">{{ product.description|linebreaksbr }}</p>
                 </div>
                 <div class="card-action lime accent-3">
                     <p class="clack-text">£{{ product.price }}</p>
-                    <a href="{% url 'add_to_basket' product.id %}" class="black-text">Add to Basket</a>
                     <a href="{% url 'product_detail' product.id %}" class="black-text">More info...</a>
                     <input type="radio" value="red">
                 </div>

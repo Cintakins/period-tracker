@@ -1,4 +1,7 @@
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-    $(".dropdown-trigger").dropdown();
-});
+// $(document).ready(function(){
+//     $('.sidenav').sidenav();
+//     $(".dropdown-trigger").dropdown();
+//     $('select').formSelect();
+// });
+
+M.AutoInit();

@@ -27,11 +27,11 @@
         <div class="col-4">
             <div class="">
                 {% if product.image %}
-                    <a href="{{ product.image.url }}" target="_blank">
-                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    </a>
+                <a href="{{ product.image.url }}" target="_blank">
+                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                </a>
                 {% else %}
-                    <a href="{% url 'product_detail' %}" alt="{{ product.name }}"></a>
+                <a href="{% url 'product_detail' %}" alt="{{ product.name }}"></a>
                 {% endif %}
                 <form action="#">
                     <label>
@@ -43,7 +43,7 @@
                         <span>Yellow</span>
                     </label>
                     <label>
-                        <input class="with-gap" name="group1" type="radio"  />
+                        <input class="with-gap" name="group1" type="radio" />
                         <span>Green</span>
                     </label>
                 </form>
@@ -52,7 +52,9 @@
         <div class="col-4">
             <div class="white-text">
                 <h5>{{ product.name }}</h5>
-                <p>{{ product.description }}</p>
+                <p>
+                    {{ product.description|linebreaksbr }}
+                </p>
                 <P>{{ product.price }}</P>
             </div>
         </div>
@@ -61,10 +63,24 @@
         {% csrf_token %}
         <div class="row">
             <div class="col-10 offset-1">
+                {% if product.has_sizes %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Choose your size</option>
+                                <option value="s">Small</option>
+                                <option value="m">Medium</option>
+                                <option value="l">Large</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
+                    </div>
+                {% endif %}
                 <p class="white-text"><strong>Quantity:</strong></p>
                 <div class="">
                     <div class="">
-                        <input class="form-control qty_input white-text" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                        <input class="form-control qty_input white-text" type="number" name="quantity" value="1" min="1"
+                            max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                     </div>
                 </div>
             </div>
