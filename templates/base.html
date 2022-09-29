@@ -46,7 +46,7 @@
                 <li><a class="black-text" href="#!">three</a></li>
             </ul>
             <ul id="nav-mobile" class="left sidenav">
-                <li><a class="black-text" href="sass.html">Your Cycle</a></li>
+                <li><a class="black-text" href="{% url 'your_cycle' %}">Your Cycle</a></li>
                 <li><a class="black-text" href="badges.html">Articles</a></li>
                 <li><a class="black-text" href="{% url 'products' %}">Products</a></li>
                 <li><a class="black-text" href="collapsible.html">Product Reviews</a></li>
@@ -56,7 +56,7 @@
                     <a href="{% url 'home' %}" class="brand-logo center black-text">Periodic</a>
                     <a href="#" data-target="nav-mobile" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
                     <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        <li><a class="black-text" href="sass.html">Your Cycle</a></li>
+                        <li><a class="black-text" href="{% url 'your_cycle' %}">Your Cycle</a></li>
                         <li><a class="black-text" href="badges.html">Articles</a></li>
                         <li><a class="black-text" href="{% url 'products' %}">Products</a></li>
                         <li><a class="black-text" href="collapsible.html">Product Reviews</a></li>
@@ -71,7 +71,7 @@
                             <a class="{% if grand_total %}text-black font-weight-bold{% else %}text-grey{% endif %}" href="{% url 'view_basket' %}">
                                 <i class="material-icons black-text">shopping_basket</i>
                                 {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
+                                    £{{ grand_total|floatformat:2 }}
                                 {% else %}
                                     £0.00
                                 {% endif %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<div class="row card-panel black">
+    <div class="lime accent-3 col m2 offset-m5">
+        <h3 class="center">Your Cycle</h3>
+    </div>
+</div>
+<div class="container">
+    <p class="white-text">
+        here it is
+        {% for cycle in cycles %}
+        {{ cycle.article }}
+        {% endfor %}
+    </p>
+</div>
+{% endblock %}

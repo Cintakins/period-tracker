@@ -26,6 +26,8 @@
                         <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
                         {% if basket_item.product.has_sizes %}
                             <p>{{ basket_item.size|upper }} <br>
+                        {% else %}
+                        <br><br>
                         {% endif %}
                             {{ basket_item.quantity }} x £{{ basket_item.product.price }}
                         </p>

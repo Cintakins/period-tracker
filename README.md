@@ -157,8 +157,13 @@ The materialize select box is not working
 #### Solution
 
 #### Problem
-
+When adding 2 of the same product but in different sizes to see if they register as seperate items in the basket, they registered as only one and didn't display the sizes selected
 #### Solution
+
+#### Problem
+Subtotal and gran total prices are not working. grand total price had previously worked but now doesn't since adding sizes to the views function and context processor
+#### Solution
+"total = item_data * product.price" and "item_count += item_data" were positiioned the wrong way round in the context processor. this fixed the grand total issue.
 
 ## Testing
 ### Validators

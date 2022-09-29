@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, ProductColors
 
 # From Boutique Ado tutorials
 class ProductAdmin(admin.ModelAdmin):
@@ -17,6 +17,13 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
+class ProductColorsAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'color',
+    )
 
+
+admin.site.register(ProductColors)
 admin.site.register(Category)
 admin.site.register(Product)
