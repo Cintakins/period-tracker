@@ -12,9 +12,21 @@
 </div>
 <div class="container">
     <p class="white-text">
-        {% for cycle_phase in cycle_phases %}
-        {{ cycle_phase.article }}
-        {% endfor %}
+        <!-- {% for cycle_phase in cycle_phases %}
+        {{ cycle_phase.article|linebreaksbr }}
+        {% endfor %} -->
     </p>
+</div>
+<!-- circle menu found on codepen https://codepen.io/metaprinter/pen/zwvjNb  -->
+<div class="circle-menu">
+	<ul>
+		<li><a class="spiritual" href="#">Spiritual</a></li>
+		<li><a class="occupational" href="#">Occupational</a></li>
+		<li><a class="emotional" href="#">Emotional</a></li>
+		<li><a class="environmental" href="#">Environmental</a></li>
+		<li><a class="intellectual" href="#">Intellectual</a></li>
+		<li><a class="social" href="#">Social</a></li>
+		<li><a class="physical" href="#">Physical</a></li>
+	</ul>
 </div>
 {% endblock %}
