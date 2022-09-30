@@ -66,7 +66,7 @@ img {
     position: relative;
     width: 24em;
     height: 24em;
-    border: dashed 2px #cccccc;
+    border: inset 2px #c6ff00;
     border-radius: 50%;
     margin: 5em auto 7em;
 }
@@ -76,87 +76,74 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 8em;
-    height: 8em;
+    width: 6em;
+    height: 6em;
     line-height: 8em;
-    margin: -3.5em;
+    margin: -3em;
     -moz-border-radius: 4em;
     -webkit-border-radius: 4em;
     border-radius: 4em;
     text-align: center;
     text-decoration: none;
-    color: white;
+    color: black;
     box-sizing: border-box;
+    font-weight: 900;
 }
 
 .circle-menu a.ovulation {
-    background: #009cde;
-    opacity: 0.6;
+    background: #007bb0;
 }
 
 .circle-menu a.luteal-1 {
-    background: #3a913f;
-    opacity: 0.6;
+    background: #28632b;
 }
 
 .circle-menu a.luteal-2 {
-    background: #fecd06;
-    opacity: 0.6;
+    background: #bc9704;
 }
 
 .circle-menu a.luteal-3 {
-    background: #fa7f00;
-    opacity: 0.6;
+    background: #b95d00;
 }
 
 .circle-menu a.mensis {
-    background: #ed2124;
-    opacity: 0.6;
+    background: #b4191c;
 }
 
 .circle-menu a.follicular-1 {
-    background: #932683;
-    opacity: 0.6;
+    background: #601956;
 }
 
 .circle-menu a.follicular-2 {
-    background: #203864;
-    opacity: 0.6;
+    background: #452e6f;
 }
 
 .circle-menu a.ovulation:hover {
     background: #009cde;
-    opacity: 1.0;
 }
 
 .circle-menu a.luteal-1:hover {
     background: #3a913f;
-    opacity: 1.0;
 }
 
 .circle-menu a.luteal-2:hover {
     background: #fecd06;
-    opacity: 1.0;
 }
 
 .circle-menu a.luteal-3:hover {
     background: #fa7f00;
-    opacity: 1.0;
 }
 
 .circle-menu a.mensis:hover {
     background: #ed2124;
-    opacity: 1.0;
 }
 
 .circle-menu a.follicular-1:hover {
     background: #932683;
-    opacity: 1.0;
 }
 
 .circle-menu a.follicular-2:hover {
-    background: #203864;
-    opacity: 1.0;
+    background: #61419e;
 }
 
 
@@ -206,59 +193,120 @@ img {
 /* end of codepen code */
 
 
-/* Slightly larger container on xl screens */
+/* Larger cycle links on xl screens */
 @media (min-width: 1200px) {
     /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
-.circle-menu {
-    width: 36em;
-    height: 36em;
+    .circle-menu a {
+        width: 8em;
+        height: 8em;
+        margin: -3.5em;
+    }
+
+    .circle-menu {
+        width: 36em;
+        height: 36em;
+    }
+
+    /* 360/7= 51 roughly so for 7 elements rotate the element every 51deg. 12em translate is half the container */
+    .circle-menu .ovulation {
+        transform: rotate(51deg) translate(18em) rotate(-51deg);
+        -webkit-transform: rotate(51deg) translate(18em) rotate(-51deg);
+        -ms-transform: rotate(51deg) translate(18em) rotate(-51deg);
+    }
+
+    .circle-menu .luteal-1 {
+        transform: rotate(102deg) translate(18em) rotate(-102deg);
+        -webkit-transform: rotate(102deg) translate(18em) rotate(-102deg);
+        -ms-transform: rotate(102deg) translate(18em) rotate(-102deg);
+    }
+
+    .circle-menu .luteal-2 {
+        transform: rotate(153deg) translate(18em) rotate(-153deg);
+        -webkit-transform: rotate(153deg) translate(18em) rotate(-153deg);
+        -ms-transform: rotate(153deg) translate(18em) rotate(-153deg);
+    }
+
+    .circle-menu .luteal-3 {
+        transform: rotate(204deg) translate(18em) rotate(-204deg);
+        -webkit-transform: rotate(204deg) translate(18em) rotate(-204deg);
+        -ms-transform: rotate(204deg) translate(18em) rotate(-204deg);
+    }
+
+    .circle-menu .mensis {
+        transform: rotate(255deg) translate(18em) rotate(-255deg);
+        -webkit-transform: rotate(255deg) translate(18em) rotate(-255deg);
+        -ms-transform: rotate(255deg) translate(18em) rotate(-255eg);
+    }
+
+    .circle-menu .follicular-1 {
+        transform: rotate(306deg) translate(18em) rotate(-306deg);
+        -webkit-transform: rotate(306deg) translate(18em) rotate(-306deg);
+        -ms-transform: rotate(306deg) translate(18em) rotate(-306deg);
+    }
+
+    .circle-menu .follicular-2 {
+        transform: rotate(357deg) translate(18em) rotate(-357deg);
+        -webkit-transform: rotate(357deg) translate(18em) rotate(-357deg);
+        -ms-transform: rotate(357deg) translate(18em) rotate(-357deg);
+    }
+
+    /* end of codepen code */
 }
 
-/* 360/7= 51 roughly so for 7 elements rotate the element every 51deg. 12em translate is half the container */
-.circle-menu .ovulation {
-    transform: rotate(51deg) translate(18em) rotate(-51deg);
-    -webkit-transform: rotate(51deg) translate(18em) rotate(-51deg);
-    -ms-transform: rotate(51deg) translate(18em) rotate(-51deg);
-}
+/* cycle links on medium and down */
+@media (max-width: 550px) {
+    /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
+    .circle-menu a {
+        width: 4em;
+        height: 4em;
+        margin: -2em;
+    }
 
-.circle-menu .luteal-1 {
-    transform: rotate(102deg) translate(18em) rotate(-102deg);
-    -webkit-transform: rotate(102deg) translate(18em) rotate(-102deg);
-    -ms-transform: rotate(102deg) translate(18em) rotate(-102deg);
-}
+    .circle-menu {
+        width: 16em;
+        height: 16em;
+    }
 
-.circle-menu .luteal-2 {
-    transform: rotate(153deg) translate(18em) rotate(-153deg);
-    -webkit-transform: rotate(153deg) translate(18em) rotate(-153deg);
-    -ms-transform: rotate(153deg) translate(18em) rotate(-153deg);
-}
+    /* 360/7= 51 roughly so for 7 elements rotate the element every 51deg. 12em translate is half the container */
+    .circle-menu .ovulation {
+        transform: rotate(51deg) translate(8em) rotate(-51deg);
+        -webkit-transform: rotate(51deg) translate(8em) rotate(-51deg);
+        -ms-transform: rotate(51deg) translate(8em) rotate(-51deg);
+    }
 
-.circle-menu .luteal-3 {
-    transform: rotate(204deg) translate(18em) rotate(-204deg);
-    -webkit-transform: rotate(204deg) translate(18em) rotate(-204deg);
-    -ms-transform: rotate(204deg) translate(18em) rotate(-204deg);
-}
+    .circle-menu .luteal-1 {
+        transform: rotate(102deg) translate(8em) rotate(-102deg);
+        -webkit-transform: rotate(102deg) translate(8em) rotate(-102deg);
+        -ms-transform: rotate(102deg) translate(8em) rotate(-102deg);
+    }
 
-.circle-menu .mensis {
-    transform: rotate(255deg) translate(18em) rotate(-255deg);
-    -webkit-transform: rotate(255deg) translate(18em) rotate(-255deg);
-    -ms-transform: rotate(255deg) translate(18em) rotate(-255eg);
-}
+    .circle-menu .luteal-2 {
+        transform: rotate(153deg) translate(8em) rotate(-153deg);
+        -webkit-transform: rotate(153deg) translate(8em) rotate(-153deg);
+        -ms-transform: rotate(153deg) translate(8em) rotate(-153deg);
+    }
 
-.circle-menu .follicular-1 {
-    transform: rotate(306deg) translate(18em) rotate(-306deg);
-    -webkit-transform: rotate(306deg) translate(18em) rotate(-306deg);
-    -ms-transform: rotate(306deg) translate(18em) rotate(-306deg);
-}
+    .circle-menu .luteal-3 {
+        transform: rotate(204deg) translate(8em) rotate(-204deg);
+        -webkit-transform: rotate(204deg) translate(8em) rotate(-204deg);
+        -ms-transform: rotate(204deg) translate(8em) rotate(-204deg);
+    }
 
-.circle-menu .follicular-2 {
-    transform: rotate(357deg) translate(18em) rotate(-357deg);
-    -webkit-transform: rotate(357deg) translate(18em) rotate(-357deg);
-    -ms-transform: rotate(357deg) translate(18em) rotate(-357deg);
-}
+    .circle-menu .mensis {
+        transform: rotate(255deg) translate(8em) rotate(-255deg);
+        -webkit-transform: rotate(255deg) translate(8em) rotate(-255deg);
+        -ms-transform: rotate(255deg) translate(8em) rotate(-255eg);
+    }
 
-/* end of codepen code */
-}
+    .circle-menu .follicular-1 {
+        transform: rotate(306deg) translate(8em) rotate(-306deg);
+        -webkit-transform: rotate(306deg) translate(8em) rotate(-306deg);
+        -ms-transform: rotate(306deg) translate(8em) rotate(-306deg);
+    }
 
-/* fixed top navbar only on medium and up */
-@media (min-width: 992px) {}
+    .circle-menu .follicular-2 {
+        transform: rotate(357deg) translate(8em) rotate(-357deg);
+        -webkit-transform: rotate(357deg) translate(8em) rotate(-357deg);
+        -ms-transform: rotate(357deg) translate(8em) rotate(-357deg);
+    }
+}
