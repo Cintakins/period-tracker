@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'basket',
-    'your_cycle',
+    'articles',
 ]
 
 MIDDLEWARE = [
@@ -168,6 +168,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu68.gitpod.io',
     'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu67.gitpod.io',
+    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu69.gitpod.io'
     ]
 
 STANDARD_DELIVERY_PERCENTAGE = 10

@@ -1,15 +1,17 @@
 from django.shortcuts import render
-from .models import Cycle
+from .models import Article
 
 # Create your views here.
 
 def your_cycle(request):
     """ displays info about menstrual cycle, personal info to users, generic to non-users """
 
-    cycles = Cycle.objects.all()
+    
+    cycle_phases = Article.objects.filter(category=1)
 
     context = {
-        'cycles': cycles,
+        'cycle_phases': cycle_phases,
     }
 
-    return render(request, 'your_cycle/your_cycle.html', context)
+    return render(request, 'articles/your_cycle.html', context)
+
