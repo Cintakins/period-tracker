@@ -66,13 +66,12 @@
                 {% if product.has_sizes %}
                     <div class="row">
                         <div class="input-field col s12">
-                            <select>
-                                <option id="product_size" name="product_size" disabled selected>Choose your size</option>
+                            <select name="product_size" id="product_sizes">
                                 <option value="s">Small</option>
                                 <option value="m">Medium</option>
                                 <option value="l">Large</option>
                             </select>
-                            <label>Materialize Select</label>
+                            <label>Choose your size</label>
                         </div>
                     </div>
                 {% endif %}

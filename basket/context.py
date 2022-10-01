@@ -1,5 +1,4 @@
 from decimal import Decimal
-from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
@@ -17,7 +16,7 @@ def basket_contents(request):
             product = get_object_or_404(Product, pk=item_id)
             subtotal = quantity_data * product.price
             total += quantity_data * product.price
-            item_count += quantity_data 
+            item_count += quantity_data
             basket_items.append({
                 'subtotal': subtotal,
                 'item_id': item_id,
@@ -27,13 +26,14 @@ def basket_contents(request):
         else:
             product = get_object_or_404(Product, pk=item_id)
             for size, quantity in quantity_data['item_size'].items():
-                subtotal = quantity_data * product.price
+                print(size)
+                subtotal = quantity * product.price
                 total += quantity * product.price
                 item_count += quantity
                 basket_items.append({
                     'subtotal': subtotal,
                     'item_id': item_id,
-                    'quantity': quantity_data,
+                    'quantity': quantity,
                     'product': product,
                     'size': size,
                 })

@@ -20,13 +20,12 @@
                     <h4>Your Basket</h4>
                 </li>
                 {% if basket_items %}
-                <p class="white-text">{{ basket }}</p>
                     {% for basket_item in basket_items %}
                     <li class="collection-item avatar">
                         <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
                         <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
                         {% if basket_item.product.has_sizes %}
-                            <p>{{ basket_item.size|upper }} <br>
+                            <p>Size: {{ basket_item.size|upper }} <br>
                         {% else %}
                         <br><br>
                         {% endif %}
