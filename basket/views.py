@@ -9,14 +9,16 @@ def view_basket(request):
 
 def add_to_basket(request, item_id):
     """ adds items to basket """
-
+# help from boutique-ado project
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+
     size = None
-    basket = request.session.get('basket', {})
     if 'product_size' in request.POST:
-        size = request.session.POST['product_size']
-# help from boutique-ado project
+        size = request.POST['product_size']
+
+    basket = request.session.get('basket', {})
+
     if size:
         if item_id in list(basket.keys()):
             if size in basket[item_id]['item_size'].keys():

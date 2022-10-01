@@ -171,4 +171,4 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu69.gitpod.io'
     ]
 
-STANDARD_DELIVERY_PERCENTAGE = 10
+

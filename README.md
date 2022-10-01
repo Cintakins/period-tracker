@@ -161,9 +161,9 @@ When adding 2 of the same product but in different sizes to see if they register
 #### Solution
 
 #### Problem
-Subtotal and gran total prices are not working. grand total price had previously worked but now doesn't since adding sizes to the views function and context processor
+Subtotal and gran total prices are not working. grand total price had previously worked but now doesn't since adding sizes to the views function and context processor. I think the grand total mayb never worked perfectly. it seems to be increasing but not in a logical manor. I moved "basket = request.session.get('basket', {})" because i thought it was in the wrong place in the basket view, but it didn't totally fix the problem. I found that one line had "request.session.post" when it should have been "request.post", but it still didn't seem to solve the issue.
 #### Solution
-"total = item_data * product.price" and "item_count += item_data" were positiioned the wrong way round in the context processor. this fixed the grand total issue.
+I deleted the delivery cost percentage and calculation that was inspired by the boutique-ado project and created my own delivery parameters. I then added a subtotal variable to the basket_item dictionary and spotted that the "total" variable needed an extra "+" before the "=" in the variable creation. this fixed the issues.
 
 ## Testing
 ### Validators

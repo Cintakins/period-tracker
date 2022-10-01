@@ -12,29 +12,40 @@ def basket_contents(request):
     item_count = 0
     basket = request.session.get('basket', {})
 
-    for item_id, item_data in basket.items():
-        if isinstance(item_data, int):
+    for item_id, quantity_data in basket.items():
+        if isinstance(quantity_data, int):
             product = get_object_or_404(Product, pk=item_id)
-            total = item_data * product.price
-            item_count += item_data 
+            subtotal = quantity_data * product.price
+            total += quantity_data * product.price
+            item_count += quantity_data 
             basket_items.append({
+                'subtotal': subtotal,
                 'item_id': item_id,
-                'quantity': item_data,
+                'quantity': quantity_data,
                 'product': product,
             })
         else:
             product = get_object_or_404(Product, pk=item_id)
-            for size, quantity in item_data['item_size'].items():
+            for size, quantity in quantity_data['item_size'].items():
+                subtotal = quantity_data * product.price
                 total += quantity * product.price
                 item_count += quantity
                 basket_items.append({
+                    'subtotal': subtotal,
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity_data,
                     'product': product,
                     'size': size,
                 })
 
-    delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+    if item_count == 0:
+        delivery = 0
+    elif item_count > 0 and item_count < 4:
+        delivery = 3
+    elif item_count > 3 and item_count <= 10:
+        delivery = 5
+    elif item_count > 10:
+        delivery = 10
 
     grand_total = delivery + total
 

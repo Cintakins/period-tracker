@@ -20,6 +20,7 @@
                     <h4>Your Basket</h4>
                 </li>
                 {% if basket_items %}
+                <p class="white-text">{{ basket }}</p>
                     {% for basket_item in basket_items %}
                     <li class="collection-item avatar">
                         <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
@@ -32,7 +33,7 @@
                             {{ basket_item.quantity }} x £{{ basket_item.product.price }}
                         </p>
                         <span class="secondary-content">
-                            <p class="black-text">Subtotal: £{{ item.product.price }}</p>
+                            <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
                             <a href="#!" class="black-text"><i class="material-icons">grade</i></a>
                             <a href="#!" class="black-text"><i class="material-icons">grade</i></a>
                         </span>
