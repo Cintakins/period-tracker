@@ -6,27 +6,46 @@
 
 {% block content %}
 <div class="row card-panel black">
-    <div class="lime accent-3 col m2 offset-m5">
-        <h3 class="center">Your Cycle</h3>
-    </div>
+	<div class="lime accent-3 col m2 offset-m5">
+		<h3 class="center">Your Cycle</h3>
+	</div>
 </div>
 <div class="container">
-    <p class="white-text">
-        <!-- {% for cycle_phase in cycle_phases %}
+	<p class="white-text">
+		<!-- {% for cycle_phase in cycle_phases %}
         {{ cycle_phase.article|linebreaksbr }}
         {% endfor %} -->
-    </p>
+	</p>
 </div>
 <!-- circle menu found on codepen https://codepen.io/metaprinter/pen/zwvjNb  -->
 <div class="circle-menu">
-	<ul>
-		<li><a class="ovulation" href="#">Ovulation</a></li>
-		<li><a class="luteal-1" href="#">Luteal Phase</a></li>
-		<li><a class="luteal-2" href="#">Luteal Phase</a></li>
-		<li><a class="luteal-3" href="#">Luteal Phase</a></li>
-		<li><a class="mensis" href="#">Mensis</a></li>
-		<li><a class="follicular-1" href="#">Follicular Phase</a></li>
-		<li><a class="follicular-2" href="#">Follicular Phase</a></li>
+	<ul class="">
+		<li><a class="ovulation modal-trigger" href="#ovulation">Ovulation</a></li>
+		<li><a class="luteal-1 modal-trigger" href="#luteal">Luteal Phase</a></li>
+		<li><a class="luteal-2 modal-trigger" href="#luteal">Luteal Phase</a></li>
+		<li><a class="luteal-3 modal-trigger" href="#luteal">Luteal Phase</a></li>
+		<li><a class="mensis modal-trigger" href="#mensis">Mensis</a></li>
+		<li><a class="follicular-1 modal-trigger" href="#follicular">Follicular Phase</a></li>
+		<li><a class="follicular-2 modal-trigger" href="#follicular">Follicular Phase</a></li>
 	</ul>
 </div>
+
+<!-- Modal Structure -->
+{% for phase in cycle_phases %}
+<div id="{% if phase.title == 'Ovulation' %}ovulation
+		 {% elif phase.title == 'Luteal Phase' %}luteal
+		 {% elif phase.title == 'Menstruation' %}mensis
+		 {% elif phase.title == 'Follicular Phase' %}follicular
+		 {% endif %}" class="modal">
+	<div class="modal-content lime accent-3">
+		<h4>{{ phase.title }}</h4>
+		<p>{{ phase.article|linebreaksbr }}</p>
+		</div>
+		<div class="modal-footer lime accent-4">
+		<a href="#!" class="modal-close waves-effect waves-green btn-flat">
+			<i class="material-icons">close</i>
+		</a>
+		</div>
+	</div>
+  {% endfor %}
 {% endblock %}

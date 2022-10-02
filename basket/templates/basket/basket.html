@@ -20,7 +20,6 @@
                     <h4>Your Basket</h4>
                 </li>
                 {% if basket_items %}
-                    {% for basket_item in basket_items %}
                     <li class="collection-item avatar">
                         <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
                         <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
@@ -33,17 +32,17 @@
                         </p>
                         <span class="secondary-content">
                             <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
-                            <form method="POST" action="">
+                            <form method="POST" action="{% url 'update_basket' basket_item.item_id }}" id="update-form">
                                 {% csrf_token %}
                                 <input id="basket-qty-input" class="qty_input" type="number" name="quantity" value="{{ basket_item.quantity }}" min="1"
                                 max="99" data-item_id="{{ basket_item.item_id }}" id="id_qty_{{ basket_item.item_id }}">
                                 {% if basket_item.product.has_sizes %}
                                 <input name="product_size" type="hidden" value="{{ basket_item.size }}">
                                 {% endif %}
-                                <a href="#!" class="black-text">
+                                <a href="#!" class="black-text" id="update-basket">
                                     <i class="material-icons">update</i>
                                 </a>
-                                <a href="#!" class="black-text" id="remove_{{ basket_item.item_id }}" data-size="{{ basket_item.size }}">
+                                <a href="#!"class="black-text remove-item" id="remove_{{ basket_item.item_id }}" data-size="{{ basket_item.size }}">
                                     <i class="material-icons">delete</i>
                                 </a>
                             </form>
@@ -70,13 +69,12 @@
 {{ block.super }}
  <!-- boutique-ado informed script -->
 <script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
 
-    // Remove item and reload on click
+    document.getElementById("update-basket").addEventListener("click",  function(){
+        document.getElementById("update-form").submit();
+    });
+    
+
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
