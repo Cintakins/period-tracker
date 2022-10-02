@@ -33,8 +33,20 @@
                         </p>
                         <span class="secondary-content">
                             <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
-                            <a href="#!" class="black-text"><i class="material-icons">grade</i></a>
-                            <a href="#!" class="black-text"><i class="material-icons">grade</i></a>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <input id="basket-qty-input" class="qty_input" type="number" name="quantity" value="{{ basket_item.quantity }}" min="1"
+                                max="99" data-item_id="{{ basket_item.item_id }}" id="id_qty_{{ basket_item.item_id }}">
+                                {% if basket_item.product.has_sizes %}
+                                <input name="product_size" type="hidden" value="{{ basket_item.size }}">
+                                {% endif %}
+                                <a href="#!" class="black-text">
+                                    <i class="material-icons">update</i>
+                                </a>
+                                <a href="#!" class="black-text" id="remove_{{ basket_item.item_id }}" data-size="{{ basket_item.size }}">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </form>
                         </span>
                     </li>
                 {% endfor %}
@@ -52,4 +64,30 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+ <!-- boutique-ado informed script -->
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = `/basket/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
