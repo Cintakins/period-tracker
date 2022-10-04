@@ -155,6 +155,7 @@ A bit of research into tamplate language documentation revealed that I needed to
 #### Problem
 The materialize select box is not working
 #### Solution
+I had put the data-target id in the wrong unordered list.
 
 #### Problem
 When adding 2 of the same product but in different sizes to see if they register as seperate items in the basket, they registered as only one and didn't display the sizes selected
@@ -171,9 +172,30 @@ Ensure quantity select doesn't go below or above certain range
 #### Solution
 
 #### Problem
+Removing items only works with items that don't have sizes
+#### Solution
+The key value for the item with sizes was incorrectly spelt.
+
+#### Problem
+editing the quantity wasn't working and redirecting to a page error 
+#### Solution
+one of the jango template links ended with }} rather than %}. The issue was fixed after changing the typo. On closer inspection, the update was working for only the first item in the basket. The problem turned out to be that id attributes were used for the elements, when class attributes need to be used as these elements were replicated for every item added, so more than one were displayed. Once the javascript was updated to retrienve the array of items with a class name rather than a single element with an id attribute, the function worked with all items.
+
+#### Problem
+Display of the your_cycle articles were working and randomly stopped working.
+#### Solution
+The modal wasn't working because the id attribute was long and broken up onto different lines. The modal worked once put onto the same line.
+
+#### Problem
+adde messages (dont forget postload javascript and message storage in settings). add basket-update notification
 #### Solution
 
 #### Problem
+
+#### Solution
+
+#### Problem
+
 #### Solution
 
 ## Testing

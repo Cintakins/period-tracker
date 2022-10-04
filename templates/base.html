@@ -40,10 +40,19 @@
     <header>
         <div>
             <ul id="dropdown1" class="dropdown-content">
-                <li><a class="white-text" href="#!">One</a></li>
-                <li><a class="lime accent-3 black-text" href="#!">two</a></li>
-                <li class="divider"></li>
-                <li><a class="black-text" href="#!">three</a></li>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <li><a href="" class="dropdown-item black-text">Product Management</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'profile' %}" class="dropdown-item black-text">My Profile</a></li>
+                    <li><a href="{% url 'account_details' %}" class="dropdown-item black-text">Account details</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'account_logout' %}" class="dropdown-item black-text">Log out</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_signup' %}" class="dropdown-item black-text">Register</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'account_login' %}" class="dropdown-item black-text">Login</a></li>
+                {% endif %}
             </ul>
             <ul id="nav-mobile" class="left sidenav">
                 <li><a class="black-text" href="{% url 'your_cycle' %}">Your Cycle</a></li>
@@ -84,7 +93,21 @@
     </header>
 
     {% if messages %}
-    <div class="messages"></div>
+    <div class="messages">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+            {% include 'includes/toasts/error.html' %}
+        {% elif level == 30 %}
+            {% include 'includes/toasts/warning.html' %}
+        {% elif level == 25 %}
+            {% include 'includes/toasts/success.html' %}
+        {% else %}
+            {% include 'includes/toasts/info.html' %}
+        {% endif %}
+    {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}

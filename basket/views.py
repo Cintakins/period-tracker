@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.contrib import messages
+
+from products.models import Product
 
 
 def view_basket(request):
@@ -54,6 +57,8 @@ def update_basket(request, item_id):
             basket[item_id]['item_size'][size] = quantity
         else:
             del basket[item_id]['item_size'][size]
+            if not basket[item_id]['item_size']:
+                basket.pop(item_id)
     else:
         if quantity > 0:
             basket[item_id] = quantity
@@ -62,3 +67,29 @@ def update_basket(request, item_id):
         
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
+
+def remove_from_basket(request, item_id):
+    """ Remove the item from the shopping basket """
+
+    try:
+        product = get_object_or_404(Product, pk=item_id)
+        size = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+        basket = request.session.get('basket', {})
+
+        if size:
+            del basket[item_id]['item_size'][size]
+            if not basket[item_id]['item_size']:
+                basket.pop(item_id)
+            messages.success(request, f'Removed size {size.upper()} {product.name} from the basket')
+        else:
+            basket.pop(item_id)
+            messages.success(request, f'Removed {product.name} from the basket')
+
+        request.session['basket'] = basket
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        messages.error(request, f'Error removing item: {e}')
+        return HttpResponse(status=500)

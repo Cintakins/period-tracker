@@ -7,7 +7,20 @@
 {% block content %}
 <div class="row card-panel black">
 	<div class="lime accent-3 col m2 offset-m5">
-		<h3 class="center">Welcome Back ...</h3>
+		<h3 class="center">Welcome Back {{ profile }}</h3>
 	</div>
+</div>
+<div class="container"></div>
+<div class="container">
+    <!-- if user has period details, display period tracker, otherwise, display 'enter details' -->
+    <div class="row">
+        <h4 class="center lime-text text-accent-3">
+            Your Cycle
+        </h4>
+    </div>
+    <div class="row">
+        <!-- for each day = width/cycle-length. can write in the html. give each span a number. use view to calc half-point and use span-numbers to identify them -->
+        <span class="cycle-day"></span>
+    </div>
 </div>
 {% endblock %}

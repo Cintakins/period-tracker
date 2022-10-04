@@ -196,6 +196,12 @@ img {
 }
 
 /* end of codepen code */
+.messages {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    z-index: 99;
+}
 
 
 /* Larger cycle links on xl screens */

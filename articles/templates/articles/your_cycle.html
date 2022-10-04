@@ -32,11 +32,7 @@
 
 <!-- Modal Structure -->
 {% for phase in cycle_phases %}
-<div id="{% if phase.title == 'Ovulation' %}ovulation
-		 {% elif phase.title == 'Luteal Phase' %}luteal
-		 {% elif phase.title == 'Menstruation' %}mensis
-		 {% elif phase.title == 'Follicular Phase' %}follicular
-		 {% endif %}" class="modal">
+<div id="{% if phase.title == 'Ovulation' %}ovulation{% elif phase.title == 'Luteal Phase' %}luteal{% elif phase.title == 'Menstruation' %}mensis{% elif phase.title == 'Follicular Phase' %}follicular{% endif %}" class="modal">
 	<div class="modal-content lime accent-3">
 		<h4>{{ phase.title }}</h4>
 		<p>{{ phase.article|linebreaksbr }}</p>

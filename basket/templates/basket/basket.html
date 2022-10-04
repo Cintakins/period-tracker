@@ -21,37 +21,37 @@
                 </li>
                 {% if basket_items %}
                     {% for basket_item in basket_items %}
-                    <li class="collection-item avatar">
-                        <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
-                        <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
-                        {% if basket_item.product.has_sizes %}
-                            <p>Size: {{ basket_item.size|upper }} <br>
-                        {% else %}
-                        <br><br>
-                        {% endif %}
-                            {{ basket_item.quantity }} x £{{ basket_item.product.price }}
-                        </p>
-                        <span class="secondary-content">
-                            <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
-                            <form method="POST" action="{% url 'update_basket' basket_item.item_id }}" id="update-form">
-                                {% csrf_token %}
-                                <input id="basket-qty-input" class="qty_input" type="number" name="quantity" value="{{ basket_item.quantity }}" min="1"
-                                max="99" data-item_id="{{ basket_item.item_id }}" id="id_qty_{{ basket_item.item_id }}">
-                                {% if basket_item.product.has_sizes %}
-                                <input name="product_size" type="hidden" value="{{ basket_item.size }}">
-                                {% endif %}
-                                <a href="#!" class="black-text" id="update-basket">
-                                    <i class="material-icons">update</i>
-                                </a>
-                                <a href="#!"class="black-text remove-item" id="remove_{{ basket_item.item_id }}" data-size="{{ basket_item.size }}">
-                                    <i class="material-icons">delete</i>
-                                </a>
-                            </form>
-                        </span>
-                    </li>
-                {% endfor %}
-            </ul>
-            {% else %}
+                        <li class="collection-item avatar">
+                            <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
+                            <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
+                            {% if basket_item.product.has_sizes %}
+                                <p>Size: {{ basket_item.size|upper }} <br>
+                            {% else %}
+                            <br><br>
+                            {% endif %}
+                                {{ basket_item.quantity }} x £{{ basket_item.product.price }}
+                            </p>
+                            <span class="secondary-content">
+                                <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
+                                <form class="form update-form" method="POST" action="{% url 'update_basket' basket_item.item_id %}">
+                                    {% csrf_token %}
+                                    <input id="basket-qty-input" class="qty_input" type="number" name="quantity" value="{{ basket_item.quantity }}" min="1"
+                                    max="99" data-item_id="{{ basket_item.item_id }}" id="id_qty_{{ basket_item.item_id }}">
+                                    {% if basket_item.product.has_sizes %}
+                                    <input name="product_size" type="hidden" value="{{ basket_item.size }}">
+                                    {% endif %}
+                                    <a class="black-text update-basket">
+                                        <i class="material-icons">update</i>
+                                    </a>
+                                    <a class="black-text remove-item" id="remove_{{ basket_item.item_id }}" data-product_size="{{ basket_item.size }}">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </form>
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
             </ul>
             <p class="white-text mb-5">Your basket is empty.</p>
             <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
@@ -68,25 +68,31 @@
 
 {% block postloadjs %}
 {{ block.super }}
- <!-- boutique-ado informed script -->
 <script type="text/javascript">
-
-    document.getElementById("update-basket").addEventListener("click",  function(){
-        document.getElementById("update-form").submit();
+    
+    
+    updateButton = document.getElementsByClassName("update-basket");
+    for (let i = 0; i < updateButton.length; i++) {
+        updateButton[i].addEventListener("click",  function(){
+        var form = this.parentElement;
+        form.submit();
     });
+    }
     
 
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('size');
-        var url = `/basket/remove/${itemId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
-
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+    removeButton = document.getElementsByClassName("remove-item");
+    for (let i = 0; i < removeButton.length; i++) {
+        removeButton[i].addEventListener("click",  function(){
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = this.getAttribute('id').split('remove_')[1];
+            var size = this.dataset.product_size;
+            var url = `/basket/remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+            $.post(url, data)
+            .done(function() {
+                location.reload();
+            });
+            })
+    }
 </script>
 {% endblock %}

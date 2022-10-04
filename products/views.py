@@ -33,8 +33,7 @@ def products(request):
                 description__icontains=search_query
                 ) | Q(name__icontains=search_query)
             products = products.filter(search_q)
-
-        
+ 
         if 'direction' in request.GET:
             direction = request.GET['direction']
             sort = request.GET['sort']
@@ -44,8 +43,6 @@ def products(request):
                 price_sort = sort
 
             products = products.order_by(price_sort)
-
-
     context = {
         'products': products,
         'searched_item': search_query,
@@ -54,6 +51,7 @@ def products(request):
     }
 
     return render(request, 'products/products.html', context)
+
 
 def product_detail(request, product_id):
 
