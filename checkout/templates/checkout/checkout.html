@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+    <div class="row card-panel black">
+        <div class="lime accent-3 col m2 offset-m5">
+            <h3 class="center">Checkout</h3>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'checkout' %}" method="POST" id="form-payment">
+                    {% csrf_token %}
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
