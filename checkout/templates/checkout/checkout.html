@@ -14,12 +14,9 @@
     <div class="row">
         <div class="col m6 right">
             <div>
-                <h5>Order Summary </h5>
-            </div>
-            <div>
                 <ul class="collection with-header">
                     <li class="collection-header lime accent-3">
-                        <h4>Your Basket</h4>
+                        <h4>Order Summary</h4>
                     </li>
                         {% for basket_item in basket_items %}
                             <li class="collection-item avatar">
@@ -41,80 +38,80 @@
             </div>
         </div>
         <div class="col m6">
-            <form action="{% url 'checkout' %}" method="POST" id="form-payment">
+            <form action="{% url 'checkout' %}" method="POST" id="form-payment" class="grey lighten-2">
                 {% csrf_token %}
-                <fieldset>
-                    <legend class="fielset-label white-text">Your Details</legend>
+                <fieldset class="white">
+                    <legend class="fieldset-label">Your Details</legend>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Name" id="first_name" type="text" name="first_name" class="validate">
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" name="last_name" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" name="email" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate">
-                            <label for="password">Password</label>
-                        </div>
+                        {{ order_form.full_name }}
+                        {{ order_form.email }}
                     </div>
                 </fieldset>
-                <fieldset>
-                    <legend class="fielset-label">Delivery Information</legend>
-                    <!-- for saving delivery info -->
-                    {% if user.is_authenticated %}
-                    <p>
-                        <label>
-                            <input type="checkbox" class="filled-in" name="save_info" checked="checked"/>
-                            <span>Save Delivery Info</span>
-                        </label>
-                    </p>
-                    {% else %}
-                    <a href="">
-                        <p class="white-text">Create an Account</p>
-                    </a>
-                        <p class="white-text">
-                            <a href="">Login</a>
-                             to save delivery information
+                <fieldset class="white">
+                    <legend class="fieldset-label">Delivery Information</legend>
+                    <div class="row">
+                        {{ order_form.phone_number }}
+                        {{ order_form.street_address1 }}
+                        {{ order_form.street_address2 }}
+                        {{ order_form.town_or_city }}
+                        {{ order_form.postcade }}
+                        {{ order_form.county }}
+                        {{ order_form.country }}
+                        <!-- for saving delivery info -->
+                        {% if user.is_authenticated %}
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" name="save_info" checked="checked"/>
+                                <span>Save Delivery Info</span>
+                            </label>
                         </p>
-                    {% endif %}
+                        {% else %}
+                        <a href="">
+                            <p>Create an Account</p>
+                        </a>
+                            <p>
+                                <a href="">Login</a>
+                                to save delivery information
+                            </p>
+                        {% endif %}
+                    </div>
                 </fieldset>
-                <fieldset>
-                    <legend class="fielset-label">Payment</legend>
+                <fieldset class="white">
+                    <legend class="fieldset-label">Payment</legend>
                     <div id="card-element"></div>
                     <div id="card-errors"></div>
                 </fieldset>
                 <div class="row">
-                    <a href="{% url 'view_basket' %}" class="amber darken-1 waves-effect waves-light btn">
-                        <span class="black-text">
-                            <i class="large material-icons">chevron_left</i>
-                        </span>
-                        <span class="black-text">Back to Basket</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="" id="submit-checkout" class="light-green accent-4 waves-effect waves-light btn">
-                        <span class="black-text">
-                            <i class="large material-icons">payment</i>
-                        </span>
-                        <span class="black-text">Make payment</span>
-                    </a>
-                    <p class="red-text">
-                        <i class="material-icons">warning</i>
-                        Your card will be charged: £{{ grand_total }}
-                    </p>
+                    <div class="col">
+                        <a href="{% url 'view_basket' %}" class="amber waves-effect waves-light btn">
+                            <span class="black-text">
+                                <i class="large material-icons">chevron_left</i>
+                            </span>
+                            <span class="black-text">Back to Basket</span>
+                        </a>
+                    </div>
+                    <div class="col right">
+                        <a href="" id="submit-checkout" class="lime darken-3 accent-4 waves-effect waves-light btn right-align">
+                            <span class="black-text">
+                                <i class="large material-icons">payment</i>
+                            </span>
+                            <span class="black-text">Make payment</span>
+                        </a>
+                        <p class="red-text">
+                            <i class="material-icons">warning</i>
+                            Your card will be charged: £{{ grand_total }}
+                        </p>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super}}
+    {{ stripe_public_key|json_script:"id_stripe_public_key"}}
+    {{ client_secret|json_script:"id_client_secret"}}
+    <script src="{% static 'checkout/js/checkout.js' %}"></script>
 {% endblock %}

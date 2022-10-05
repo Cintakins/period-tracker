@@ -191,7 +191,7 @@ adde messages (dont forget postload javascript and message storage in settings).
 #### Solution
 
 #### Problem
-
+Coul not get card-error to work
 #### Solution
 
 #### Problem
