@@ -174,6 +174,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu69.gitpod.io'
     ]
 
-STRIPE_CURRENCY = 'gdp'
+STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')

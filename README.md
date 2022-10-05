@@ -193,10 +193,12 @@ adde messages (dont forget postload javascript and message storage in settings).
 #### Problem
 Coul not get card-error to work
 #### Solution
+needed attribute role to be "alert"
 
 #### Problem
-
+stripe payments were being created but not succeeding
 #### Solution
+the javascript was not picking up the submit event, so I changed the event listener to listen to the submit button rather than the form.
 
 ## Testing
 ### Validators
