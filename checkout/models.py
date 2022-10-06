@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from products.models import Product
+from django.db.models import Sum
 
 
 class Order(models.Model):
@@ -30,15 +31,17 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        order_quantity = len(self.lineitems.all())
+        order_quantity = self.lineitems.all().aggregate(models.Sum('quantity'))['quantity__sum'] or 0
+
         if order_quantity == 0:
             self.delivery_cost = 0
-        elif order_quantity > 0 and order_quantity < 4:
+        if order_quantity > 0 and order_quantity < 4:
             self.delivery_cost = 3
-        elif order_quantity > 3 and order_quantity <= 10:
+        if order_quantity > 3 and order_quantity <= 10:
             self.delivery_cost = 5
-        elif order_quantity > 10:
+        if order_quantity > 10:
             self.delivery_cost = 10
+
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 
@@ -53,6 +56,7 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_number
+
 
 # from boutique-ado
 class OrderLineItem(models.Model):

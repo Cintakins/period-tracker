@@ -200,6 +200,15 @@ stripe payments were being created but not succeeding
 #### Solution
 the javascript was not picking up the submit event, so I changed the event listener to listen to the submit button rather than the form.
 
+#### Problem
+stripe payments were being processed but price-totals not directing to order info in admin/database
+#### Solution
+
+#### Problem
+delivery cost is not properly represented in the admin. It looks as is the delivery cost is being calculated in models.py by counting the number of products, including products with different sizes, rather than th number of items
+#### Solution
+To calculate the total number of items, I took some code from boutique-ado's example an customized for this site.
+
 ## Testing
 ### Validators
 

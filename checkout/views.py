@@ -47,7 +47,6 @@ def checkout(request):
                                 product_size=size,
                             )
                             order_line_item.save()
-                            print(order_line_item)
                 except Product.DoesNotExist:
                     messages.error(request, 'One of the items in the basket does not exist')
                     order.delete()
