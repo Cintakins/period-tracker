@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<div class="row card-panel black">
+    <div class="lime accent-3 col m2 offset-m5">
+        <h3 class="center">Success!</h3>
+        <p class="">Thanks for your order! Order number:</p>
+        <p class="">A confirmation email will be sent to: {{ ordr.email }}</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col m6">
+            <div>
+                <ul class="collection with-header">
+                    <li class="collection-header lime accent-3">
+                        <h4>Your Order</h4>
+                    </li>
+                        {% for basket_item in basket_items %}
+                            <li class="collection-item avatar">
+                                <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
+                                <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
+                                {% if basket_item.product.has_sizes %}
+                                    <p>Size: {{ basket_item.size|upper }} <br>
+                                {% else %}
+                                <br><br>
+                                {% endif %}
+                                    {{ basket_item.quantity }} x £{{ basket_item.product.price }}
+                                </p>
+                                <span class="secondary-content">
+                                    <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
+                                </span>
+                            </li>
+                        {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

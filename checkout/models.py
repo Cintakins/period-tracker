@@ -25,21 +25,12 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()
 
-    def save(self, *args, **kwargs):
-        """
-        Replace original save method to set the order number
-        if it hasn't been set.
-        """
-        if not self.order_number:
-            self.order_number = self._create_order_number()
-        super().save(*args, **kwargs)
-
     def update_total(self):
         """
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        order_quantity = len(self.lineitems)
+        order_quantity = len(self.lineitems.all())
         if order_quantity == 0:
             self.delivery_cost = 0
         elif order_quantity > 0 and order_quantity < 4:
@@ -50,6 +41,15 @@ class Order(models.Model):
             self.delivery_cost = 10
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
+
+    def save(self, *args, **kwargs):
+        """
+        Replace original save method to set the order number
+        if it hasn't been set.
+        """
+        if not self.order_number:
+            self.order_number = self._create_order_number()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.order_number

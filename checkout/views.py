@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-import stripe
-from .forms import OrderForm
-from basket.context import basket_contents
 from django.conf import settings
+import stripe
+from basket.context import basket_contents
 from products.models import Product
+from .forms import OrderForm
 from .models import OrderLineItem, Order
 
 
@@ -41,12 +41,13 @@ def checkout(request):
                     else:
                         for size, quantity in item_data['item_size'].items():
                             order_line_item = OrderLineItem(
-                            order=order,
-                            quantity=quantity,
-                            product=product,
-                            product_size=size,
-                        )
-                        order_line_item.save()
+                                order=order,
+                                quantity=quantity,
+                                product=product,
+                                product_size=size,
+                            )
+                            order_line_item.save()
+                            print(order_line_item)
                 except Product.DoesNotExist:
                     messages.error(request, 'One of the items in the basket does not exist')
                     order.delete()
