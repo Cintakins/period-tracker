@@ -32,7 +32,7 @@ class Order(models.Model):
         accounting for delivery costs.
         """
         order_quantity = self.lineitems.all().aggregate(models.Sum('quantity'))['quantity__sum'] or 0
-
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if order_quantity == 0:
             self.delivery_cost = 0
         if order_quantity > 0 and order_quantity < 4:
@@ -41,7 +41,7 @@ class Order(models.Model):
             self.delivery_cost = 5
         if order_quantity > 10:
             self.delivery_cost = 10
-
+        print(self.order_total)
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 

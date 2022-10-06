@@ -6,36 +6,58 @@
 
 {% block content %}
 <div class="row card-panel black">
-    <div class="lime accent-3 col m2 offset-m5">
-        <h3 class="center">Success!</h3>
-        <p class="">Thanks for your order! Order number:</p>
-        <p class="">A confirmation email will be sent to: {{ ordr.email }}</p>
+    <div class="lime accent-3 col m4 offset-m4">
+        <h3 class="center">Thanks for your order!</h3>
+    </div>
+    <div class="col m4 offset-m4 white-text">
+        <p class="">A confirmation email will be sent to: {{ order.email }}</p>
     </div>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col m6">
+        <div class="col m10">
             <div>
                 <ul class="collection with-header">
                     <li class="collection-header lime accent-3">
-                        <h4>Your Order</h4>
+                        <h4>Your Order Info</h4>
                     </li>
-                        {% for basket_item in basket_items %}
+                    <li class="collection-item">Order Number: {{ order.order_number }}</li>
+                    <li class="collection-item">Order date: {{ order.date }}</li>
+                        {% for item in order.lineitems.all %}
                             <li class="collection-item avatar">
-                                <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
-                                <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
-                                {% if basket_item.product.has_sizes %}
-                                    <p>Size: {{ basket_item.size|upper }} <br>
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="circle">
+                                <span class="title">{{ item.product.name }} ({{ item.product.sku|upper }})</span>
+                                {% if item.product.has_sizes %}
+                                    <p>Size: {{ item.size|upper }} <br>
                                 {% else %}
                                 <br><br>
                                 {% endif %}
-                                    {{ basket_item.quantity }} x £{{ basket_item.product.price }}
+                                    {{ item.quantity }} x £{{ item.product.price }}
                                 </p>
-                                <span class="secondary-content">
-                                    <p class="black-text">Subtotal: £{{ basket_item.subtotal }}</p>
-                                </span>
                             </li>
                         {% endfor %}
+                    <li class="collection-header lime accent-3">
+                        <h5>Delivery Info</h5>
+                    </li>
+                    <li class="collection-item">Full Name: {{ order.full_name }}</li>
+                    <li class="collection-item">Street Address 1: {{ order.street_address1 }}</li>
+                    {% if order.street_address2 %}
+                    <li class="collection-item">Street Address 2: {{ order.street_address2 }}</li>
+                    {% endif %}
+                    <li class="collection-item">Town/City: {{ order.town_or_city }}</li>
+                    {% if order.county %}
+                    <li class="collection-item">County: {{ order.county }}</li>
+                    {% endif %}
+                    <li class="collection-item">Country: {{ order.country }}</li>
+                    {% if order.postcode %}
+                    <li class="collection-item">Postcode: {{ order.postcode }}</li>
+                    {% endif %}
+                    <li class="collection-header lime accent-3">
+                        <h5>Billing info</h5>
+                    </li>
+                    <li class="collection-item">Order Total: {{ order.order_total }}</li>
+                    <li class="collection-item">Delivery: {{ order.delivery_cost }}</li>
+                    <li class="collection-item">Grand Total: {{ order.grand_total }}</li>
                 </ul>
             </div>
         </div>

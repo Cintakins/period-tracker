@@ -50,23 +50,25 @@
                             </span>
                         </li>
                     {% endfor %}
+                    <li class="collection-item">Total: <span class="secondary-content black-text">£{{ total }}</span></li>
+                    <li class="collection-item">Delivery Cost: <span class="secondary-content black-text">£{{ delivery }}</span></li>
+                    <li class="collection-item">Grand total: <span class="secondary-content black-text">£{{ grand_total|floatformat:2 }}</span></li>
                 </ul>
                 <div class="row">
-                    <a href="{% url 'checkout' %}" class="lime accent-3 waves-effect waves-light btn">
-                        <span class="text-uppercase black-text">Checkout</span>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
-                        <span class="black-text">
-                            <i class="large material-icons">chevron_left</i>
-                        </span>
-                        <span class="black-text">Continue Shopping</span>
-                    </a>
-                </div>
+                    <div class="col right right-align">
+                        <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
+                            <span class="black-text">
+                                <i class="large material-icons">chevron_left</i>
+                            </span>
+                            <span class="black-text">Continue Shopping</span>
+                        </a>
+                        <a href="{% url 'checkout' %}" class="lime accent-3 waves-effect waves-light btn">
+                            <span class="text-uppercase black-text">Checkout £{{ grand_total|floatformat:2 }}</span>
+                        </a>
+                    </div>
                 {% else %}
+                <li class="collection-item">Your basket is empty.</li>
             </ul>
-            <p class="white-text mb-5">Your basket is empty.</p>
             <a href="{% url 'products' %}" class="lime accent-3 waves-effect waves-light btn">
                 <span class="black-text">
                     <i class="large material-icons">chevron_left</i>
