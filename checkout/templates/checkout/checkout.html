@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 {% block page_header %}
 {% endblock %}
 
@@ -66,11 +70,11 @@
                             </label>
                         </p>
                         {% else %}
-                        <a href="">
+                        <a href="{% url 'account_signup' %}">
                             <p>Create an Account</p>
                         </a>
                             <p>
-                                <a href="">Login</a>
+                                <a href="{% url 'account_login' %}">Login</a>
                                 to save delivery information
                             </p>
                         {% endif %}
@@ -104,6 +108,11 @@
             </form>
         </div>
     </div>
+</div>
+<div class="loading-overlay">
+    <h1 class="loading-spinner">
+        <i class="material-icons">rotate-right</i>
+    </h1>
 </div>
 {% endblock %}
 
