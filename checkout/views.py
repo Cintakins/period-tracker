@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.conf import settings
 import stripe
@@ -6,7 +6,25 @@ from basket.context import basket_contents
 from products.models import Product
 from .forms import OrderForm
 from .models import OrderLineItem, Order
+from django.views.decorators.http import require_POST
+import json
 
+@require_POST
+def checkout_data_cache(request):
+    try:
+        p_intent_id = request.POST.get('client_secret').split('_secret')[0]
+        print('this is pid', p_intent_id)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(p_intent_id, metadata={
+            'username': request.user,
+            'save_info': request.POST.get('save_info'),
+            'basket': json.dumps(request.session.get('basket', {})),
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, something went wrong \ Please try again later')
+        return HttpResponse(content=e, status=400)
+    print(p_intent_id)
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY

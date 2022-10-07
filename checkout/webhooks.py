@@ -30,7 +30,7 @@ def webhook(request):
     except Exception as e:
         return HttpResponse(content=e, status=400)
 
-    handler = Stripe_Webhook_Handler
+    handler = Stripe_Webhook_Handler(request)
 
     # Handle the event
     event_map = {

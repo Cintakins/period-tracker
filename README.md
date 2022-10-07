@@ -203,11 +203,29 @@ the javascript was not picking up the submit event, so I changed the event liste
 #### Problem
 stripe payments were being processed but price-totals not directing to order info in admin/database
 #### Solution
+Grand total was not being calculated in the models.py. it was an easy fix to just add the appropriate calculation.
 
 #### Problem
 delivery cost is not properly represented in the admin. It looks as is the delivery cost is being calculated in models.py by counting the number of products, including products with different sizes, rather than th number of items
 #### Solution
 To calculate the total number of items, I took some code from boutique-ado's example an customized for this site.
+
+#### Problem
+Trying to set up javascript function to save deliver and billing info to the database was stopping the checkout function from working as it did not recognise the values being requested.
+#### Solution
+The shipping parameters didn't match the ones laid out in the strip ocumentation. I also had to change the country field in models.py from charfeild to countryfield and import it from django_countries
+
+#### Problem
+Terminal presented this on chckout compltion: (checkout vid 15)
+Bad Request: /checkout/webhooks/
+[07/Oct/2022 12:27:12] "POST /checkout/webhooks/ HTTP/1.1" 400 0
+#### Solution
+
+#### Problem
+#### Solution
+
+#### Problem
+#### Solution
 
 ## Testing
 ### Validators
