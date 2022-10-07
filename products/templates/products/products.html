@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="row card-panel black">
+<div class="row card-panel header-card">
     <div class="lime accent-3 col m2 offset-m5">
         <h3 class="center">Products</h3>
     </div>
 </div>
-<div class="row black container">
-    <div class="col m4 offset-m4 black">
+<div class="row container">
+    <div class="col m4 offset-m4">
         <form method="GET" action="{% url 'products' %}">
             <div class="search">
                 <input id="input-style" type="text" name="query" placeholder="Search Products">
@@ -24,7 +24,7 @@
         </form>
     </div>
 </div>
-<div class="row container black">
+<div class="row container">
     <div class="row">
         <div class="col lime accent-3">
             <ul id="dropdown2" class="dropdown-content">

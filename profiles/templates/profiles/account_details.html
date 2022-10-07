@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block page_header %}
-{% endblock %}
-
 {% block content %}
-<div class="row card-panel black">
+<div class="row card-panel header-card">
 	<div class="lime accent-3 col m2 offset-m5">
-		<h3 class="center">Account Details ftw</h3>
+		<h3 class="center">Account Details</h3>
 	</div>
+	<div class="container">
+		{% for order in orders %}
+		<p class="white-text">{{ order.date }}</p>
+		{% for item in order.lineitems.all %}
+		<p class="white-text">{{ item.product.name }}</p>
+		{% endfor %}
+		{% endfor %}
+	</div>
+	<form action="{% url 'account_details' %}" method="POST" id="update-account-form">
+		{% csrf_token %}
+		<!-- {{ form }} go back to profiles 5-->
+	</form>
 </div>
 {% endblock %}

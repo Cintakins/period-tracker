@@ -6,11 +6,9 @@ from django.dispatch import receiver
 
 
 class UserProfile(models.Model):
-    """ user, delivery an period information """
+    """ user, delivery information """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    period_start_date = models.DateField(auto_now=False, auto_now_add=False)
-    period_length = models.IntegerField(default=28, blank=True, null=True)
     default_phone_number = models.CharField(max_length=20, null=True, blank=True)
     default_country = CountryField(blank_label='Country *', null=True, blank=True)
     default_postcode = models.CharField(max_length=20, null=True, blank=True)
@@ -32,3 +30,12 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     # Existing users: just save the profile
     instance.userprofile.save()
 
+class UserPeriodInfo(models.Model):
+    """ user period information """
+
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    period_start_date = models.DateField(auto_now=True)
+    period_length = models.IntegerField(default=28, blank=True, null=True)
+
+    def __str__(self):
+        return self.user

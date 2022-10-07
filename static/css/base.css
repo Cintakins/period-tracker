@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: rgb(14, 14, 14);
     /* Photo by <a href="https://unsplash.com/@leohoho?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Leohoho</a> on <a href="https://unsplash.com/s/photos/liquid-color?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
    */
     /* background-image: url(/media/background.jpg); */
@@ -31,6 +31,10 @@ button {
     width: 100%;
     border-style: solid;
     border-color: black;
+}
+
+.header-card {
+    background: linear-gradient(to right, rgb(14, 14, 14), rgb(7, 7, 7), rgb(14, 14, 14));
 }
 
 #input-style {

@@ -5,11 +5,8 @@
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
-{% block page_header %}
-{% endblock %}
-
 {% block content %}
-<div class="row card-panel black">
+<div class="row card-panel header-card">
 	<div class="lime accent-3 col m2 offset-m5">
 		<h3 class="center">Welcome Back {{ profile }}</h3>
 	</div>
@@ -21,6 +18,7 @@
         <h4 class="center lime-text text-accent-3">
             Your Cycle
         </h4>
+        {{ profile }}
     </div>
     <div class="row">
         <!-- for each day = width/cycle-length. can write in the html. give each span a number. use view to calc half-point and use span-numbers to identify them -->
