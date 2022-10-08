@@ -44,7 +44,6 @@ var formSubmit = document.getElementById('submit-checkout');
 var form = document.getElementById('form-payment');
 
 formSubmit.addEventListener('click', function(ev) {
-    console.log('something happened2')
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-checkout').attr('disabled', true);

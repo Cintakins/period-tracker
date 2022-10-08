@@ -15,7 +15,6 @@ from profiles.models import UserProfile
 def checkout_data_cache(request):
     try:
         p_intent_id = request.POST.get('client_secret').split('_secret')[0]
-        print('this is pid', p_intent_id)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(p_intent_id, metadata={
             'username': request.user,
@@ -47,7 +46,11 @@ def checkout(request):
         }
         order_form = OrderForm(form_info)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            p_intent_id = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = p_intent_id 
+            order.original_basket = json.dumps(basket)
+            order.save()
             for item_id, item_data in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -90,30 +93,31 @@ def checkout(request):
             amount=stripe_total_int,
             currency=settings.STRIPE_CURRENCY,
         )
-        if request.user.is_authenticated:
-            try:
-                profile = UserProfile.objects.get(user=request.user)
-                order_form = OrderForm(initial={
-                    'full_name': profile.user.get_full_name(),
-                    'email': profile.user.email,
-                    'phone_number': profile.default_phone_number,
-                    'country': profile.default_country,
-                    'postcode': profile.default_postcode,
-                    'town_or_city': profile.default_town_or_city,
-                    'street_address1': profile.default_street_address1,
-                    'street_address2': profile.default_street_address2,
-                    'county': profile.default_county,
-                })
-            except UserProfile.DoesNotExist:
-                order_form = OrderForm()
-        else:
-            order_form = OrderForm()
+        
+        # if request.user.is_authenticated:
+        #     try:
+        #         profile = UserProfile.objects.get(user=request.user)
+        #         order_form = OrderForm(initial={
+        #             'full_name': profile.user.get_full_name(),
+        #             'email': profile.user.email,
+        #             'phone_number': profile.default_phone_number,
+        #             'country': profile.default_country,
+        #             'postcode': profile.default_postcode,
+        #             'town_or_city': profile.default_town_or_city,
+        #             'street_address1': profile.default_street_address1,
+        #             'street_address2': profile.default_street_address2,
+        #             'county': profile.default_county,
+        #         })
+        #     except UserProfile.DoesNotExist:
+        #         order_form = OrderForm()
+        # else:
+        order_form = OrderForm()
 
-        context = {
-            'order_form': order_form,
-            'stripe_public_key': stripe_public_key,
-            'client_secret': intent['client_secret'],
-        }
+    context = {
+        'order_form': order_form,
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent['client_secret'],
+    }
 
     return render(request, 'checkout/checkout.html', context)
 
