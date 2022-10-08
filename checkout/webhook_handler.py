@@ -2,6 +2,9 @@ from django.http import HttpResponse
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
 import json
 import time
@@ -13,6 +16,17 @@ class Stripe_Webhook_Handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_confirmation_email(self, order):
+        """ send confirmation email """
+        user_email = order.email
+        title = render_to_string('checkout/checkout_emails/email_title.txt', {
+            'order':order
+        })
+        body = render_to_string('checkout/checkout_emails/email_body.txt', {
+            'order':order
+        })
+        send_mail(title, body, settings.DEFAULT_FROM_EMAIL, [user_email])
 
     def handle_event(self, event):
         """
@@ -67,6 +81,7 @@ class Stripe_Webhook_Handler:
             return HttpResponse(
                     content=f'Webhook received: {event["type"]} | Verified order in database',
                     status=200)
+            self._send_confirmation_email(order)
         else:
             order = None
             try:
@@ -106,10 +121,11 @@ class Stripe_Webhook_Handler:
                     order.delete()
                 return HttpResponse(content=f'Webhook received: {event["type"]} | Error {e}',
                 status=500)
-
+        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | success, order created in webhook',
             status=200)
+
 
     def handle_payment_intent_payment_failed(self, event):
         """

@@ -1,0 +1,27 @@
+{{ order.full_name }}!
+
+Your order has been successfully processed will be delivered to your in 3-5 days.
+Here is a summary of your order.
+
+Order number: {{ order.order_number }}
+Date of order: {{ order.date }}
+{% for item in order %}
+Product: {{ item.product.name }}
+Quantity: {{ item.quantity }}
+{% endfor %}
+Subtotal: £{{ order.order_total }}
+Shipping fee: £{{ order.delivery_cost }}
+Total: £{{ order.grand_total }}
+
+Delivering to:
+{{ order.street_address1 }}
+{{ order.town_or_city }}
+{{ order.county }}
+{{ order.postcode }}
+{{ order.country }}
+
+If you have any questions, please contact us on 123456891011.
+
+Enjoy!
+
+Periodic

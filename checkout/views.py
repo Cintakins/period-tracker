@@ -11,6 +11,7 @@ import json
 from profiles.forms import UserForm
 from profiles.models import UserProfile
 
+
 @require_POST
 def checkout_data_cache(request):
     try:
@@ -26,6 +27,7 @@ def checkout_data_cache(request):
         messages.error(request, 'Sorry, something went wrong \ Please try again later')
         return HttpResponse(content=e, status=400)
     print(p_intent_id)
+
 
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -44,6 +46,7 @@ def checkout(request):
             'town_or_city': request.POST['town_or_city'],
             'country': request.POST['country'],
         }
+        print('form infor', form_info)
         order_form = OrderForm(form_info)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -71,7 +74,7 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, 'One of the items in the basket does not exist')
+                    messages.error(request, 'Please ensure you have filled out the form, including full name')
                     order.delete()
                     return redirect(reverse('view_basket'))
 
@@ -94,24 +97,24 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
         
-        # if request.user.is_authenticated:
-        #     try:
-        #         profile = UserProfile.objects.get(user=request.user)
-        #         order_form = OrderForm(initial={
-        #             'full_name': profile.user.get_full_name(),
-        #             'email': profile.user.email,
-        #             'phone_number': profile.default_phone_number,
-        #             'country': profile.default_country,
-        #             'postcode': profile.default_postcode,
-        #             'town_or_city': profile.default_town_or_city,
-        #             'street_address1': profile.default_street_address1,
-        #             'street_address2': profile.default_street_address2,
-        #             'county': profile.default_county,
-        #         })
-        #     except UserProfile.DoesNotExist:
-        #         order_form = OrderForm()
-        # else:
-        order_form = OrderForm()
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                    'phone_number': profile.default_phone_number,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    'town_or_city': profile.default_town_or_city,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                    'county': profile.default_county,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     context = {
         'order_form': order_form,

@@ -222,7 +222,9 @@ Bad Request: /checkout/webhooks/
 #### Solution
 
 #### Problem
+Payment intent is called before define
 #### Solution
+This happens if the full name field is empty
 
 #### Problem
 #### Solution
