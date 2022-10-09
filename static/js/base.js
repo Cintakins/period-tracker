@@ -3,7 +3,9 @@ $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $('select').formSelect();
     $('.modal').modal();
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        'format': 'yyyy, mmm dd'
+    });
     // var messageToast = $('.toast');
     // M.toast({html: messageToast});
 //     var toastElement = document.querySelector('.toast');

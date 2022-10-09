@@ -26,15 +26,19 @@
             <form action="{% url 'profile' %}" method="POST" id="period_form">
                 {% csrf_token %}
                 <div class="col m3">
-                    <label for="id-period-start-date">Select the start date of your last period</label>
                     {{ form.period_start_date|materializecss }}
                 </div>
-                <div class="col m2">
-                    <label for="period-length">Select the length of your last period</label>
-                    {{ form.period_length }}
+                <div class="col m3">
+                    {{ form.period_length|materializecss }}
                 </div>
                 <div class="col m3">
-                    <a href="" class="lime accent-3 waves-effect waves-light btn">
+                    <a href="{% url 'profile' %}" class="red waves-effect waves-light btn">
+                        <span class="black-text">
+                            <i class="large material-icons">chevron_left</i>
+                        </span>
+                        <span class="black-text">Cancel</span>
+                    </a>
+                    <a href="" class="lime accent-3 waves-effect waves-light btn" id="period-form-submit">
                         <span class="black-text">submit</span>
                         <span class="black-text">
                             <i class="large material-icons">chevron_right</i>
@@ -55,4 +59,14 @@
         <span class="cycle-day"></span>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    <script type="text/javascript">
+        cycleSubmit = document.getElementById("period-form-submit");
+        cycleSubmit.addEventListener("click",  function(){
+            var form = document.getElementById('period-form')
+            form.submit();
+        });
+    </script>
 {% endblock %}

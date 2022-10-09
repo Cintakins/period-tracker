@@ -1,17 +1,28 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import UserProfile, UserPeriodInfo
 # from .forms import UserForm
-# from django.contrib import messages
+from django.contrib import messages
 from checkout.models import Order
-from .forms import periodUpload
+from .forms import PeriodUpload
 
 
 def profile(request):
     """ returns profile view """
     user_profile = get_object_or_404(UserProfile, user=request.user)
-    period_details = UserPeriodInfo(request.user)
-    form = periodUpload(request.POST)
+    redirect_url = request.POST.get('redirect_url')
 
+    if request.method == "POST":
+        form = PeriodUpload(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your personalised cycle has been updated')
+            return redirect(redirect_url)
+        else:
+            messages.error(request, 'Whoops! something went wrong, please fill both fields')
+    else:
+        form = PeriodUpload(request.POST, instance=user_profile)
+
+    period_details = UserPeriodInfo(request.user)
     context = {
         'period_details': period_details,
         'user_profile': user_profile,

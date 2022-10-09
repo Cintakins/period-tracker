@@ -227,6 +227,7 @@ Payment intent is called before define
 This happens if the full name field is empty
 
 #### Problem
+Cannot use the materialise grid system on the form elements
 #### Solution
 
 ## Testing

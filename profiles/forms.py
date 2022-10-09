@@ -41,10 +41,15 @@ class UserForm(forms.ModelForm):
             self.fields[field].label = False
 
 
-class periodUpload(forms.ModelForm):
+class PeriodUpload(forms.ModelForm):
     user = forms.CharField()
-    period_start_date = forms.DateField(),
-    period_length = forms.IntegerField(),
+    period_start_date = forms.DateField(widget=forms.Textarea(attrs={}))
+    period_length = forms.IntegerField()
+
+    def __init__(self, *args, **kwargs):
+        super(PeriodUpload, self).__init__(*args, **kwargs)
+        self.fields['period_start_date'].label = 'Select the start date of your last period'
+        self.fields['period_length'].label = 'Select the length of your last cycle'
     
     class Meta:
         model = UserPeriodInfo
