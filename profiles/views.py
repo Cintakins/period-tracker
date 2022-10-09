@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import UserProfile
+from .models import UserProfile, UserPeriodInfo
 # from .forms import UserForm
 # from django.contrib import messages
 from checkout.models import Order
@@ -8,10 +8,18 @@ from checkout.models import Order
 def profile(request):
     """ returns profile view """
     profile = get_object_or_404(UserProfile, user=request.user)
+    period_details = UserPeriodInfo(request.user)
 
     context = {
+        'period_details': period_details,
         'profile': profile,
     }
+    if request.method == "POST":
+        period_info = {
+            'period_start_date': request.POST['period-start-date'],
+            'period_length': request.POST['period-length'],
+        }
+        period_form = UserPeriodInfo(period_info)
 
     return render(request, 'profiles/profile.html', context)
 

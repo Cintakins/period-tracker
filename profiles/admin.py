@@ -19,5 +19,6 @@ class UserPeriodInfoAdmin(admin.ModelAdmin):
         'period_length',
     )
 
+
 admin.site.register(UserProfile)
 admin.site.register(UserPeriodInfo)

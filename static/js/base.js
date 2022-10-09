@@ -3,6 +3,12 @@ $(document).ready(function(){
     $(".dropdown-trigger").dropdown();
     $('select').formSelect();
     $('.modal').modal();
-    M.toast({});
+    $('.datepicker').datepicker();
+    // var messageToast = $('.toast');
+    // M.toast({html: messageToast});
+//     var toastElement = document.querySelector('.toast');
+//   var toastInstance = M.Toast.getInstance(toastElement);
+//   toastInstance.dismiss();
 });
+
 

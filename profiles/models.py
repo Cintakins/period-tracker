@@ -34,8 +34,5 @@ class UserPeriodInfo(models.Model):
     """ user period information """
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    period_start_date = models.DateField(auto_now=True)
+    period_start_date = models.DateField()
     period_length = models.IntegerField(default=28, blank=True, null=True)
-
-    def __str__(self):
-        return self.user

@@ -11,14 +11,43 @@
 		<h3 class="center">Welcome Back {{ profile }}</h3>
 	</div>
 </div>
-<div class="container"></div>
 <div class="container">
-    <!-- if user has period details, display period tracker, otherwise, display 'enter details' -->
+    <p class="white-text">
+        {{ period_details.period_length }}
+    </p>
+</div>
+<div class="container">
+    <div class="row">
+        <!-- if no period-info display "create" else display "update" -->
+        <p><a href="">Create</a>your cycle</p>
+    </div>
+    <div class="row">
+        <div class="container period-form">
+            <form action="" method="POST" id="period_form">
+                <div class="col m3">
+                    <label for="period-start-date">Select the start date of your last period</label>
+                    <input type="text" class="datepicker" id="period-start-date" name="period-start-date">
+                </div>
+                <div class="col m2 center-align">
+                    <label for="period-length">Select the length of your last period</label>
+                    <input type="number" id="period-length" value="" name="period-length">
+                </div>
+                <div class="col m3">
+                    <a href="" class="lime accent-3 waves-effect waves-light btn">
+                        <span class="black-text">submit</span>
+                        <span class="black-text">
+                            <i class="large material-icons">chevron_right</i>
+                        </span>
+                    </a>
+                </div>
+            </form>
+        </div>
+        <!-- if period-info, display -->
+    </div>
     <div class="row">
         <h4 class="center lime-text text-accent-3">
             Your Cycle
         </h4>
-        {{ profile }}
     </div>
     <div class="row">
         <!-- for each day = width/cycle-length. can write in the html. give each span a number. use view to calc half-point and use span-numbers to identify them -->
