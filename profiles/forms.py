@@ -1,5 +1,6 @@
 from django import forms
 from .models import UserProfile
+from .models import UserPeriodInfo
 
 # from boutique ado
 
@@ -38,3 +39,15 @@ class UserForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             # self.fields[field].widget.attrs['class'] = 'style'
             self.fields[field].label = False
+
+
+class periodUpload(forms.ModelForm):
+    user = forms.CharField()
+    period_start_date = forms.DateField(),
+    period_length = forms.IntegerField(),
+    
+    class Meta:
+        model = UserPeriodInfo
+        fields = '__all__'
+
+

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load materializecss %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
@@ -8,7 +9,7 @@
 {% block content %}
 <div class="row card-panel header-card">
 	<div class="lime accent-3 col m2 offset-m5">
-		<h3 class="center">Welcome Back {{ profile }}</h3>
+		<h3 class="center">Welcome Back {{ user_profile }}</h3>
 	</div>
 </div>
 <div class="container">
@@ -21,16 +22,16 @@
         <!-- if no period-info display "create" else display "update" -->
         <p><a href="">Create</a>your cycle</p>
     </div>
-    <div class="row">
         <div class="container period-form">
-            <form action="" method="POST" id="period_form">
+            <form action="{% url 'profile' %}" method="POST" id="period_form">
+                {% csrf_token %}
                 <div class="col m3">
-                    <label for="period-start-date">Select the start date of your last period</label>
-                    <input type="text" class="datepicker" id="period-start-date" name="period-start-date">
+                    <label for="id-period-start-date">Select the start date of your last period</label>
+                    {{ form.period_start_date|materializecss }}
                 </div>
-                <div class="col m2 center-align">
+                <div class="col m2">
                     <label for="period-length">Select the length of your last period</label>
-                    <input type="number" id="period-length" value="" name="period-length">
+                    {{ form.period_length }}
                 </div>
                 <div class="col m3">
                     <a href="" class="lime accent-3 waves-effect waves-light btn">
@@ -41,7 +42,7 @@
                     </a>
                 </div>
             </form>
-        </div>
+        </div> 
         <!-- if period-info, display -->
     </div>
     <div class="row">

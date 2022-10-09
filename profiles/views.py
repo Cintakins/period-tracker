@@ -1,25 +1,22 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import UserProfile, UserPeriodInfo
 # from .forms import UserForm
 # from django.contrib import messages
 from checkout.models import Order
+from .forms import periodUpload
 
 
 def profile(request):
     """ returns profile view """
-    profile = get_object_or_404(UserProfile, user=request.user)
+    user_profile = get_object_or_404(UserProfile, user=request.user)
     period_details = UserPeriodInfo(request.user)
+    form = periodUpload(request.POST)
 
     context = {
         'period_details': period_details,
-        'profile': profile,
+        'user_profile': user_profile,
+        'form': form,
     }
-    if request.method == "POST":
-        period_info = {
-            'period_start_date': request.POST['period-start-date'],
-            'period_length': request.POST['period-length'],
-        }
-        period_form = UserPeriodInfo(period_info)
 
     return render(request, 'profiles/profile.html', context)
 
@@ -44,3 +41,17 @@ def account_details(request):
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     # direct to checkout success via info buttons on past order list in account details
+
+
+# def period_form(request, user):
+
+#     form = periodUpload(request.POST)
+
+#     if request.method == "POST":
+#         period_info = {
+#             'user': user,
+#             'period_start_date': request.POST.get['period-start-date'],
+#             'period_length': request.POST.get['period-length'],
+#         }
+        
+#     return render(request, 'profiles/includes/period_form.html', context)
