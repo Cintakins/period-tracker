@@ -7,11 +7,9 @@ $(document).ready(function(){
         'format': 'yyyy, mmm dd'
     });
     $('.collapsible').collapsible();
-    // var messageToast = $('.toast');
-    // M.toast({html: messageToast});
-//     var toastElement = document.querySelector('.toast');
-//   var toastInstance = M.Toast.getInstance(toastElement);
-//   toastInstance.dismiss();
+    setTimeout(function() {
+        $('.messages').fadeOut('fast');
+    }, 3000);
 });
 
 

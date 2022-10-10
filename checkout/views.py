@@ -24,7 +24,8 @@ def checkout_data_cache(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, something went wrong \ Please try again later')
+        messages.error(request, 'Sorry, something went wrong \
+                                 Please try again later')
         return HttpResponse(content=e, status=400)
     print(p_intent_id)
 
@@ -73,14 +74,16 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, 'Please ensure you have filled out the form, including full name')
+                    messages.error(request, 'Please ensure you have filled out the form,\
+                                             including full name')
                     order.delete()
                     return redirect(reverse('view_basket'))
 
             request.session['save_info'] = 'save_info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error in the form, please try again')
+            messages.error(request, 'There was an error in the form,\
+                                     please try again')
                             
     else:
         basket = request.session.get('basket', {})
@@ -148,8 +151,10 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f'Checkout was successful for order number {order_number}.\
-         A confirmation email will be sent to {order.email}')
+    messages.success(request, f'Checkout was successful.\
+                                order number {order_number}.\
+                                A confirmation email will be sent to\
+                                     {order.email}')
     
     if 'basket' in request.session:
         del request.session['basket']
