@@ -8,24 +8,31 @@ from .forms import PeriodUpload
 
 def profile(request):
     """ returns profile view """
-    user_profile = get_object_or_404(UserProfile, user=request.user)
-    redirect_url = request.POST.get('redirect_url')
-
+    user = get_object_or_404(UserProfile, user=request.user)
+    period_details = UserPeriodInfo.objects.get(user=user)
     if request.method == "POST":
-        form = PeriodUpload(request.POST, instance=user_profile)
+        form = PeriodUpload(request.POST, instance=period_details)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your personalised cycle has been updated')
-            return redirect(redirect_url)
+            return redirect(reverse('profile', args=[user.id]))
         else:
-            messages.error(request, 'Whoops! something went wrong, please fill both fields')
+            messages.error(request, 'Whoops! something went wrong')
     else:
-        form = PeriodUpload(request.POST, instance=user_profile)
+        form = PeriodUpload(request.POST, instance=period_details)
 
-    period_details = UserPeriodInfo(request.user)
+
+    # length = int(period_details.period_length)
+    # count = 0
+    # days = []
+    # while days < length:
+    #     count += 1
+    #     days.append(int(count))
+    # print('length', length)
+
     context = {
         'period_details': period_details,
-        'user_profile': user_profile,
+        'user': user,
         'form': form,
     }
 
@@ -54,15 +61,26 @@ def order_history(request, order_number):
     # direct to checkout success via info buttons on past order list in account details
 
 
-# def period_form(request, user):
+# def update_cycle(request, user_profile_id):
 
-#     form = periodUpload(request.POST)
+#     user_profile = get_object_or_404(UserProfile, pk=user_profile_id)
 
 #     if request.method == "POST":
-#         period_info = {
-#             'user': user,
-#             'period_start_date': request.POST.get['period-start-date'],
-#             'period_length': request.POST.get['period-length'],
-#         }
-        
-#     return render(request, 'profiles/includes/period_form.html', context)
+#         form = PeriodUpload(request.POST, instance=user_profile)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Your personalised cycle has been updated')
+#             return redirect(reverse('profile', args=[user_profile.id]))
+#         else:
+#             messages.error(request, 'Whoops! something went wrong, please fill both fields')
+#     else:
+#         form = PeriodUpload(request.POST, instance=user_profile)
+
+#     print(form)
+
+#     context = {
+#         'user_profile': user_profile,
+#         'form': form,
+#     }
+
+#     return render(request, 'profiles/profile.html', context)

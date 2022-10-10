@@ -3,18 +3,19 @@
 {% load materializecss %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="row card-panel header-card">
-	<div class="lime accent-3 col m2 offset-m5">
-		<h3 class="center">Welcome Back {{ user_profile }}</h3>
-	</div>
+    <div class="lime accent-3 col m2 offset-m5">
+        <h3 class="center">Welcome Back {{ user }}</h3>
+    </div>
 </div>
 <div class="container">
     <p class="white-text">
         {{ period_details.period_length }}
+        {{ period_details.period_start_date }}
     </p>
 </div>
 <div class="container">
@@ -22,51 +23,45 @@
         <!-- if no period-info display "create" else display "update" -->
         <p><a href="">Create</a>your cycle</p>
     </div>
-        <div class="container period-form">
-            <form action="{% url 'profile' %}" method="POST" id="period_form">
-                {% csrf_token %}
-                <div class="col m3">
-                    {{ form.period_start_date|materializecss }}
+    <div class="container period-form">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header lime accent-3">Edit Cycle Start Date</div>
+                <div class="collapsible-body">
+                    <span>
+                        <form action="{% url 'profile' %}" method="POST" id="period_date">
+                            {% csrf_token %}
+                            {{ form.period_start_date|materializecss }}
+                            <button type="sumbit">Submit</button>
+                        </form>
+                    </span>
                 </div>
-                <div class="col m3">
-                    {{ form.period_length|materializecss }}
+            </li>
+            <li>
+                <div class="collapsible-header lime accent-3"><i class="material-icons">place</i>Edit Cycle Length</div>
+                <div class="collapsible-body">
+                    <span>
+                        <form action="{% url 'profile' %}" method="POST" id="period_length">
+                            {% csrf_token %}
+                            {{ form.period_length|materializecss }}
+                            <button type="sumbit">Submit</button>
+                        </form>
+                    </span>
                 </div>
-                <div class="col m3">
-                    <a href="{% url 'profile' %}" class="red waves-effect waves-light btn">
-                        <span class="black-text">
-                            <i class="large material-icons">chevron_left</i>
-                        </span>
-                        <span class="black-text">Cancel</span>
-                    </a>
-                    <a href="" class="lime accent-3 waves-effect waves-light btn" id="period-form-submit">
-                        <span class="black-text">submit</span>
-                        <span class="black-text">
-                            <i class="large material-icons">chevron_right</i>
-                        </span>
-                    </a>
-                </div>
-            </form>
-        </div> 
-        <!-- if period-info, display -->
+            </li>
+        </ul>
     </div>
-    <div class="row">
-        <h4 class="center lime-text text-accent-3">
-            Your Cycle
-        </h4>
-    </div>
-    <div class="row">
-        <!-- for each day = width/cycle-length. can write in the html. give each span a number. use view to calc half-point and use span-numbers to identify them -->
-        <span class="cycle-day"></span>
-    </div>
+    <!-- if period-info, display -->
 </div>
-{% endblock %}
-
-{% block postloadjs %}
-    <script type="text/javascript">
-        cycleSubmit = document.getElementById("period-form-submit");
-        cycleSubmit.addEventListener("click",  function(){
-            var form = document.getElementById('period-form')
-            form.submit();
-        });
-    </script>
+<div class="row">
+    <h4 class="center lime-text text-accent-3">
+        Your Cycle
+    </h4>
+</div>
+<div class="row">
+    <!-- for each day = width/cycle-length. can write in the html. give each span a number. use view to calc half-point and use span-numbers to identify them -->
+    
+    <span id="day-{{ day }}"></span>
+</div>
+</div>
 {% endblock %}

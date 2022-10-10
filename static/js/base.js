@@ -6,6 +6,7 @@ $(document).ready(function(){
     $('.datepicker').datepicker({
         'format': 'yyyy, mmm dd'
     });
+    $('.collapsible').collapsible();
     // var messageToast = $('.toast');
     // M.toast({html: messageToast});
 //     var toastElement = document.querySelector('.toast');

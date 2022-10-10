@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.profile, name='profile'),
     path('account_details/', views.account_details, name='account_details'),
-    # path('<user>', views.period_form, name='period_form'),
+    # path('update<int:user_profile_id>', views.update_cycle, name='update_cycle'),
 ]

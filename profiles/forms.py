@@ -43,7 +43,7 @@ class UserForm(forms.ModelForm):
 
 class PeriodUpload(forms.ModelForm):
     user = forms.CharField()
-    period_start_date = forms.DateField(widget=forms.Textarea(attrs={}))
+    period_start_date = forms.DateField()
     period_length = forms.IntegerField()
 
     def __init__(self, *args, **kwargs):
