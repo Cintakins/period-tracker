@@ -98,59 +98,59 @@ img {
     font-weight: 900;
 }
 
-.circle-menu a.ovulation {
+.ovulation {
     background: #007bb0;
 }
 
-.circle-menu a.luteal-1 {
+.luteal-1 {
     background: #28632b;
 }
 
-.circle-menu a.luteal-2 {
+.luteal-2 {
     background: #bc9704;
 }
 
-.circle-menu a.luteal-3 {
+.luteal-3 {
     background: #b95d00;
 }
 
-.circle-menu a.mensis {
+.mensis {
     background: #b4191c;
 }
 
-.circle-menu a.follicular-1 {
+.follicular-1 {
     background: #601956;
 }
 
-.circle-menu a.follicular-2 {
+.follicular-2 {
     background: #452e6f;
 }
 
-.circle-menu a.ovulation:hover {
+.ovulation:hover {
     background: #009cde;
 }
 
-.circle-menu a.luteal-1:hover {
+.luteal-1:hover {
     background: #3a913f;
 }
 
-.circle-menu a.luteal-2:hover {
+.luteal-2:hover {
     background: #fecd06;
 }
 
-.circle-menu a.luteal-3:hover {
+.luteal-3:hover {
     background: #fa7f00;
 }
 
-.circle-menu a.mensis:hover {
+.mensis:hover {
     background: #ed2124;
 }
 
-.circle-menu a.follicular-1:hover {
+.follicular-1:hover {
     background: #932683;
 }
 
-.circle-menu a.follicular-2:hover {
+.follicular-2:hover {
     background: #61419e;
 }
 

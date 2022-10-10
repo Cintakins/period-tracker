@@ -7,6 +7,17 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .cycle-days {
+        display: inline-block;
+        border-style: solid;
+        border-width:  1px;
+        border-color: black;
+        border-radius: 10px;
+        width: calc({{span_width}}%);
+        height: 60px;
+    }
+</style>
 <div class="row card-panel header-card">
     <div class="lime accent-3 col m2 offset-m5">
         <h3 class="center">Welcome Back {{ user }}</h3>
@@ -53,15 +64,42 @@
     </div>
     <!-- if period-info, display -->
 </div>
-<div class="row">
-    <h4 class="center lime-text text-accent-3">
-        Your Cycle
-    </h4>
-</div>
-<div class="row">
-    <!-- for each day = width/cycle-length. can write in the html. give each span a number. use view to calc half-point and use span-numbers to identify them -->
-    
-    <span id="day-{{ day }}"></span>
-</div>
+<div class="container">
+    <div class="row">
+        <h4 class="center lime-text text-accent-3">
+            Your Cycle
+        </h4>
+    </div>
+    <div class="row center">
+        <div class="valign-wrapper">
+            {% for day in days %}
+            {% if day < 6 %}
+                <span id="day-{{ day }}" class="cycle-days mensis center">
+                    <p>day {{ day }}</p>
+                </span>
+            {% elif day > 5 and day < mid_follicular %}
+                <span id="day-{{ day }}" class="cycle-days follicular-1 center">
+                    <p>day {{ day }}</p>
+                </span>
+            {% elif day > mid_follicular and day < ovulation %}
+                <span id="day-{{ day }}" class="cycle-days follicular-2 center">
+                    <p>day {{ day }}</p>
+                </span>
+            {% elif day == ovulation %}
+                <span id="day-{{ day }}" class="cycle-days ovulation center">
+                    <p>day {{ day }}</p>
+                </span>
+            {% elif day > ovulation and day < mid_luteal %}
+                <span id="day-{{ day }}" class="cycle-days luteal-1 center">
+                    <p>day {{ day }}</p>
+                </span>
+            {% else %}
+                <span id="day-{{ day }}" class="cycle-days luteal-3 center">
+                    <p>day {{ day }}</p>
+                </span>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

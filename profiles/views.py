@@ -21,19 +21,31 @@ def profile(request):
     else:
         form = PeriodUpload(request.POST, instance=period_details)
 
-
-    # length = int(period_details.period_length)
-    # count = 0
-    # days = []
-    # while days < length:
-    #     count += 1
-    #     days.append(int(count))
-    # print('length', length)
+    length = int(period_details.period_length)
+    print('length', length)
+    count = 0
+    days = []
+    while count <= length:
+        count += 1
+        days.append(int(count))
+        if days == length:
+            break
+    days.pop()
+    
+    span_width = 100 / length
+    ovulation = length - 14
+    mid_follicular = ((ovulation - 5) / 2) + 5
+    mid_luteal = ovulation + 7
 
     context = {
         'period_details': period_details,
         'user': user,
         'form': form,
+        'days': days,
+        'span_width': span_width,
+        'ovulation': ovulation,
+        'mid_follicular': mid_follicular,
+        'mid_luteal': mid_luteal,
     }
 
     return render(request, 'profiles/profile.html', context)
@@ -60,27 +72,3 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     # direct to checkout success via info buttons on past order list in account details
 
-
-# def update_cycle(request, user_profile_id):
-
-#     user_profile = get_object_or_404(UserProfile, pk=user_profile_id)
-
-#     if request.method == "POST":
-#         form = PeriodUpload(request.POST, instance=user_profile)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Your personalised cycle has been updated')
-#             return redirect(reverse('profile', args=[user_profile.id]))
-#         else:
-#             messages.error(request, 'Whoops! something went wrong, please fill both fields')
-#     else:
-#         form = PeriodUpload(request.POST, instance=user_profile)
-
-#     print(form)
-
-#     context = {
-#         'user_profile': user_profile,
-#         'form': form,
-#     }
-
-#     return render(request, 'profiles/profile.html', context)

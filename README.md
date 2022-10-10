@@ -220,6 +220,7 @@ Terminal presented this on chckout compltion: (checkout vid 15)
 Bad Request: /checkout/webhooks/
 [07/Oct/2022 12:27:12] "POST /checkout/webhooks/ HTTP/1.1" 400 0
 #### Solution
+The secret stored in gitpod settings variables had a different name to the variable called in settings.py. There was also an issue with county being referred to as county and not state
 
 #### Problem
 Payment intent is called before define
