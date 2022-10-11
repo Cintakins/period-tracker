@@ -4,6 +4,7 @@ from .models import UserProfile, UserPeriodInfo
 from django.contrib import messages
 from checkout.models import Order
 from .forms import PeriodUpload
+import datetime
 
 
 def profile(request):
@@ -21,8 +22,23 @@ def profile(request):
     else:
         form = PeriodUpload(request.POST, instance=period_details)
 
+    start_date = period_details.period_start_date
+    today = datetime.date.today()
+    
+
+    def numOfDays(date1, date2):
+        return (date2-date1).days
+
+    cycle_day = numOfDays(start_date, today)
+
+    print('cycle_day', cycle_day)
+
     length = int(period_details.period_length)
-    print('length', length)
+
+    if cycle_day > length:
+        user.period_start_date = today
+        user.save()
+
     count = 0
     days = []
     while count <= length:
@@ -46,6 +62,7 @@ def profile(request):
         'ovulation': ovulation,
         'mid_follicular': mid_follicular,
         'mid_luteal': mid_luteal,
+        'cycle_day': cycle_day,
     }
 
     return render(request, 'profiles/profile.html', context)

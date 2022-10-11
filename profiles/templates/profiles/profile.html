@@ -10,12 +10,16 @@
 <style>
     .cycle-days {
         display: inline-block;
-        border-style: solid;
-        border-width:  1px;
+        border-style: double;
+        border-width:  2px;
         border-color: black;
         border-radius: 10px;
         width: calc({{span_width}}%);
         height: 60px;
+    }
+    #today {
+        width: calc({{span_width}}% * 1.5);
+        height: calc({{span_width}}% * 1.5)
     }
 </style>
 <div class="row card-panel header-card">
@@ -31,12 +35,12 @@
 </div>
 <div class="container">
     <div class="row">
-        <!-- if no period-info display "create" else display "update" -->
-        <p><a href="">Create</a>your cycle</p>
+        <p><a href="">Update</a>your cycle</p>
     </div>
     <div class="container period-form">
         <ul class="collapsible">
             <li>
+                <!-- edit date select so they can't select earlier than a month. If they only update th length it'll throw off day calculation -->
                 <div class="collapsible-header lime accent-3">Edit Cycle Start Date</div>
                 <div class="collapsible-body">
                     <span>
@@ -70,34 +74,40 @@
             Your Cycle
         </h4>
     </div>
+    <div class="row">
+        <!-- <span id="day-arrow" class="lime-text text-accent-3">
+            <p>You are here</p>
+            <i class="material-icons">arrow_downward</i>
+        </span> -->
+    </div>
     <div class="row center">
         <div class="valign-wrapper">
             {% for day in days %}
-            {% if day < 6 %}
-                <span id="day-{{ day }}" class="cycle-days mensis center">
-                    <p>day {{ day }}</p>
-                </span>
-            {% elif day > 5 and day < mid_follicular %}
-                <span id="day-{{ day }}" class="cycle-days follicular-1 center">
-                    <p>day {{ day }}</p>
-                </span>
-            {% elif day > mid_follicular and day < ovulation %}
-                <span id="day-{{ day }}" class="cycle-days follicular-2 center">
-                    <p>day {{ day }}</p>
-                </span>
-            {% elif day == ovulation %}
-                <span id="day-{{ day }}" class="cycle-days ovulation center">
-                    <p>day {{ day }}</p>
-                </span>
-            {% elif day > ovulation and day < mid_luteal %}
-                <span id="day-{{ day }}" class="cycle-days luteal-1 center">
-                    <p>day {{ day }}</p>
-                </span>
-            {% else %}
-                <span id="day-{{ day }}" class="cycle-days luteal-3 center">
-                    <p>day {{ day }}</p>
-                </span>
-            {% endif %}
+                {% if day < 6 %}
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days mensis center">
+                        <p>day<br> {{ day }}</p>
+                    </span>
+                {% elif day > 5 and day < mid_follicular %}
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days follicular-1 center">
+                        <p>day<br> {{ day }}</p>
+                    </span>
+                {% elif day > mid_follicular and day < ovulation %}
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days follicular-2 center">
+                        <p>day<br> {{ day }}</p>
+                    </span>
+                {% elif day == ovulation %}
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days ovulation center">
+                        <p>day<br> {{ day }}</p>
+                    </span>
+                {% elif day > ovulation and day < mid_luteal %}
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days luteal-1 center">
+                        <p>day<br> {{ day }}</p>
+                    </span>
+                {% elif day > mid_luteal %}
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days luteal-3 center">
+                        <p>day<br> {{ day }}</p>
+                    </span>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

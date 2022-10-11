@@ -98,6 +98,10 @@ img {
     font-weight: 900;
 }
 
+#today {
+    border-style: double;
+}
+
 .ovulation {
     background: #007bb0;
 }
