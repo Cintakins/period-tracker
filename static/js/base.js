@@ -4,7 +4,7 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.modal').modal();
     $('.datepicker').datepicker({
-        'format': 'yyyy, mmm dd'
+        'format': 'yyyy-mm-dd',
     });
     $('.collapsible').collapsible();
     setTimeout(function() {

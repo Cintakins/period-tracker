@@ -99,7 +99,14 @@ img {
 }
 
 #today {
+    border-style: solid;
+    border-radius: 50%;
+}
+
+.phase {
     border-style: double;
+    border: 2px;
+    border: black;
 }
 
 .ovulation {

@@ -37,7 +37,6 @@ class UserForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            # self.fields[field].widget.attrs['class'] = 'style'
             self.fields[field].label = False
 
 
@@ -48,11 +47,12 @@ class PeriodUpload(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PeriodUpload, self).__init__(*args, **kwargs)
-        self.fields['period_start_date'].label = 'Select the start date of your last period'
+        self.fields['period_start_date'].label = 'Click to select the start date of your last period'
         self.fields['period_length'].label = 'Select the length of your last cycle'
     
     class Meta:
         model = UserPeriodInfo
         fields = '__all__'
+
 
 
