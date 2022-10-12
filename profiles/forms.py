@@ -1,6 +1,5 @@
 from django import forms
-from .models import UserProfile
-from .models import UserPeriodInfo
+from .models import UserProfile, UserPeriodInfo
 
 # from boutique ado
 
@@ -32,9 +31,9 @@ class UserForm(forms.ModelForm):
 
 
 class PeriodUpload(forms.ModelForm):
-    user = forms.CharField()
-    period_start_date = forms.DateField()
-    period_length = forms.IntegerField()
+    # user = forms.CharField()
+    # period_start_date = forms.DateField()
+    # period_length = forms.IntegerField()
     
     class Meta:
         model = UserPeriodInfo
@@ -45,10 +44,4 @@ class PeriodUpload(forms.ModelForm):
         self.fields['period_start_date'].label = 'Click to select the start date of your last period'
         self.fields['period_length'].label = 'Select the length of your last cycle'
         # self.fields[field].widget.attrs['class']['helper-block'] = False
-
-# class siteManagment(forms.ModelForm):
-#     class Meta:
-#         model = siteManagment
-#         fields = '__all__'
-
 

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load materializecss %}
+
+{% block content %}
+<div class="row card-panel header-card">
+	<div class="lime accent-3 col m2 offset-m5">
+		<h3 class="center">Add an Article</h3>
+	</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="POST" action="{% url 'add_article' %}">
+                {% csrf_token %}
+                {{ form|materializecss }}
+                <button type="submit" class="lime accent-3">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Product, Category
 from django.contrib import messages
 from django.db.models import Q
+from .forms import ProductForm
 
 # Create your views here.
 # used Boutique ado project to help inform this code
@@ -66,4 +67,15 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+def add_product(request):
+    """ adds articles to database """
+
+    form = ProductForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'products/add_product.html', context)
 
