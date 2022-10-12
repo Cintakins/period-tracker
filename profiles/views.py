@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import UserProfile, UserPeriodInfo
-# from .forms import UserForm
+from .forms import UserForm
 from django.contrib import messages
 from checkout.models import Order
 from .forms import PeriodUpload
@@ -72,14 +72,14 @@ def account_details(request):
     """ returns account details view """
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.orders.all()
-    # form = UserForm(instance=profile)
-    # if request.method == 'POST':
-    #   form = UserForm(request.POST, instance=profile)
-    #   if form.is_valid():
-    #       form.save()
-    #       messages.success(request, 'Profile Updated')
+    form = UserForm(instance=profile)
+    if request.method == 'POST':
+      form = UserForm(request.POST, instance=profile)
+      if form.is_valid():
+          form.save()
+          messages.success(request, 'Profile Updated')
     context = {
-        # 'form': form,
+        'form': form,
         'orders': orders,
     }
 
