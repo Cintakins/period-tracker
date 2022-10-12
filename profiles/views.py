@@ -5,10 +5,15 @@ from django.contrib import messages
 from checkout.models import Order
 from .forms import PeriodUpload
 import datetime
+from products.models import Product, Category
+from articles.models import Article, ArticleCategory
 
 
 def profile(request):
     """ returns profile view """
+
+    cycle_phases = Article.objects.filter(category=1)
+
     user = get_object_or_404(UserProfile, user=request.user)
     period_details = UserPeriodInfo.objects.get(user=user)
     if request.method == "POST":
@@ -52,6 +57,7 @@ def profile(request):
     mid_luteal = ovulation + 7
 
     context = {
+        'cycle_phases': cycle_phases,
         'period_details': period_details,
         'user': user,
         'form': form,
@@ -89,7 +95,6 @@ def order_history(request, order_number):
 
 def site_management(request):
     """ returns account details view """
-    
 
     return render(request, 'profiles/site_management.html')
 

@@ -44,7 +44,7 @@ class PeriodUpload(forms.ModelForm):
         super(PeriodUpload, self).__init__(*args, **kwargs)
         self.fields['period_start_date'].label = 'Click to select the start date of your last period'
         self.fields['period_length'].label = 'Select the length of your last cycle'
-        self.fields[field].widget.attrs['class']['helper-block'] = ''
+        # self.fields[field].widget.attrs['class']['helper-block'] = False
 
 # class siteManagment(forms.ModelForm):
 #     class Meta:

@@ -11,12 +11,13 @@
     .cycle-days {
         display: inline-block;
         border-style: double;
-        border-width:  2px;
+        border-width: 2px;
         border-color: black;
         border-radius: 10px;
-        width: calc({{span_width}}%);
-        height: 60px;
-    }
+
+        width: calc( {{span_width}}%);
+        height: 60px;}
+
     #today {
         width: calc({{span_width}}% * 1.5);
         height: calc({{span_width}}% * 1.5)
@@ -32,7 +33,8 @@
         <ul class="collapsible">
             <li>
                 <!-- edit date select so they can't select earlier than a month. If they only update th length it'll throw off day calculation -->
-                <div class="collapsible-header lime accent-3"><i class="material-icons">date_range</i>Edit Cycle Start Date</div>
+                <div class="collapsible-header lime accent-3"><i class="material-icons">date_range</i>Edit Cycle Start
+                    Date</div>
                 <div class="collapsible-body">
                     <span>
                         <p class="lime-text text-accent-3">
@@ -47,7 +49,8 @@
                 </div>
             </li>
             <li>
-                <div class="collapsible-header lime accent-3"><i class="material-icons">access_time</i>Edit Cycle Length</div>
+                <div class="collapsible-header lime accent-3"><i class="material-icons">access_time</i>Edit Cycle Length
+                </div>
                 <div class="collapsible-body">
                     <span>
                         <p class="lime-text text-accent-3">
@@ -72,39 +75,72 @@
         </h4>
     </div>
     <div class="row">
-        <!-- <span id="day-arrow" class="lime-text text-accent-3">
-            <p>You are here</p>
-            <i class="material-icons">arrow_downward</i>
-        </span> -->
+        <div class="col">
+            <p class="lime accent-3">
+                Today you are on day {{ cycle_day }} of your cycle. This is how you may b feeling. This is some advice etc.
+            </p>
+        </div>
     </div>
     <div class="row center">
         <div class="valign-wrapper">
             {% for day in days %}
                 {% if day < 6 %}
-                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days mensis center">
-                        <p>Day<br> {{ day }}</p>
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}"
+                        class="cycle-days mensis center">
+                        <a href="#mensis-modal" class="modal-trigger black-text">
+                            <p>Day<br> {{ day }}</p>
+                        </a>
                     </span>
                 {% elif day > 5 and day < mid_follicular %}
-                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days follicular-1 center">
-                        <p>Day<br> {{ day }}</p>
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}"
+                        class="cycle-days follicular-1 center modal-trigger">
+                        <a href="#follicular-modal" class="modal-trigger black-text">
+                            <p>Day<br> {{ day }}</p>
+                        </a>
                     </span>
                 {% elif day > mid_follicular and day < ovulation %}
-                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days follicular-2 center">
-                        <p>Day<br> {{ day }}</p>
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}"
+                        class="cycle-days follicular-2 center modal-trigger">
+                        <a href="#follicular-modal" class="modal-trigger black-text">
+                            <p>Day<br> {{ day }}</p>
+                        </a>
                     </span>
                 {% elif day == ovulation %}
-                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days ovulation center">
-                        <p>Day<br> {{ day }}</p>
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}"
+                        class="cycle-days ovulation center modal-trigger">
+                        <a href="#ovulation-modal" class="modal-trigger black-text">
+                            <p>Day<br> {{ day }}</p>
+                        </a>
                     </span>
                 {% elif day > ovulation and day < mid_luteal %}
-                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days luteal-1 center">
-                        <p>Day<br> {{ day }}</p>
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}"
+                        class="cycle-days luteal-1 center modal-trigger">
+                        <a href="#luteal-modal" class="modal-trigger black-text">
+                            <p>Day<br> {{ day }}</p>
+                        </a>
                     </span>
                 {% elif day > mid_luteal %}
-                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}" class="cycle-days luteal-3 center">
-                        <p>Day<br> {{ day }}</p>
+                    <span id="{% if day == cycle_day %}today{% else %}day-{{ day }}{% endif %}"
+                        class="cycle-days luteal-3 center modal-trigger">
+                        <a href="#luteal-modal" class="modal-trigger black-text">
+                            <p>Day<br> {{ day }}</p>
+                        </a>
                     </span>
                 {% endif %}
+            {% endfor %}
+            {% for phase in cycle_phases %}
+            <div id="{% if phase.title == 'Ovulation' %}ovulation-modal{% elif phase.title == 'Luteal Phase' %}luteal-modal{% elif phase.title == 'Menstruation' %}mensis-modal{% elif phase.title == 'Follicular Phase' %}follicular-modal{% endif %}"
+            class="modal">
+                <div class="modal-content lime accent-3">
+                    <h4>{{ phase.title }}</h4>
+                    <p>{{ phase.article|linebreaksbr }}</p>
+                </div>
+                <div class="modal-footer lime accent-4">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">
+                        <i class="material-icons">close</i>
+                    </a>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -112,7 +148,7 @@
 {% endblock %}
 
 {% block postloadjs %}
-    <!-- <script type="text/javascript">
+<!-- <script type="text/javascript">
         var label = document.createElement('label');
         label.innerHTML = "More info";    
         document.getElementById('today').appendChild(label);

@@ -29,20 +29,21 @@
 
 <!-- Modal Structure -->
 {% for phase in cycle_phases %}
-<div id="{% if phase.title == 'Ovulation' %}ovulation{% elif phase.title == 'Luteal Phase' %}luteal{% elif phase.title == 'Menstruation' %}mensis{% elif phase.title == 'Follicular Phase' %}follicular{% endif %}" class="modal">
+<div id="{% if phase.title == 'Ovulation' %}ovulation{% elif phase.title == 'Luteal Phase' %}luteal{% elif phase.title == 'Menstruation' %}mensis{% elif phase.title == 'Follicular Phase' %}follicular{% endif %}"
+	class="modal">
 	<div class="modal-content lime accent-3">
 		<h4>{{ phase.title }}</h4>
 		<p>{{ phase.article|linebreaksbr }}</p>
-		</div>
-		<div class="modal-footer lime accent-4">
+	</div>
+	<div class="modal-footer lime accent-4">
 		<a href="#!" class="modal-close waves-effect waves-green btn-flat">
 			<i class="material-icons">close</i>
 		</a>
-		</div>
 	</div>
-  {% endfor %}
+</div>
+{% endfor %}
 
-  <div class="container">
+<div class="container">
 	<p><a href="{% url 'account_signup' %}">Sign up</a> to receive personalized information</p>
-  </div>
+</div>
 {% endblock %}
