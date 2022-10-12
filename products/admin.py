@@ -20,7 +20,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductColorsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'color',
     )
 
 

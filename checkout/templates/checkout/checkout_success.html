@@ -22,7 +22,11 @@
                     <li class="collection-item">Order date: {{ order.date }}</li>
                         {% for item in order.lineitems.all %}
                             <li class="collection-item avatar">
-                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="circle">
+                                {% if basket_item.product.image %}
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="circle">
+                                {% else %}
+                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}" class="circle">
+                                {% endif %}
                                 <span class="title">{{ item.product.name }} ({{ item.product.sku|upper }})</span>
                                 {% if item.product.has_sizes %}
                                     <p>Size: {{ item.size|upper }} <br>

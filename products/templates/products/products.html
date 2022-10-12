@@ -65,7 +65,9 @@
                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
                     </a>
                     {% else %}
-                    <a href="{% url 'product_detail' product.id %}" alt="{{ product.name }}"></a>
+                    <a href="{% url 'product_detail' product.id %}" alt="{{ product.name }}">
+                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    </a>
                     {% endif %}
                     <span class="card-title black-text product-label truncate">{{ product.name }}</span>
                 </div>

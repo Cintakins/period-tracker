@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Article, ArticleCategory
 from .forms import ArticleForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -41,14 +42,62 @@ def product_reviews(request):
     return render(request, 'articles/product_reviews.html', context)
 
 
+def article_detail(request, article_id):
+
+    """
+    Displays single product and full description
+    """
+
+    article = get_object_or_404(Article, pk=article_id)
+
+    context = {
+        'article': article,
+    }
+
+    return render(request, 'articles/article_detail.html', context)
+
+
 def add_article(request):
     """ adds articles to database """
 
-    form = ArticleForm()
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Article added!')
+            return redirect(reverse('add_article'))
+        else:
+            messages.error(request, 'Failed to add article. Please check over your inputs.')
+    else:
+        form = ArticleForm()
 
     context = {
         'form': form,
     }
 
     return render(request, 'articles/add_article.html', context)
+
+def edit_article(request, article_id):
+    """ adds articles to database """
+    
+    article = get_object_or_404(Article, pk=article_id)
+    form = ArticleForm(instance=article)
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Article Updated')
+            return redirect(reverse('article_detail', args=[article.id]))
+        else:
+            messages.error(request, 'Failed to edit article. Please check over your inputs.')
+    else:
+        form = Article(instance=article)
+
+    context = {
+        'form': form,
+        'article': article,
+    }
+
+    return render(request, 'articles/edit_article.html', context)
 

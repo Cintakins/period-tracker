@@ -19,7 +19,11 @@
                 {% if basket_items %}
                     {% for basket_item in basket_items %}
                         <li class="collection-item avatar">
-                            <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
+                            {% if basket_item.product.image %}
+                                <img src="{{ basket_item.product.image.url }}" alt="{{ basket_item.product.name }}" class="circle">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ basket_item.product.name }}" class="circle">
+                            {% endif %}
                             <span class="title">{{ basket_item.product.name }} ({{ basket_item.product.sku|upper }})</span>
                             {% if basket_item.product.has_sizes %}
                                 <p>Size: {{ basket_item.size|upper }} <br>

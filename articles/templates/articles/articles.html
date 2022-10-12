@@ -9,8 +9,15 @@
 </div>
 <div class="container">
     <p class="white-text">
-        {% for cycle_phase in cycle_phases %}
-        {{ cycle_phase.article|linebreaksbr }}
+        {% for article in articles %}
+        <a href="{% url 'article_detail' article.id %}">
+            <h6>
+                {{ article.title }}
+            </h6>
+            <p>
+                {{ article.article|linebreaksbr }}
+            </p>
+        </a>      
         {% endfor %}
     </p>
 </div>

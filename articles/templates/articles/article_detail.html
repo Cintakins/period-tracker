@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row card-panel header-card">
+    <div class="lime accent-3 col m2 offset-m5">
+        <h3 class="center">Latest Articles</h3>
+    </div>
+</div>
+<div class="container lime accent-3">
+    <div class="row">
+        <div class="col">
+            <p>
+                {{ article.title }}
+                {{ article.article|linebreaksbr }}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if request.user.is_superuser %}
+                <button type="button" href="{% url 'edit_article' article.id %}">Edit Article</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

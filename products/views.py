@@ -71,10 +71,42 @@ def product_detail(request, product_id):
 def add_product(request):
     """ adds articles to database """
 
-    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product added!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Failed to add product. Please check over your inputs.')
+    else:
+        form = ProductForm()
 
     context = {
         'form': form,
+    }
+
+    return render(request, 'products/add_product.html', context)
+
+def edit_product(request, product_id):
+    """ adds articles to database """
+    product = get_object_or_404(Product, pk=product_id)
+    form = ProductForm(instance=product)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product Updated')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to edit product. Please check over your inputs.')
+    else:
+        form = ProductForm(instance=product)
+
+    context = {
+        'form': form,
+        'product': product,
     }
 
     return render(request, 'products/add_product.html', context)
