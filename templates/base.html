@@ -43,7 +43,7 @@
             <ul id="dropdown1" class="dropdown-content">
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                        <li><a href="" class="dropdown-item black-text">Product Management</a></li>
+                        <li><a href="{% url 'site_management' %}" class="dropdown-item black-text">Product Management</a></li>
                     {% endif %}
                     <li><a href="{% url 'profile' %}" class="dropdown-item black-text">My Profile</a></li>
                     <li><a href="{% url 'account_details' %}" class="dropdown-item black-text">Account details</a></li>

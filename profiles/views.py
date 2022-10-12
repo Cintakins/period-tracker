@@ -31,8 +31,6 @@ def profile(request):
 
     cycle_day = numOfDays(start_date, today)
 
-    print('cycle_day', cycle_day)
-
     length = int(period_details.period_length)
 
     if cycle_day > length:
@@ -88,4 +86,10 @@ def account_details(request):
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     # direct to checkout success via info buttons on past order list in account details
+
+def site_management(request):
+    """ returns account details view """
+    
+
+    return render(request, 'profiles/site_management.html')
 

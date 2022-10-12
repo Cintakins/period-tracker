@@ -46,5 +46,9 @@ class PeriodUpload(forms.ModelForm):
         self.fields['period_length'].label = 'Select the length of your last cycle'
         self.fields[field].widget.attrs['class']['helper-block'] = ''
 
+# class siteManagment(forms.ModelForm):
+#     class Meta:
+#         model = siteManagment
+#         fields = '__all__'
 
 

@@ -231,6 +231,14 @@ This happens if the full name field is empty
 Cannot use the materialise grid system on the form elements
 #### Solution
 
+#### Problem
+Placeholders in materialize styled forms are incorrect.
+#### Solution
+
+#### Problem
+
+#### Solution
+
 ## Testing
 ### Validators
 
