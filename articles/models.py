@@ -18,7 +18,7 @@ class Article(models.Model):
     title = models.CharField(max_length=500)
     article = models.TextField(null=False, blank=False)
     author = models.CharField(max_length=500)
-    date_added = models.DateField(auto_now=False, auto_now_add=False)
+    date_added = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title

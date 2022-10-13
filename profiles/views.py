@@ -24,7 +24,7 @@ def profile(request):
         else:
             messages.error(request, 'Whoops! something went wrong')
     else:
-        form = PeriodUpload(request.POST, instance=period_details)
+        form = PeriodUpload(instance=period_details)
 
     start_date = period_details.period_start_date
     today = datetime.date.today()

@@ -84,7 +84,7 @@ def edit_article(request, article_id):
     form = ArticleForm(instance=article)
 
     if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
+        form = ArticleForm(request.POST, instance=article)
         if form.is_valid():
             form.save()
             messages.success(request, 'Article Updated')
@@ -92,7 +92,7 @@ def edit_article(request, article_id):
         else:
             messages.error(request, 'Failed to edit article. Please check over your inputs.')
     else:
-        form = Article(instance=article)
+        form = ArticleForm(instance=article)
 
     context = {
         'form': form,
