@@ -265,6 +265,11 @@ This was because it couldn't detect any value for the save-info box. I had writt
 * added menstrual-tracker app to allowed_hosts in settings.py
 * I had to create a runtime.txt file and put an earlier version of python into it to push to heroku main
 * Commit changes an pushed to heroku main
+* set up a bucket in AWS
+* install boto3
+* install django-storages
+* freeze to requirements.txt
+*
 
 
 ## Credits
