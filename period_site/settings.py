@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'materializecssform',
+    'favicon',
 ]
 
 MIDDLEWARE = [
@@ -169,7 +170,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
-
+FAVICON_PATH = STATIC_URL + 'images/favicon.png'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
