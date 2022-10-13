@@ -255,11 +255,15 @@ This was because it couldn't detect any value for the save-info box. I had writt
 * Selected Heroku Postgres free hobby data base in add-ons in the resources tab.
 * Installed dj_database_url using pip3 install
 * Installed psycopg2-binary using pip3 install
-* Froze the requirements into requirements.txt
 * Imported dj_databas_url to settings.py
 * Set up the default database using dj_database_url and parsing it the app url.
 * Migrated the data to postgres using 'python3 manage.py migrate'
 * loaded fixture data to database although I accidentally did the products before category.
+* installed gunicorn
+* Froze the requirements into requirements.txt
+* Created Procfile
+* added menstrual-tracker app to allowed_hosts in settings.py
+*
 
 ## Credits
 ### Content
