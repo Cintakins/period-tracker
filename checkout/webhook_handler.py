@@ -21,10 +21,10 @@ class Stripe_Webhook_Handler:
         """ send confirmation email """
         user_email = order.email
         title = render_to_string('checkout/checkout_emails/email_title.txt', {
-            'order':order
+            'order': order
         })
         body = render_to_string('checkout/checkout_emails/email_body.txt', {
-            'order':order
+            'order': order
         })
         send_mail(title, body, settings.DEFAULT_FROM_EMAIL, [user_email])
 
@@ -78,10 +78,10 @@ class Stripe_Webhook_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            self._send_confirmation_email(order)
             return HttpResponse(
                     content=f'Webhook received: {event["type"]} | Verified order in database',
                     status=200)
-            self._send_confirmation_email(order)
         else:
             order = None
             try:

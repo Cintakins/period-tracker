@@ -239,6 +239,11 @@ Placeholders in materialize styled forms are incorrect. It seems that the form w
 Some article categories don't need to be added, but should be allowed to be editted. 
 #### Solution
 
+#### Problem
+Checkout wouldn't work if user was not logged in.
+#### Solution
+This was because it couldn't detect any value for the save-info box. I had written the code in javascript, an chose to change it to jquery like in the boutique-ado project and it worked after that
+
 ## Testing
 ### Validators
 
@@ -246,6 +251,15 @@ Some article categories don't need to be added, but should be allowed to be edit
 ### Ongoing Problems
 
 ## Deployment
+* Created a new app called menstrual-tracker in heroku with region set to Europe.
+* Selected Heroku Postgres free hobby data base in add-ons in the resources tab.
+* Installed dj_database_url using pip3 install
+* Installed psycopg2-binary using pip3 install
+* Froze the requirements into requirements.txt
+* Imported dj_databas_url to settings.py
+* Set up the default database using dj_database_url and parsing it the app url.
+* Migrated the data to postgres using 'python3 manage.py migrate'
+* loaded fixture data to database although I accidentally did the products before category.
 
 ## Credits
 ### Content

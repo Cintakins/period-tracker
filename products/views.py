@@ -4,6 +4,7 @@ from .models import Product, Category
 from django.contrib import messages
 from django.db.models import Q
 from .forms import ProductForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # used Boutique ado project to help inform this code
@@ -68,6 +69,8 @@ def product_detail(request, product_id):
 
     return render(request, 'products/product_detail.html', context)
 
+
+@login_required
 def add_product(request):
     """ adds articles to database """
 
@@ -89,8 +92,12 @@ def add_product(request):
 
     return render(request, 'products/add_product.html', context)
 
+
+@login_required
 def edit_product(request, product_id):
     """ adds articles to database """
+
+    # if not super user etc. etc.
     product = get_object_or_404(Product, pk=product_id)
     form = ProductForm(instance=product)
 
@@ -112,6 +119,8 @@ def edit_product(request, product_id):
 
     return render(request, 'products/edit_product.html', context)
 
+
+@login_required
 def delete_product(request, product_id):
     """ adds products to database """
     

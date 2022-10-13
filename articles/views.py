@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Article, ArticleCategory
 from .forms import ArticleForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -56,7 +57,7 @@ def article_detail(request, article_id):
 
     return render(request, 'articles/article_detail.html', context)
 
-
+@login_required
 def add_article(request):
     """ adds articles to database """
 
@@ -78,6 +79,8 @@ def add_article(request):
 
     return render(request, 'articles/add_article.html', context)
 
+
+@login_required
 def edit_article(request, article_id):
     """ adds articles to database """
     
@@ -102,6 +105,8 @@ def edit_article(request, article_id):
 
     return render(request, 'articles/edit_article.html', context)
 
+
+@login_required
 def delete_article(request, article_id):
     """ adds articles to database """
     

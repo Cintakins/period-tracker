@@ -50,7 +50,7 @@ formSubmit.addEventListener('click', function(ev) {
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var saveCheckBox = document.getElementById('info-save');
     console.log(saveCheckBox)
-    var saveInfo = Boolean(saveCheckBox.getAttribute('checked'));
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,

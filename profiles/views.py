@@ -6,8 +6,10 @@ from checkout.models import Order
 import datetime
 from products.models import Product, Category
 from articles.models import Article, ArticleCategory
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def profile(request):
     """ returns profile view """
 
@@ -73,6 +75,7 @@ def profile(request):
     return render(request, 'profiles/profile.html', context)
 
 
+@login_required
 def account_details(request):
     """ returns account details view """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -94,8 +97,4 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     # direct to checkout success via info buttons on past order list in account details
 
-def site_management(request):
-    """ returns account details view """
-
-    return render(request, 'profiles/site_management.html')
 
