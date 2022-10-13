@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'materializecssform',
-    'favicon',
 ]
 
 MIDDLEWARE = [

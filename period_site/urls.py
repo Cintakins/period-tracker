@@ -14,8 +14,4 @@ urlpatterns = [
     path('articles/', include('articles.urls')),
     path('profiles/', include('profiles.urls')),
     path('checkout/', include('checkout.urls')),
-    path(
-        "favicon.ico",
-        RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
-    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # should it be STATIC_URL? etc
