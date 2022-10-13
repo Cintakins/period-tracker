@@ -12,6 +12,7 @@ def profile(request):
     """ returns profile view """
 
     cycle_phases = Article.objects.filter(category=1)
+    products = Product.objects.all()
 
     user = get_object_or_404(UserProfile, user=request.user)
     period_details = UserPeriodInfo.objects.get(user=user)
@@ -66,6 +67,7 @@ def profile(request):
         'mid_follicular': mid_follicular,
         'mid_luteal': mid_luteal,
         'cycle_day': cycle_day,
+        'products': products,
     }
 
     return render(request, 'profiles/profile.html', context)

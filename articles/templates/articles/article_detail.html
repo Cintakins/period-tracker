@@ -8,10 +8,28 @@
     </div>
 </div>
 <div class="container lime accent-3">
+    {% if request.user.is_superuser %}
+        <div class="row">
+            <a href="{% url 'add_article' %}" class="waves-effect waves-light btn green">Add Another Article</a>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col">
+            <h4 class="lime accent-3">
+                {{ article.title }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        {% if article.image %}
+        <div class="col s6 m4">
+            <img src="{{ article.image.url }}" alt="{{ article.name }}">
+        </div>
+        {% endif %}
+    </div>
     <div class="row">
         <div class="col">
             <p>
-                {{ article.title }}
                 {{ article.article|linebreaksbr }}
             </p>
         </div>
@@ -20,6 +38,7 @@
         <div class="col">
             {% if request.user.is_superuser %}
                 <a class="waves-effect waves-light btn black" href="{% url 'edit_article' article.id %}">Edit Article</a>
+                <a class="waves-effect waves-light btn red" href="{% url 'delete_article' article.id %}">Delete Article</a>
             {% endif %}
         </div>
     </div>

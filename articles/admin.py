@@ -13,6 +13,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'article',
         'author',
         'date_added',
+        'image',
     )
 
 admin.site.register(Article)

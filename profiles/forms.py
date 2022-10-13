@@ -31,9 +31,6 @@ class UserForm(forms.ModelForm):
 
 
 class PeriodUpload(forms.ModelForm):
-    # user = forms.CharField()
-    # period_start_date = forms.DateField()
-    # period_length = forms.IntegerField()
     
     class Meta:
         model = UserPeriodInfo

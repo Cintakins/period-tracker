@@ -232,11 +232,11 @@ Cannot use the materialise grid system on the form elements
 #### Solution
 
 #### Problem
-Placeholders in materialize styled forms are incorrect.
+Placeholders in materialize styled forms are incorrect. It seems that the form won't use my customised code when used in conjunction with materialize
 #### Solution
 
 #### Problem
-
+Some article categories don't need to be added, but should be allowed to be editted. 
 #### Solution
 
 ## Testing

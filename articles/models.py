@@ -19,6 +19,7 @@ class Article(models.Model):
     article = models.TextField(null=False, blank=False)
     author = models.CharField(max_length=500)
     date_added = models.DateField(auto_now=True)
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.title

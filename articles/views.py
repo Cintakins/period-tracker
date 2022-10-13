@@ -64,8 +64,9 @@ def add_article(request):
         form = ArticleForm(request.POST)
         if form.is_valid():
             form.save()
+            article = form.save()
             messages.success(request, 'Article added!')
-            return redirect(reverse('add_article'))
+            return redirect(reverse('article_detail', args=[article.id]))
         else:
             messages.error(request, 'Failed to add article. Please check over your inputs.')
     else:
@@ -100,4 +101,13 @@ def edit_article(request, article_id):
     }
 
     return render(request, 'articles/edit_article.html', context)
+
+def delete_article(request, article_id):
+    """ adds articles to database """
+    
+    article = get_object_or_404(Article, pk=article_id)
+    article.delete()
+    messages.success(request, 'Product deleted')
+
+    return redirect(reverse('articles'))
 

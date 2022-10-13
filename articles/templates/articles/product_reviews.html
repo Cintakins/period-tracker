@@ -8,10 +8,23 @@
     </div>
 </div>
 <div class="container">
-    <p class="white-text">
-        {% for cycle_phase in cycle_phases %}
-        {{ cycle_phase.article|linebreaksbr }}
+    <div class="row">
+        {% for article in articles %}
+            <div class="col s10 m5 l3">
+                <div class="card blue">
+                    <div class="card-content black-text">
+                        <span class="card-title">{{ article.title|upper }}</span>
+                        <p>
+                            {{ article.article|truncatechars_html:100 }}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'article_detail' article.id %}">View More</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </p>
+    </div>
 </div>
 {% endblock %}
