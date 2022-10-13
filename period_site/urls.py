@@ -27,5 +27,4 @@ urlpatterns = [
     path('articles/', include('articles.urls')),
     path('profiles/', include('profiles.urls')),
     path('checkout/', include('checkout.urls')),
-    url(r'^', include('favicon.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # should it be STATIC_URL? etc

@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
     {% block meta %}
     <!-- does it need this block? -->
     <meta charset="UTF-8">
@@ -34,7 +33,7 @@
 
     {% block extra_js %}
     {% endblock %}
-
+    <link rel="icon" type="image/png" href="{{ static 'favicon/favicon.ico' }}">
     <title>Periodic {% block extra_title %}{% endblock %}</title>
 </head>
 
