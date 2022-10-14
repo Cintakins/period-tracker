@@ -28,7 +28,6 @@ class UserForm(forms.ModelForm):
         for field in self.fields:
             placeholder = placeholders.get(f'{field}')
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].label = False
 
 
 class PeriodUpload(forms.ModelForm):
