@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'articles',
     'checkout',
     'profiles',
-    # 'materializecssform',
+    'materializecssform',
     'storages'
 ]
 

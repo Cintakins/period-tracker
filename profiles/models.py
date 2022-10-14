@@ -29,7 +29,7 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
         UserPeriodInfo.objects.create(user=instance, period_start_date=datetime.date.today())
-    # Existing users: just save the profile
+    
     instance.userprofile.save()
 
 class UserPeriodInfo(models.Model):
