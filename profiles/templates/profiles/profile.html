@@ -42,7 +42,7 @@
                         </p>
                         <form action="{% url 'profile' %}" method="POST" id="period_date">
                             {% csrf_token %}
-                            {{ form.period_start_date|materializecss }}
+                            {{ form.period_start_date }}
                             <button type="sumbit" class="lime accent-3">Submit</button>
                         </form>
                     </span>
@@ -58,7 +58,7 @@
                         </p>
                         <form action="{% url 'profile' %}" method="POST" id="period_length">
                             {% csrf_token %}
-                            {{ form.period_length|materializecss }}
+                            {{ form.period_length }}
                             <button type="sumbit" class="lime accent-3">Submit</button>
                         </form>
                     </span>
