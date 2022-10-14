@@ -27,11 +27,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-class ProductColors(models.Model):
-
-    name = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
-    color = models.CharField(max_length=15, null=True, blank=True)
-
-    def __str__(self):
-        return self.color
