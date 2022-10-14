@@ -203,10 +203,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu68.gitpod.io',
-    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu67.gitpod.io',
-    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu69.gitpod.io',
-    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu70.gitpod.io'
+    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu71.gitpod.io',
+    'https://menstrual-tracker.herokuapp.com',
     ]
 
 STRIPE_CURRENCY = 'gbp'
