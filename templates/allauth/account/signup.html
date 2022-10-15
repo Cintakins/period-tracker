@@ -7,11 +7,11 @@
 {% block inner_content %}
 <div class="row card-panel header-card">
   <div class="lime accent-3 col s6 offset-s3 m2 offset-m5">
-    <h3 class="center">{% trans "Sign In" %}</h3>
+    <h3 class="center">{% trans "Register" %}</h3>
   </div>
 </div>
 <div class="row card-panel header-card">
-  <div class="lime accent-3 col s6 offset-s3 m2 offset-m5">
+  <div class="white col s6 offset-s3 m2 offset-m5">
     <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">

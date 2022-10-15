@@ -15,6 +15,15 @@
             <h4 class="center">Your Cycle</h>
         </div>
     </div>
+    {% if request.user.is_authenticated %}
+    <div class="container">
+        <p class="center-align"><a href="{% url 'profile' %}">Your profile</a></p>
+    </div>
+    {% else %}
+    <div class="container">
+        <p class="center-align"><a href="{% url 'account_signup' %}">Sign up</a> to receive personalized information about your cycle</p>
+    </div>
+    {% endif %}
     <!-- circle menu found on codepen https://codepen.io/metaprinter/pen/zwvjNb  -->
     <div class="circle-menu">
         <ul class="">
@@ -42,13 +51,4 @@
         </div>
     </div>
     {% endfor %}
-    {% if request.user.is_authenticated %}
-    <div class="container">
-        <p class="center-align"><a href="{% url 'profile' %}">Your profile</a></p>
-    </div>
-    {% else %}
-    <div class="container">
-        <p class="center-align"><a href="{% url 'account_signup' %}">Sign up</a> to receive personalized information about your cycle</p>
-    </div>
-    {% endif %}
 {% endblock %}

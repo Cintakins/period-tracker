@@ -22,7 +22,8 @@ def profile(request):
         form = PeriodUpload(request.POST, instance=period_details)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your personalised cycle has been updated')
+            messages.success(
+                request, 'Your personalised cycle has been updated')
             return redirect(reverse('profile', args=[user.id]))
         else:
             messages.error(request, 'Whoops! something went wrong')
@@ -31,12 +32,11 @@ def profile(request):
 
     start_date = period_details.period_start_date
     today = datetime.date.today()
-    
 
-    def numOfDays(date1, date2):
+    def num_of_days(date1, date2):
         return (date2-date1).days
 
-    cycle_day = numOfDays(start_date, today)
+    cycle_day = num_of_days(start_date, today)
 
     length = int(period_details.period_length)
 
@@ -52,7 +52,7 @@ def profile(request):
         if days == length:
             break
     days.pop()
-    
+
     span_width = 100 / length
     ovulation = length - 14
     mid_follicular = ((ovulation - 5) / 2) + 5
@@ -78,14 +78,14 @@ def profile(request):
 @login_required
 def account_details(request):
     """ returns account details view """
-    profile = get_object_or_404(UserProfile, user=request.user)
-    orders = profile.orders.all()
-    form = UserForm(instance=profile)
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+    orders = user_profile.orders.all()
+    form = UserForm(instance=user_profile)
     if request.method == 'POST':
-      form = UserForm(request.POST, instance=profile)
-      if form.is_valid():
-          form.save()
-          messages.success(request, 'Profile Updated')
+        form = UserForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile Updated')
     context = {
         'form': form,
         'orders': orders,

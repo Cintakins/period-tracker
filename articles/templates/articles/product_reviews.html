@@ -9,7 +9,7 @@
 </div>
 {% if request.user.is_superuser %}
     <div class="row">
-        <a class="waves-effect waves-light btn red" href="{% url 'delete_article' article.id %}">Delete Article</a>
+        <a class="waves-effect waves-light btn red center-align" href="{% url 'add_article' article.id %}">Delete Article</a>
     </div>
 {% endif %}
 <div class="container">
