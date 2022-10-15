@@ -10,5 +10,5 @@ def index(request):
     context = {
         'cycle_phases': cycle_phases,
     }
-    
-    return render(request, 'home/index.html')
+
+    return render(request, 'home/index.html', context)

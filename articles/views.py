@@ -4,24 +4,10 @@ from .forms import ArticleForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
-def your_cycle(request):
-    """ displays info about menstrual cycle, personal info to users, generic to non-users """
-
-    
-    cycle_phases = Article.objects.filter(category=1)
-
-    context = {
-        'cycle_phases': cycle_phases,
-    }
-
-    return render(request, 'articles/your_cycle.html', context)
 
 def articles(request):
     """ displays info about menstrual cycle, personal info to users, generic to non-users """
 
-    
     articles = Article.objects.filter(category=2)
 
     context = {
