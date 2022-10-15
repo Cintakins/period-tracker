@@ -56,8 +56,13 @@
         </div>
     </div>
     {% endfor %}
-    
+    {% if request.user.is_authenticated %}
     <div class="container">
-        <p><a href="{% url 'account_signup' %}">Sign up</a> to receive personalized information</p>
+        <p class="center-align"><a href="{% url 'profile' %}">Your profile</a></p>
     </div>
+    {% else %}
+    <div class="container">
+        <p class="center-align"><a href="{% url 'account_signup' %}">Sign up</a> to receive personalized information about your cycle</p>
+    </div>
+    {% endif %}
 {% endblock %}
