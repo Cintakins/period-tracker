@@ -283,6 +283,7 @@ img {
 /* cycle links on medium and down */
 @media (max-width: 550px) {
     /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
+
     .circle-menu a {
         width: 4em;
         height: 4em;
