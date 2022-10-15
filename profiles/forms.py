@@ -30,7 +30,12 @@ class UserForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class PeriodUpload(forms.ModelForm):
+    period_start_date = forms.DateField(widget=DateInput)
     
     class Meta:
         model = UserPeriodInfo

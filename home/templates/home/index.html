@@ -24,4 +24,40 @@
             </form>
         </div>
     </div>
+    <div class="row card-panel header-card">
+        <div class="lime-text text-accent-3 col m2 offset-m5">
+            <h4 class="center">Your Cycle</h4>
+        </div>
+    </div>
+    <!-- circle menu found on codepen https://codepen.io/metaprinter/pen/zwvjNb  -->
+    <div class="circle-menu">
+        <ul class="">
+            <li><a class="ovulation modal-trigger" href="#ovulation">Ovulation</a></li>
+            <li><a class="luteal-1 modal-trigger" href="#luteal">Luteal Phase</a></li>
+            <li><a class="luteal-2 modal-trigger" href="#luteal">Luteal Phase</a></li>
+            <li><a class="luteal-3 modal-trigger" href="#luteal">Luteal Phase</a></li>
+            <li><a class="mensis modal-trigger" href="#mensis">Mensis</a></li>
+            <li><a class="follicular-1 modal-trigger" href="#follicular">Follicular Phase</a></li>
+            <li><a class="follicular-2 modal-trigger" href="#follicular">Follicular Phase</a></li>
+        </ul>
+    </div>
+    
+    {% for phase in cycle_phases %}
+    <div id="{% if phase.title == 'Ovulation' %}ovulation{% elif phase.title == 'Luteal Phase' %}luteal{% elif phase.title == 'Menstruation' %}mensis{% elif phase.title == 'Follicular Phase' %}follicular{% endif %}"
+        class="modal">
+        <div class="modal-content lime accent-3">
+            <h4>{{ phase.title }}</h4>
+            <p>{{ phase.article|linebreaksbr }}</p>
+        </div>
+        <div class="modal-footer lime accent-4">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <div class="container">
+        <p><a href="{% url 'account_signup' %}">Sign up</a> to receive personalized information</p>
+    </div>
 {% endblock %}
