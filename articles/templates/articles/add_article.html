@@ -13,8 +13,9 @@
         <div class="col">
             <form method="POST" action="{% url 'add_article' %}">
                 {% csrf_token %}
-                {{ form|materializecss }}
+                {{ form }}
                 <button type="submit" class="lime accent-3">Add</button>
+                <button type="button" class="lime accent-3" href="{% url 'articles' %}">Cancel</button>
             </form>
         </div>
     </div>

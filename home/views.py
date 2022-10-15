@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from articles.models import Article, ArticleCategory
 
-# Create your views here.
 
 def index(request):
 

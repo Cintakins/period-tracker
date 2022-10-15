@@ -8,13 +8,14 @@
 		<h3 class="center">Add a Product</h3>
 	</div>
 </div>
-<div class="container">
+<div class="container lime accent-3">
     <div class="row">
         <div class="col">
             <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form|materializecss }}
+                {{ form }}
                 <button type="submit" class="lime accent-3">Add</button>
+                <button type="button" class="lime accent-3" href="{% url 'products' %}">Cancel</button>
             </form>
         </div>
     </div>

@@ -3,6 +3,7 @@ from .models import UserProfile, UserPeriodInfo
 
 # from boutique ado
 
+
 class UserForm(forms.ModelForm):
     class Meta:
         model = UserProfile
@@ -30,8 +31,7 @@ class UserForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
 
-class PeriodUpload(forms.ModelForm):
-    
+class PeriodUpload(forms.ModelForm):    
     class Meta:
         model = UserPeriodInfo
         fields = '__all__'
@@ -41,4 +41,3 @@ class PeriodUpload(forms.ModelForm):
         self.fields['period_start_date'].label = 'Click to select the start date of your last period'
         self.fields['period_length'].label = 'Select the length of your last cycle'
         self.fields['period_start_date'].input_type = 'date'
-

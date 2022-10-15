@@ -7,9 +7,14 @@
         <h3 class="center">Product Reviews</h3>
     </div>
 </div>
+{% if request.user.is_superuser %}
+    <div class="row">
+        <a class="waves-effect waves-light btn red" href="{% url 'delete_article' article.id %}">Delete Article</a>
+    </div>
+{% endif %}
 <div class="container">
     <div class="row">
-        {% for article in articles %}
+        {% for article in product_reviews %}
             <div class="col s10 m5 l3">
                 <div class="card blue">
                     <div class="card-content black-text">

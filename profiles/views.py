@@ -92,9 +92,3 @@ def account_details(request):
     }
 
     return render(request, 'profiles/account_details.html', context)
-
-def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
-    # direct to checkout success via info buttons on past order list in account details
-
-

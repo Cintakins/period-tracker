@@ -9,6 +9,7 @@ def view_basket(request):
 
     return render(request, 'basket/basket.html')
 
+
 # help from boutique-ado project
 def add_to_basket(request, item_id):
     """ adds items to basket """
@@ -39,6 +40,7 @@ def add_to_basket(request, item_id):
     request.session['basket'] = basket
     return redirect(redirect_url)
 
+
 # help from boutique-ado project
 def update_basket(request, item_id):
     """ updates items in basket """
@@ -68,6 +70,7 @@ def update_basket(request, item_id):
     request.session['basket'] = basket
     return redirect(reverse('view_basket'))
 
+
 def remove_from_basket(request, item_id):
     """ Remove the item from the shopping basket """
 
@@ -82,14 +85,23 @@ def remove_from_basket(request, item_id):
             del basket[item_id]['item_size'][size]
             if not basket[item_id]['item_size']:
                 basket.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from the basket')
+            messages.success(
+                request,
+                f'Removed size {size.upper()} {product.name} from the basket'
+                )
         else:
             basket.pop(item_id)
-            messages.success(request, f'Removed {product.name} from the basket')
+            messages.success(
+                request,
+                f'Removed {product.name} from the basket'
+                )
 
         request.session['basket'] = basket
         return HttpResponse(status=200)
 
     except Exception as e:
-        messages.error(request, f'Error removing item: {e}')
+        messages.error(
+            request,
+            f'Error removing item: {e}'
+            )
         return HttpResponse(status=500)

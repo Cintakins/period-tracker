@@ -8,12 +8,6 @@
 
 body {
     background-color: rgb(14, 14, 14);
-    /* Photo by <a href="https://unsplash.com/@leohoho?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Leohoho</a> on <a href="https://unsplash.com/s/photos/liquid-color?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-   */
-    /* background-image: url(/media/background.jpg); */
-    /* Photo by <a href="https://unsplash.com/@thebeardbe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Filip Bunkens</a> on <a href="https://unsplash.com/s/photos/liquid-color?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-   */
-    /* background-image: url(/media/background2.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Indie Flower', cursive;
@@ -25,6 +19,9 @@ button {
     ;
 }
 
+img {
+    object-fit: contain;
+}
 .product-label {
     background-color: #c8ff00b5;
     width: 100%;
