@@ -15,10 +15,10 @@ def profile(request):
     cycle_phases = Article.objects.filter(category=1)
     products = Product.objects.all()
     # advice = Article.objects.filter(category=4)
-    mensis = Article.objects.filter(article__name="Mensis Phase")
-    follicular = Article.objects.filter(article__name="Follicular Phase")
-    ovulation_phase = Article.objects.filter(article__name="Ovulation Phase")
-    luteal = Article.objects.filter(article__name="Luteal Phase")
+    mensis = Article.objects.filter(category__name="Mensis Phase")
+    follicular = Article.objects.filter(category__name="Follicular Phase")
+    ovulation_phase = Article.objects.filter(category__name="Ovulation Phase")
+    luteal = Article.objects.filter(category__name="Luteal Phase")
 
 
     user = get_object_or_404(UserProfile, user=request.user)
