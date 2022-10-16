@@ -41,7 +41,7 @@
 <body>
     <header>
         <div>
-            <ul id="account-dropdown-big" class="dropdown-content">
+            <ul id="dropdown2" class="dropdown-content">
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                         <li><a href="{% url 'add_product' %}" class="dropdown-item black-text">Add Product</a></li>
@@ -57,7 +57,7 @@
                     <li><a href="{% url 'account_login' %}" class="dropdown-item black-text">Login</a></li>
                 {% endif %}
             </ul>
-            <ul id="account-dropdown-small" class="dropdown-content">
+            <ul id="dropdown1" class="dropdown-content">
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                         <li><a href="{% url 'add_product' %}" class="dropdown-item black-text">Add Product</a></li>
@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li id="account-dropdown-small">
-                            <a class="black-text dropdown-trigger" href="#!" data-target="dropdown1">
+                            <a class="black-text dropdown-trigger" href="#!" data-target="dropdown2">
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a>
                         </li>
