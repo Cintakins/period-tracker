@@ -171,6 +171,9 @@ I failed to customise advice in time for the deadline
 ## Testing
 ### Validators
 
+![html](wireframes/htmlv.png)
+![lighthouse](wireframes/lighthouse.png)
+
 
 ## Deployment
 * Created a new app called menstrual-tracker in heroku with region set to Europe.
