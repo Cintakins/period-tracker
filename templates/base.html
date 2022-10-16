@@ -64,7 +64,7 @@
             </ul>
             <nav>
                 <div class="nav-wrapper lime accent-3">
-                    <a href="{% url 'home' %}" class="brand-logo center black-text">Periodic</a>
+                    <a href="{% url 'home' %}" class="brand-logo center black-text">Balls</a>
                     <a href="#" data-target="nav-mobile" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
                     <ul id="nav-mobile-dropdown" class="left hide-on-med-and-down">
                         <li><a class="black-text" href="{% url 'articles' %}">Articles</a></li>
@@ -83,7 +83,6 @@
                                 {% if grand_total %}
                                     £{{ grand_total|floatformat:2 }}
                                 {% else %}
-                                    £0.00
                                 {% endif %}
                             </a>
                         </li>

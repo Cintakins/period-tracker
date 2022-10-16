@@ -32,31 +32,31 @@
 <div class="row container">
     <div class="row">
         <div class="col lime accent-3">
-            <ul id="dropdown2" class="dropdown-content">
-                <li><a class="black-text products-category" href="{% url 'products' %}">All Products</a></li>
-                <li><a class="black-text products-category" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
-                <li><a class="black-text products-category" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></li>
-                <li><a class="black-text products-category" href="{% url 'products' %}?category=short-pants">Flattering Pants</a></li>
-                <li><a class="black-text products-category" href="{% url 'products' %}?category=full-pants">Full Coverage</a></li>
-                <li><a class="black-text products-category" href="{% url 'products' %}?category=other">Other</a></li>
-            </ul>
-            <div class="nav-wrapper">
+            <select id="category-select">
+                <option><a class="black-text products-category" href="{% url 'products' %}">All Products</a></option>
+                <option><a class="black-text products-category" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></option>
+                <option><a class="black-text products-category" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></option>
+                <option><a class="black-text products-category" href="{% url 'products' %}?category=short-pants">Flattering Pants</a></option>
+                <option><a class="black-text products-category" href="{% url 'products' %}?category=full-pants">Full Coverage</a></option>
+                <option><a class="black-text products-category" href="{% url 'products' %}?category=other">Other</a></option>
+            </select>
+            <!-- <div class="nav-wrapper">
                 <a class="dropdown-trigger black-text" href="#!" data-target="dropdown2" id="categories-box">
                     Categories
                 <i class="material-icons right">arrow_drop_down</i></a>
-            </div>
+            </div> -->
         </div>
         <div class="col lime accent-3 offset-s1">
-            <ul id="dropdown3" class="dropdown-content">
-                <li><a class="black-text price-sort" href="{% url 'products' %}" value="any">None</a></li>
-                <li><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=asc" value="price_asc">Price: Lowest First</a></li>
-                <li><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=desc" value="price_desc">Price: Highest First</a></li>
-            </ul>
-            <div class="nav-wrapper">
+            <select id="sort-select" class="dropdown-content">
+                <option><a class="black-text price-sort" href="{% url 'products' %}" value="any">None</a></option>
+                <option><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=asc" value="price_asc">Price: Lowest First</a></option>
+                <option><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=desc" value="price_desc">Price: Highest First</a></option>
+            </select>
+            <!-- <div class="nav-wrapper">
                 <a class="dropdown-trigger black-text" href="#!" data-target="dropdown3" id="sort-box">
                     Sort
                 <i class="material-icons right">arrow_drop_down</i></a>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="row">
@@ -92,7 +92,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var selectedBoxCategory = document.getElementsByClassName('products-category');
         var selectedBoxPrice = document.getElementsByClassName('price-sort');
         var priceBox = document.getElementById('sort-box');
@@ -136,5 +136,5 @@
                 };
             };
         };
-    </script>
+    </script> -->
 {% endblock %}
