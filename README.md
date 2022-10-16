@@ -165,6 +165,9 @@ The profile cycle information doesn't work well if bad dates are selected
 #### Solution
 The date picker needs min and max dates added, which was not doable with the materialise css forms. It will be easier to fix this with the standar form inputs, time-permitting.
 
+#### Ongoing problem
+I failed to customise advice in time for the deadline
+
 ## Testing
 ### Validators
 
