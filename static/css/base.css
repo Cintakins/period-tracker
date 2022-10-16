@@ -20,7 +20,6 @@ button {
 
 .select-buttons {
     border-radius: 5px;
-    font-family: 'Indie Flower', cursive;
 }
 
 img {
@@ -88,7 +87,7 @@ img {
     width: 7em;
     height: 7em;
     line-height: 8em;
-    margin: -3em;
+    margin: -3.2em;
     -moz-border-radius: 4em;
     -webkit-border-radius: 4em;
     border-radius: 4em;
@@ -196,7 +195,7 @@ img {
 .circle-menu .mensis {
     transform: rotate(255deg) translate(12em) rotate(-255deg);
     -webkit-transform: rotate(255deg) translate(12em) rotate(-255deg);
-    -ms-transform: rotate(255deg) translate(12em) rotate(-255eg);
+    -ms-transform: rotate(255deg) translate(12em) rotate(-255deg);
 }
 
 .circle-menu .follicular-1 {
@@ -263,7 +262,7 @@ img {
     .circle-menu .mensis {
         transform: rotate(255deg) translate(18em) rotate(-255deg);
         -webkit-transform: rotate(255deg) translate(18em) rotate(-255deg);
-        -ms-transform: rotate(255deg) translate(18em) rotate(-255eg);
+        -ms-transform: rotate(255deg) translate(18em) rotate(-255deg);
     }
 
     .circle-menu .follicular-1 {
@@ -288,7 +287,7 @@ img {
     .circle-menu a {
         /* width: 4em;
         height: 4em; */
-        margin: -2em;
+        margin: -3.5em;
     }
 
     .circle-menu {
@@ -324,7 +323,7 @@ img {
     .circle-menu .mensis {
         transform: rotate(255deg) translate(8em) rotate(-255deg);
         -webkit-transform: rotate(255deg) translate(8em) rotate(-255deg);
-        -ms-transform: rotate(255deg) translate(8em) rotate(-255eg);
+        -ms-transform: rotate(255deg) translate(8em) rotate(-255deg);
     }
 
     .circle-menu .follicular-1 {

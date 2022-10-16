@@ -7,11 +7,15 @@
         <h3 class="center">Product Reviews</h3>
     </div>
 </div>
-{% if request.user.is_superuser %}
-    <div class="row">
-        <a class="waves-effect waves-light btn red center-align" href="{% url 'add_article' article.id %}">Delete Article</a>
-    </div>
-{% endif %}
+<div class="container">
+    {% if request.user.is_superuser %}
+        <div class="row">
+            <div class="col">
+                <a class="waves-effect waves-light btn green center-align" href="{% url 'add_article' %}">Add Article</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
 <div class="container">
     <div class="row">
         {% for article in reviews %}
