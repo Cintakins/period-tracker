@@ -160,13 +160,13 @@
         <div class="col">
             <p class="lime accent-3">
                 {% if cycle_day < 6 %}
-                {{ value_to_look_up == 'Mensis Phase'}}
+                {{ mensis.article }}
                 {% elif cycle_day > 5 and day < ovulation%}
-                {{ value_to_look_up == 'Follicular Phase'}}
+                {{ follicular.article }}
                 {% elif cycle_day == ovulation%}
-                {{ value_to_look_up == 'Ovulation Phase'}}
+                {{ ovulation_phase.article }}
                 {% elif cycle_day > mid_luteal%}
-                {{ value_to_look_up == 'Ovulation Phase'}}
+                {{ luteal.article }}
                 {% endif %}
             </p>
         </div>
