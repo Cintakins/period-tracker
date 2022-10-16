@@ -1,3 +1,11 @@
+#account-dropdown-small {
+    display: none;
+}
+
+#account-dropdown-big {
+    display: block;
+}
+
 #basket-qty-input {
     width: 35px;
 }
@@ -282,6 +290,12 @@ img {
 
 /* cycle links on medium and down */
 @media (max-width: 550px) {
+    #account-dropdown-small {
+        display: block;
+    }
+    #account-dropdown-big {
+        display: none;
+    }
     /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
 
     .circle-menu a {
