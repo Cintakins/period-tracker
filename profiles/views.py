@@ -14,6 +14,8 @@ def profile(request):
 
     cycle_phases = Article.objects.filter(category=1)
     products = Product.objects.all()
+    advice = Article.objects.filter(category=4)
+    advice_phases = Article.objects.filter(category__name=field_value_to_lookup)
 
     user = get_object_or_404(UserProfile, user=request.user)
     period_details = UserPeriodInfo.objects.get(user=user)
@@ -58,6 +60,7 @@ def profile(request):
     mid_luteal = ovulation + 7
 
     context = {
+        'advice_phases': advice_phases,
         'cycle_phases': cycle_phases,
         'period_details': period_details,
         'user': user,

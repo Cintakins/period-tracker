@@ -89,7 +89,7 @@
     <div class="row">
         <div class="col">
             <p class="lime accent-3">
-                Today you are on day {{ cycle_day }} of your cycle. This is how you may b feeling. This is some advice etc.
+                Today you are on day {{ cycle_day }} of your cycle.
             </p>
         </div>
     </div>
@@ -154,6 +154,21 @@
                 </div>
             </div>
             {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p class="lime accent-3">
+                {% if cycle_day < 6 %}
+                {{ value_to_look_up == 'Mensis Phase'}}
+                {% elif cycle_day > 5 and day < ovulation%}
+                {{ value_to_look_up == 'Follicular Phase'}}
+                {% elif cycle_day == ovulation%}
+                {{ value_to_look_up == 'Ovulation Phase'}}
+                {% elif cycle_day > mid_luteal%}
+                {{ value_to_look_up == 'Ovulation Phase'}}
+                {% endif %}
+            </p>
         </div>
     </div>
 </div>

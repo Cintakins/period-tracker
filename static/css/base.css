@@ -6,6 +6,20 @@
     display: block;
 }
 
+.allauth-form {
+    border-radius: 5px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.crud-form {
+    border-radius: 5px;
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
 #basket-qty-input {
     width: 35px;
 }
@@ -27,7 +41,11 @@ button {
 }
 
 .select-buttons {
-    border-radius: 5px;
+    border-radius: 3px;
+    border: solid;
+    border-width: 2px;
+    border: black;
+    margin-right: 5px;
 }
 
 img {

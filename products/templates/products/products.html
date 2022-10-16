@@ -35,7 +35,7 @@
 </div>
 <div class="row container">
     <div class="row">
-        <div class="col lime accent-3 left-align">
+        <div class="col lime accent-3 left-align select-buttons">
             <ul id="dropdown2" class="dropdown-content">
                 <li><a class="black-text products-category" href="{% url 'products' %}">All Products</a></li>
                 <li><a class="black-text products-category" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
@@ -49,6 +49,8 @@
                     Categories
                 <i class="material-icons right">arrow_drop_down</i></a>
             </div>
+        </div>
+        <div class="col lime accent-3 select-buttons">
             <ul id="dropdown3" class="dropdown-content">
                 <li><a class="black-text price-sort" href="{% url 'products' %}" value="any">None</a></li>
                 <li><a class="black-text price-sort" href="{% url 'products' %}?sort=price&direction=asc" value="price_asc">Price: Lowest First</a></li>
@@ -94,7 +96,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var selectedBoxCategory = document.getElementsByClassName('products-category');
     var selectedBoxPrice = document.getElementsByClassName('price-sort');
     var priceBox = document.getElementById('sort-box');
@@ -132,5 +134,5 @@
             };
         };
     };
-</script>
+</script> -->
 {% endblock %}

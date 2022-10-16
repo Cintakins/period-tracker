@@ -4,6 +4,8 @@ The idea to create this website has been born from the need for women to track t
 The website aims to provide information relevant to various stages of the menstrual cycle, to educate women and girls on how it effects them and how to make the most of each phase. The website will also do product reviews and sell products as a source of revenue. 
 The website will present itself a in a gender neutral way to be inclusive of all menstruating people.
 
+![responsive-design]()
+
 ## Features
 
 * Navigation bar
@@ -167,8 +169,6 @@ The date picker needs min and max dates added, which was not doable with the mat
 ### Validators
 
 
-### Ongoing Problems
-
 ## Deployment
 * Created a new app called menstrual-tracker in heroku with region set to Europe.
 * Selected Heroku Postgres free hobby data base in add-ons in the resources tab.
@@ -200,6 +200,16 @@ Content from my friend's incredibly informative website - https://publish.obsidi
 Materializecss.com
 
 https://fonts.google.com/
+
+Prostgres database
+
+Django
+
+Heroku
+
+Stripe payments
+
+AWS for s3 bucket
 
 ### Languages Used
 
