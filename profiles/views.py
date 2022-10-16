@@ -2,10 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import UserProfile, UserPeriodInfo
 from .forms import UserForm, PeriodUpload
 from django.contrib import messages
-from checkout.models import Order
 import datetime
-from products.models import Product, Category
-from articles.models import Article, ArticleCategory
+from products.models import Product
+from articles.models import Article
 from django.contrib.auth.decorators import login_required
 
 

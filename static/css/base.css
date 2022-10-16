@@ -81,8 +81,8 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 6em;
-    height: 6em;
+    width: 7em;
+    height: 7em;
     line-height: 8em;
     margin: -3em;
     -moz-border-radius: 4em;
@@ -282,8 +282,8 @@ img {
     /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
 
     .circle-menu a {
-        width: 4em;
-        height: 4em;
+        /* width: 4em;
+        height: 4em; */
         margin: -2em;
     }
 

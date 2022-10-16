@@ -12,12 +12,12 @@
     </div>
     <div class="row card-panel header-card">
         <div class="lime-text text-accent-3 col s6 offset-s3 m2 offset-m5">
-            <h4 class="center">Your Cycle</h>
+            <h4 class="center">Your Cycle</h4>
         </div>
     </div>
     {% if request.user.is_authenticated %}
     <div class="container">
-        <p class="center-align"><a href="{% url 'profile' %}">Your profile</a></p>
+        <p class="center-align">Click here to view<a href="{% url 'profile' %}">your profile</a></p>
     </div>
     {% else %}
     <div class="container">

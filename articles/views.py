@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from .models import Article, ArticleCategory
+from .models import Article
 from .forms import ArticleForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -16,14 +16,14 @@ def articles(request):
 
     return render(request, 'articles/articles.html', context)
 
+
 def product_reviews(request):
     """ displays info about menstrual cycle, personal info to users, generic to non-users """
-
     
-    product_reviews = Article.objects.filter(category=3)
+    reviews = Article.objects.filter(category=3)
 
     context = {
-        'product_reviews': product_reviews,
+        'reviews': reviews,
     }
 
     return render(request, 'articles/product_reviews.html', context)
@@ -43,6 +43,7 @@ def article_detail(request, article_id):
 
     return render(request, 'articles/article_detail.html', context)
 
+
 @login_required
 def add_article(request):
     """ adds articles to database """
@@ -55,7 +56,9 @@ def add_article(request):
             messages.success(request, 'Article added!')
             return redirect(reverse('article_detail', args=[article.id]))
         else:
-            messages.error(request, 'Failed to add article. Please check over your inputs.')
+            messages.error(
+                request, 'Failed to add article. Please check over your inputs.'
+                )
     else:
         form = ArticleForm()
 
@@ -69,7 +72,7 @@ def add_article(request):
 @login_required
 def edit_article(request, article_id):
     """ adds articles to database """
-    
+   
     article = get_object_or_404(Article, pk=article_id)
     form = ArticleForm(instance=article)
 
@@ -101,4 +104,3 @@ def delete_article(request, article_id):
     messages.success(request, 'Product deleted')
 
     return redirect(reverse('articles'))
-
