@@ -16,7 +16,11 @@ body {
 
 button {
     font-family: 'Indie Flower', cursive;
-    ;
+}
+
+.select-buttons {
+    border-radius: 5px;
+    font-family: 'Indie Flower', cursive;
 }
 
 img {

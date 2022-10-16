@@ -7,7 +7,7 @@
 {% block content %}
     <div class="row card-panel header-card">
         <div class="lime accent-3 col s6 offset-s3 m2 offset-m5">
-            <h3 class="center">Balls</h3>
+            <h3 class="center">Home</h3>
         </div>
     </div>
     <div class="row card-panel header-card">
@@ -17,7 +17,7 @@
     </div>
     {% if request.user.is_authenticated %}
     <div class="container">
-        <p class="center-align">Click here to view<a href="{% url 'profile' %}">your profile</a></p>
+        <p class="center-align">Click here to view <a href="{% url 'profile' %}">your profile</a></p>
     </div>
     {% else %}
     <div class="container">
