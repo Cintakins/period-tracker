@@ -1,1 +1,0 @@
-web: gunicorn period_site.wsgi:application
