@@ -180,7 +180,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-cintakins-periodtracker-xsue1n8972o.ws-eu71.gitpod.io',
+    'https://*.gitpod.io',
     'https://menstrual-tracker.herokuapp.com',
 ]
 
@@ -191,7 +191,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'periodic@whatever.com'
+    DEFAULT_FROM_EMAIL = 'cintakinta814@gmail.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
