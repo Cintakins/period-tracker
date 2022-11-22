@@ -51,7 +51,7 @@ button {
 img {
     object-fit: contain;
 }
-.product-label {
+.custom-card-label {
     background-color: #c8ff00b5;
     width: 100%;
     border-style: solid;

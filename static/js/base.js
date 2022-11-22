@@ -6,7 +6,7 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
     setTimeout(function() {
         $('.messages').fadeOut('fast');
-    }, 3000);
+    }, 7000);
 });
 
 
