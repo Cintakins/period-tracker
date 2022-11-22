@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-import datetime
+from django.utils import timezone
+
 
 
 class UserProfile(models.Model):
@@ -35,5 +36,5 @@ class UserPeriodInfo(models.Model):
     """ user period information """
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    period_start_date = models.DateField(default=datetime.date.today())
+    period_start_date = models.DateField(default=timezone.now)
     period_length = models.IntegerField(default=28, blank=True, null=True)
