@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.utils import timezone
+import datetime
 
 
 
@@ -22,6 +22,13 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+class UserPeriodInfo(models.Model):
+    """ user period information """
+
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    period_start_date = models.DateField()
+    period_length = models.IntegerField(default=28, blank=True, null=True)
+
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
@@ -29,12 +36,6 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
     if created:
         UserProfile.objects.create(user=instance)
+        UserPeriodInfo.objects.create(user=instance, period_start_date=datetime.date.today())
     
     instance.userprofile.save()
-
-class UserPeriodInfo(models.Model):
-    """ user period information """
-
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    period_start_date = models.DateField(default=timezone.now)
-    period_length = models.IntegerField(default=28, blank=True, null=True)
