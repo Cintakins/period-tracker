@@ -6,7 +6,6 @@ from django.dispatch import receiver
 import datetime
 
 
-
 class UserProfile(models.Model):
     """ user, delivery information """
 
@@ -26,7 +25,7 @@ class UserPeriodInfo(models.Model):
     """ user period information """
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    period_start_date = models.DateField()
+    period_start_date = models.DateField(default=datetime.date.today)
     period_length = models.IntegerField(default=28, blank=True, null=True)
 
 @receiver(post_save, sender=User)
@@ -35,7 +34,7 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     Create or update the user profile
     """
     if created:
-        UserProfile.objects.create(user=instance)
-        UserPeriodInfo.objects.create(user=instance, period_start_date=datetime.date.today())
+        user_profile = UserProfile.objects.create(user=instance)
+        UserPeriodInfo.objects.create(user=user_profile, period_start_date=datetime.date.today())
     
     instance.userprofile.save()
