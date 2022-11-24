@@ -45,32 +45,19 @@
     <div class="container period-form">
         <ul class="collapsible">
             <li>
-                <!-- edit date select so they can't select earlier than a month. If they only update th length it'll throw off day calculation -->
-                <div class="collapsible-header lime accent-3"><i class="material-icons">date_range</i>Edit Cycle Start
-                    Date</div>
+                <div class="collapsible-header lime accent-3"><i class="material-icons">edit</i> Click here to edit period details</div>
                 <div class="collapsible-body">
                     <span>
-                        <p class="lime-text text-accent-3">
-                            Your current cycle started on {{ period_details.period_start_date }}
-                        </p>
+                        <p class="white-text">Please fill both fields to edit period details.</p>
                         <form action="{% url 'profile' %}" method="POST" id="period_date">
                             {% csrf_token %}
+                            <p class="lime-text text-accent-3">
+                                <i class="material-icons">date_range</i> Your current cycle started on {{ period_details.period_start_date }}
+                            </p>
                             {{ form.period_start_date }}
-                            <button type="sumbit" class="lime accent-3">Submit</button>
-                        </form>
-                    </span>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header lime accent-3"><i class="material-icons">access_time</i>Edit Cycle Length
-                </div>
-                <div class="collapsible-body">
-                    <span>
-                        <p class="lime-text text-accent-3">
-                            Your cycle is set to last for {{ period_details.period_length }} days
-                        </p>
-                        <form action="{% url 'profile' %}" method="POST" id="period_length">
-                            {% csrf_token %}
+                            <p class="lime-text text-accent-3">
+                                <i class="material-icons">access_time</i> Your cycle is set to last for {{ period_details.period_length }} days
+                            </p>
                             {{ form.period_length }}
                             <button type="sumbit" class="lime accent-3">Submit</button>
                         </form>
