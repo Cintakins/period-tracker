@@ -37,9 +37,7 @@ class PeriodUpload(forms.ModelForm):
     class Meta:
         model = UserPeriodInfo
         fields = '__all__'
-
-    # def __init__(self, *args, **kwargs):
-    #     super(PeriodUpload, self).__init__(*args, **kwargs)
-    #     self.fields['c'].label = 'Click to select the start date of your last period'
-    #     self.fields['period_length'].label = 'Select the length of your last cycle'
-    #     self.fields['period_start_date'].input_type = 'date'
+    def __init__(self, *args, **kwargs):
+        super(PeriodUpload, self).__init__(*args, **kwargs)
+        self.fields['period_length'].widget.attrs.update({'class': 'white-text'})
+        self.fields['period_start_date'].widget.attrs.update({'class': 'white-text'})
