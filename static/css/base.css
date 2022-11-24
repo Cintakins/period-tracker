@@ -90,6 +90,18 @@ img {
     border: grey;
 }
 
+label {
+    color:#c8ff00b5;
+}
+
+.select-dropdown {
+    color: white;
+}
+
+.dropdown-content>li>span {
+    color: black;
+}
+
 /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
 .circle-menu li {
     list-style: none;

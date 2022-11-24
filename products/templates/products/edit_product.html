@@ -13,6 +13,8 @@
             <form method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form }}
+                <br>
+                <br>
                 <button type="submit" class="lime accent-3">Edit</button>
                 <button type="button" class="lime accent-3" href="{% url 'products' %}">Cancel</button>
             </form>

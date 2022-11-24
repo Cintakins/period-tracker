@@ -4,6 +4,8 @@ from .models import Order
 # from boutique ado
 
 class OrderForm(forms.ModelForm):
+    required_css_class = 'required-field' 
+    error_css_class = 'error-field'
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number',
