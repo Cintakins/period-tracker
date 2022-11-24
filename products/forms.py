@@ -12,5 +12,7 @@ class ProductForm(forms.ModelForm):
         categories = Category.objects.all()
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
         self.fields['category'].choices = friendly_names
+        self.fields['name'].label = 'Title:'
+        self.fields['sku'].label = 'Product Number:'
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'white-text'})

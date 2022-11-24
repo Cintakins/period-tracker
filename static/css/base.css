@@ -90,6 +90,10 @@ img {
     border: grey;
 }
 
+p>label {
+    color: black;
+}
+
 label {
     color:#c8ff00b5;
 }

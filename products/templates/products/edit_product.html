@@ -9,7 +9,7 @@
 </div>
 <div class="container crud-form">
     <div class="row">
-        <div class="col">
+        <div class="col s12 m10 offset-m1">
             <form method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form }}
