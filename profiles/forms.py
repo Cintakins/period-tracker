@@ -31,13 +31,15 @@ class UserForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
 
-class PeriodUpload(forms.ModelForm):    
+class PeriodUpload(forms.ModelForm):  
+    required_css_class = 'required-field' 
+    error_css_class = 'error-field'
     class Meta:
         model = UserPeriodInfo
         fields = '__all__'
 
-    def __init__(self, *args, **kwargs):
-        super(PeriodUpload, self).__init__(*args, **kwargs)
-        self.fields['period_start_date'].label = 'Click to select the start date of your last period'
-        self.fields['period_length'].label = 'Select the length of your last cycle'
-        self.fields['period_start_date'].input_type = 'date'
+    # def __init__(self, *args, **kwargs):
+    #     super(PeriodUpload, self).__init__(*args, **kwargs)
+    #     self.fields['c'].label = 'Click to select the start date of your last period'
+    #     self.fields['period_length'].label = 'Select the length of your last cycle'
+    #     self.fields['period_start_date'].input_type = 'date'

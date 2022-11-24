@@ -4,6 +4,7 @@ from django_countries.fields import CountryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class UserProfile(models.Model):
@@ -26,7 +27,7 @@ class UserPeriodInfo(models.Model):
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     period_start_date = models.DateField(default=datetime.date.today)
-    period_length = models.IntegerField(default=28, blank=True, null=True)
+    period_length = models.IntegerField(default=28, blank=True, null=True, validators=[MinValueValidator(15), MaxValueValidator(45)])
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):

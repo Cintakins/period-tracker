@@ -32,12 +32,12 @@ body {
     background-color: rgb(14, 14, 14);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Patrick Hand', cursive;
     color: black;
 }
 
 button {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Patrick Hand', cursive;
 }
 
 .select-buttons {
