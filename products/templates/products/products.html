@@ -36,7 +36,7 @@
 <div class="row container">
     <div class="row">
         <div class="col lime accent-3 left-align select-buttons">
-            <ul id="dropdown2" class="dropdown-content">
+            <ul id="dropdown-category" class="dropdown-content">
                 <li><a class="black-text products-category" href="{% url 'products' %}">All Products</a></li>
                 <li><a class="black-text products-category" href="{% url 'products' %}?category=pants,short-pants,full-pants">All Pants</a></li>
                 <li><a class="black-text products-category" href="{% url 'products' %}?category=pants">Normal Flow Pants</a></li>
@@ -45,7 +45,7 @@
                 <li><a class="black-text products-category" href="{% url 'products' %}?category=other">Other</a></li>
             </ul>
             <div>
-                <a class="dropdown-trigger black-text select-buttons" href="#!" data-target="dropdown2" id="categories-box">
+                <a class="dropdown-trigger black-text select-buttons" href="#!" data-target="dropdown-category" id="categories-box">
                     Categories
                 <i class="material-icons right">arrow_drop_down</i></a>
             </div>

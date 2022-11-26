@@ -8,6 +8,27 @@
     </div>
 </div>
 <div class="container lime accent-3">
+    <div class="row">
+        <p>{{article.category}}</p>
+        {% if article.category == 'info' %}
+            <a href="{% url 'articles' %}" class="waves-effect waves-light btn">
+                <span class="black-text">
+                    <i class="large material-icons">chevron_left</i>
+                </span>
+                <span class="black-text">Back to Articles</span>
+            </a>
+        {% else %}
+            <a href="{% url 'product_reviews' %}" class="waves-effect waves-light btn">
+                <span class="black-text">
+                    <i class="large material-icons">chevron_left</i>
+                </span>
+                <span class="black-text">Back to Product Reviews</span>
+            </a>
+            <a href="{% url 'products' %}" class="waves-effect waves-light btn">
+                <span class="black-text">Check out our products</span>
+            </a>
+        {% endif %}
+    </div>
     {% if request.user.is_superuser %}
         <div class="row">
             <a href="{% url 'add_article' %}" class="waves-effect waves-light btn green">Add Another Article</a>

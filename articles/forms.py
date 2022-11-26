@@ -12,4 +12,6 @@ class ArticleForm(forms.ModelForm):
         categories = ArticleCategory.objects.filter(name='reviews') | ArticleCategory.objects.filter(name='info')
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
         self.fields['category'].choices = friendly_names
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'white-text'})
         
