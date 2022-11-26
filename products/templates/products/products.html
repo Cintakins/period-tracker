@@ -96,43 +96,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<!-- <script type="text/javascript">
-    var selectedBoxCategory = document.getElementsByClassName('products-category');
-    var selectedBoxPrice = document.getElementsByClassName('price-sort');
-    var priceBox = document.getElementById('sort-box');
-    var categoriesBox = document.getElementById('categories-box');
-    var currentUrl = new URL(window.location);
 
-    for (let i = 0; i < selectedBoxCategory.length; i++) {
-        selectedBoxCategory[i].addEventListener('click', function(event) {
-            displaySelectedOption(this);
-        });
-    };
-
-    for (let i = 0; i < selectedBoxPrice.length; i++) {
-        selectedBoxPrice[i].addEventListener('click', function(event) {
-            displaySelectedOption(this);
-        });
-    };
-
-    function displaySelectedOption() {
-        console.log('is this working?', this);
-        var selector = this;
-        var selectorText = selector.innerHTML;
-        if (selector.classList.contains('price-sort')) {
-            if (this.value == 'any') {
-                priceBox.innerHTML = 'Sort';
-            } else {
-                priceBox.innerHTML = selectorText
-                currentUrl.searchParams.set(selectorText);
-            };
-        } else if (selector.classList.contains('products-category')) {
-            if (this.value == 'all-products') {
-                categoriesBox.innerHTML = 'Categories';
-            } else {
-                categoriesBox.innerHTML = selectorText
-            };
-        };
-    };
-</script> -->
 {% endblock %}
