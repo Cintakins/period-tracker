@@ -321,6 +321,12 @@ label {
 
     /* end of codepen code */
 }
+@media (max-width: 1000px) {
+
+    #today-cycle-number {
+        display: none;
+    }
+}
 
 /* cycle links on medium and down */
 @media (max-width: 550px) {
@@ -333,8 +339,6 @@ label {
     /* circle menu code from codepen https://codepen.io/metaprinter/pen/zwvjNb */
 
     .circle-menu a {
-        /* width: 4em;
-        height: 4em; */
         margin: -3.5em;
     }
 
