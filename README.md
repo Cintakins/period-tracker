@@ -172,27 +172,25 @@ The date picker needs min and max dates added, which was not doable with the mat
 ## Testing
 ### User goals
 #### Unregistered user
-* Register for an account
-* Discover information about menstrual cycle
-* Read Product reviews
-* Buy products
-* Sort through products
-* Learn about cycle
+* Register for an account - New users can successfully register for an account, an email is sent for email confirmation and a profile is automatically created with default data for the period info.
+* Discover information about menstrual cycle - There is an Articles page for extra information about the menstrual cycle.
+* Read Product reviews - There are product reviews to be read, although more work could be done to link the reviews to specific product, however for now there is a button to lead the user to the products page.
+* Buy products - Unregistered users can successfully buy products.
+* Sort through products - Users can search through products and sort the listings by categories or price.
+* Learn about cycle - The home page has an illustration to show the different stages of th menstrual cycle with information for each section available on click.
 
 #### Registered User
-* View profile
-* Get personalised information about cycle
-* Buy menstrual products
-* Sort through products
-* Learn about cycle
-* Edit details
-* Have personal information stored (for tracker, payment details and address for postage)
+* View profile - Registered users can view their personal profile with period and account information without anybody else being able to view them on other accounts.
+* Get personalised information about cycle - The cycle information can be updated to display th user's cycle using their data.
+* Buy menstrual products - Registered users can successfully buy products, and update their info on checkout.
+* Learn about cycle - Registered users can see the day of the month they are on and click on the day for more information.
+* Edit details - Registered users can edit details about their period and account details.
 
 #### Site owner goal 
-* Sell products
-* Advertise products
+* Sell products - Owner can successfully sell products.
+* Advertise  - There is a products review page to advertise products, as well as products page to display products for sale.
 * Add, remove and edit products - Admin, can successfully add, delete and edit products.
-* Add, remove and edit Articles - Admin, can successfully add,  
+* Add, remove and edit Articles - Admin, can successfully add, delete and edit articles.
 
 ### Validators
 

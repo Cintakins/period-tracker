@@ -83,7 +83,8 @@ def checkout(request):
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error in the form,\
-                                     please try again')
+                                     please ensure fields with * are filled correctly')
+            return redirect(reverse('checkout'))
                             
     else:
         basket = request.session.get('basket', {})
