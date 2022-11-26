@@ -42,13 +42,6 @@
         </div>
     </div>
     <div class="row">
-        {% if article.image %}
-        <div class="col s6 m4">
-            <img src="{{ article.image.url }}" alt="{{ article.name }}">
-        </div>
-        {% endif %}
-    </div>
-    <div class="row">
         <div class="col">
             <p>
                 {{ article.article|linebreaksbr }}

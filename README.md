@@ -23,7 +23,7 @@ The website will present itself a in a gender neutral way to be inclusive of all
 * More accurate tracking capabilities (keeping it simple for the time being)
 
 ## User goals
-### First time user
+### Unregistered user
 Discover information about menstrual cycle
 Read Product reviews
 Buy products
@@ -31,7 +31,7 @@ Sort through products
 Learn about cycle
 Register for an account
 
-### Regular User
+### Registered User
 View Profile
 Get personalised information about cycle
 Buy menstrual products
@@ -43,6 +43,8 @@ Have personal information stored (for tracker, payment details and address for p
 ## Site owner goal 
 Sell products
 Advertise products
+Add, remove and edit products
+Add, remove and edit Articles
 
 ## Wireframes
 ![wireframe1](wireframes/wf1.png)
@@ -169,7 +171,7 @@ The date picker needs min and max dates added, which was not doable with the mat
 
 ## Testing
 ### User goals
-#### First time user
+#### Unregistered user
 * Register for an account
 * Discover information about menstrual cycle
 * Read Product reviews
@@ -177,7 +179,7 @@ The date picker needs min and max dates added, which was not doable with the mat
 * Sort through products
 * Learn about cycle
 
-#### Regular User
+#### Registered User
 * View profile
 * Get personalised information about cycle
 * Buy menstrual products
@@ -185,6 +187,12 @@ The date picker needs min and max dates added, which was not doable with the mat
 * Learn about cycle
 * Edit details
 * Have personal information stored (for tracker, payment details and address for postage)
+
+#### Site owner goal 
+* Sell products
+* Advertise products
+* Add, remove and edit products - Admin, can successfully add, delete and edit products.
+* Add, remove and edit Articles - Admin, can successfully add,  
 
 ### Validators
 
