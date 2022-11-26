@@ -31,12 +31,10 @@ class UserForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
 
-class PeriodUpload(forms.ModelForm):  
-    required_css_class = 'required-field' 
-    error_css_class = 'error-field'
+class PeriodUpload(forms.ModelForm):
     class Meta:
         model = UserPeriodInfo
-        fields = '__all__'
+        exclude = ('user',)
     def __init__(self, *args, **kwargs):
         super(PeriodUpload, self).__init__(*args, **kwargs)
         self.fields['period_length'].widget.attrs.update({'class': 'white-text'})

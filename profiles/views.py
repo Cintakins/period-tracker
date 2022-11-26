@@ -23,13 +23,12 @@ def profile(request):
 
     user = get_object_or_404(UserProfile, user=request.user)
     period_details = UserPeriodInfo.objects.get(user=user)
+    form = PeriodUpload(request.POST, instance=period_details)
     if request.method == "POST":
-        form = PeriodUpload(request.POST, instance=period_details)
         if form.is_valid():
             form.save()
             messages.success(
                 request, 'Your personalised cycle has been updated')
-            return redirect(reverse('profile', args=[user.id]))
         else:
             messages.error(request, 'Whoops! something went wrong')
     else:
