@@ -153,59 +153,59 @@ label {
 }
 
 .ovulation {
-    background: #007bb0;
-}
-
-.luteal-1 {
-    background: #28632b;
-}
-
-.luteal-2 {
-    background: #bc9704;
-}
-
-.luteal-3 {
-    background: #b95d00;
-}
-
-.mensis {
-    background: #b4191c;
-}
-
-.follicular-1 {
-    background: #601956;
-}
-
-.follicular-2 {
-    background: #452e6f;
-}
-
-.ovulation:hover {
     background: #009cde;
 }
 
-.luteal-1:hover {
+.luteal-1 {
     background: #3a913f;
 }
 
-.luteal-2:hover {
+.luteal-2 {
     background: #fecd06;
 }
 
-.luteal-3:hover {
+.luteal-3 {
     background: #fa7f00;
 }
 
-.mensis:hover {
+.mensis {
     background: #ed2124;
 }
 
-.follicular-1:hover {
+.follicular-1 {
     background: #932683;
 }
 
-.follicular-2:hover {
+.follicular-2 {
     background: #61419e;
+}
+
+.ovulation:hover {
+    background: #1abaff;
+}
+
+.luteal-1:hover {
+    background: #4ec353;
+}
+
+.luteal-2:hover {
+    background: hsl(48, 100%, 71%);
+}
+
+.luteal-3:hover {
+    background: #ffa448;
+}
+
+.mensis:hover {
+    background: #ff6063;
+}
+
+.follicular-1:hover {
+    background: #ec3fd2;
+}
+
+.follicular-2:hover {
+    background: #8b5be3;
 }
 
 

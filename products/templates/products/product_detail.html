@@ -30,15 +30,13 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <div class="">
-                {% if product.image %}
-                <a href="{{ product.image.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                </a>
-                {% else %}
-                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                {% endif %}
-            </div>
+            {% if product.image %}
+            <a href="{{ product.image.url }}" target="_blank">
+                <img class="card-img-top img-fluid responsive-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+            </a>
+            {% else %}
+                <img class="card-img-top img-fluid responsive-img" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+            {% endif %}
         </div>
         <div class="col-4">
             <div class="white-text">
@@ -46,7 +44,7 @@
                 <p>
                     {{ product.description|linebreaksbr }}
                 </p>
-                <P>{{ product.price }}</P>
+                <P>£{{ product.price }}</P>
             </div>
         </div>
     </div>
@@ -66,19 +64,20 @@
                         </div>
                     </div>
                 {% endif %}
-                <p class="white-text"><strong>Quantity:</strong></p>
-                <div class="">
-                    <div class="">
+                <div class="row">
+                    <div class="input-field col s12">
+                    <p class="white-text"><strong>Quantity:</strong></p>
                         <input class="form-control qty_input white-text" type="number" name="quantity" value="1" min="1"
                             max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                     </div>
+                <div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input type="submit" class="lime accent-3 waves-effect waves-light btn" value="Add to Bag">
                 </div>
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </div>
-
-            <div class="col-12">
-                <input type="submit" class="lime accent-3 waves-effect waves-light btn" value="Add to Bag">
-            </div>
-            <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </div>
     </form>
 </div>
