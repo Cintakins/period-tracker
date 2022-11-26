@@ -9,8 +9,7 @@
 </div>
 <div class="container lime accent-3">
     <div class="row">
-        <p>{{article.category}}</p>
-        {% if article.category == 'info' %}
+        {% if article.category.name == "info" %}
             <a href="{% url 'articles' %}" class="waves-effect waves-light btn">
                 <span class="black-text">
                     <i class="large material-icons">chevron_left</i>
@@ -18,6 +17,7 @@
                 <span class="black-text">Back to Articles</span>
             </a>
         {% else %}
+        
             <a href="{% url 'product_reviews' %}" class="waves-effect waves-light btn">
                 <span class="black-text">
                     <i class="large material-icons">chevron_left</i>

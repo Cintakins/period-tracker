@@ -29,8 +29,10 @@ Read Product reviews
 Buy products
 Sort through products
 Learn about cycle
+Register for an account
 
 ### Regular User
+View Profile
 Get personalised information about cycle
 Buy menstrual products
 Sort through products
@@ -165,20 +167,25 @@ The profile cycle information doesn't work well if bad dates are selected
 #### Solution
 The date picker needs min and max dates added, which was not doable with the materialise css forms. It will be easier to fix this with the standar form inputs, time-permitting.
 
-#### Problem
-Registration was not redirecting user to a confirmation page and was not sending verification emails.
-#### Solution
-
-#### Problem
-#### Solution
-
-#### Problem
-#### Solution
-
-#### Ongoing problem
-I failed to customise advice in time for the deadline
-
 ## Testing
+### User goals
+#### First time user
+* Register for an account
+* Discover information about menstrual cycle
+* Read Product reviews
+* Buy products
+* Sort through products
+* Learn about cycle
+
+#### Regular User
+* View profile
+* Get personalised information about cycle
+* Buy menstrual products
+* Sort through products
+* Learn about cycle
+* Edit details
+* Have personal information stored (for tracker, payment details and address for postage)
+
 ### Validators
 
 ![html](wireframes/htmlv.png)
