@@ -49,8 +49,8 @@ button {
 }
 
 .select-wrapper+label {
-    position: relative;
-    top: 0px;
+    position: relative !important;
+    top: 0px !important;
 }
 
 .size-select {
