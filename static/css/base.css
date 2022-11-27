@@ -48,6 +48,16 @@ button {
     margin-right: 5px;
 }
 
+.select-wrapper+label {
+    position: relative;
+    top: 0px;
+}
+
+.size-select {
+        position: absolute;
+        top: -26px;
+}
+
 .errorlist>li {
     color:red;
 }
