@@ -48,6 +48,10 @@ button {
     margin-right: 5px;
 }
 
+.errorlist>li {
+    color:red;
+}
+
 img {
     object-fit: contain;
 }
