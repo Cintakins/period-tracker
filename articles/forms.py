@@ -6,6 +6,7 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         exclude = ('date_added',)
+     
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
