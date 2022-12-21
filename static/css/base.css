@@ -53,9 +53,9 @@ button {
     top: 0px !important;
 }
 
-.size-select {
-        position: absolute;
-        top: -26px;
+#size-select {
+        position: absolute !important;
+        top: -26px !important;
 }
 
 .errorlist>li {
