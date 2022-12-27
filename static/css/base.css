@@ -19,6 +19,21 @@
     border-width: 2px;
     border-color: black;
 }
+div :has(.checkout-style-input) input {
+    color: black
+}
+
+.checkout-style-input::-webkit-input-placeholder { /* Edge */
+    color: rgb(130, 130, 130);
+}
+  
+.checkout-style-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(130, 130, 130);
+}
+  
+.checkout-style-input::placeholder {
+    color: rgb(130, 130, 130);
+}
 
 #basket-qty-input {
     width: 35px;
