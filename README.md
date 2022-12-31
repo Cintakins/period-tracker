@@ -195,7 +195,7 @@ The date picker needs min and max dates added, which was not doable with the mat
 ### Validators
 
 ![html](wireframes/htmlv.png)
-![lighthouse](wireframes/lighthouse.png)
+![lighthouse](wireframes/lighthouse2.png)
 
 
 ## Deployment
