@@ -43,14 +43,12 @@ card.addEventListener('change', function (event) {
 var formSubmit = document.getElementById('submit-checkout');
 var form = document.getElementById('form-payment');
 
-formSubmit.addEventListener('click', function(ev) {
+form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-checkout').attr('disabled', true);
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-    var saveCheckBox = document.getElementById('info-save');
-    console.log(saveCheckBox)
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    var saveInfo = Boolean($('#info-save').attr('checked'));
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,

@@ -169,6 +169,11 @@ The profile cycle information doesn't work well if bad dates are selected
 #### Solution
 The date picker needs min and max dates added, which was not doable with the materialise css forms. It will be easier to fix this with the standar form inputs, time-permitting.
 
+#### Problem
+The Checkout form, although stays on checkout page and displays error messages when required fields are not filled, still sends successful payments to stripe. The form only doesn't send the payment if the country isn't selected or card details not filled.
+#### Solution
+
+
 ## Testing
 ### User goals
 #### Unregistered user

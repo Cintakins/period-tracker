@@ -84,7 +84,6 @@ def checkout(request):
         else:
             messages.error(request, 'There was an error in the form,\
                                      please ensure fields with * are filled correctly')
-            return redirect(reverse('checkout'))
                             
     else:
         basket = request.session.get('basket', {})
@@ -122,7 +121,7 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent['client_secret'],
+        'client_secret': intent.client_secret,
     }
 
     return render(request, 'checkout/checkout.html', context)
