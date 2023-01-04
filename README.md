@@ -172,6 +172,7 @@ The date picker needs min and max dates added, which was not doable with the mat
 #### Problem
 The Checkout form, although stays on checkout page and displays error messages when required fields are not filled, still sends successful payments to stripe. The form only doesn't send the payment if the country isn't selected or card details not filled.
 #### Solution
+the a tags in the tamplate needed to be buttons and the event listener in the js file needed to be submit rather than click.
 
 
 ## Testing
