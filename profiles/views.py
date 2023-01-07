@@ -14,13 +14,10 @@ def profile(request):
 
     cycle_phases = Article.objects.filter(category=1)
     products = Product.objects.all()
-    # advice = Article.objects.filter(category=4)
     mensis = Article.objects.filter(category__name="Mensis Phase")
     follicular = Article.objects.filter(category__name="Follicular Phase")
     ovulation_phase = Article.objects.filter(category__name="Ovulation Phase")
     luteal = Article.objects.filter(category__name="Luteal Phase")
-
-
     user = get_object_or_404(UserProfile, user=request.user)
     period_details = UserPeriodInfo.objects.get(user=user)
     form = PeriodUpload(request.POST, instance=period_details)
@@ -41,12 +38,10 @@ def profile(request):
         return (date2-date1).days
 
     cycle_day = num_of_days(start_date, today)
-
     length = int(period_details.period_length)
 
-    if cycle_day > length:
-        user.period_start_date = today
-        user.save()
+    if cycle_day > length: 
+        cycle_day = num_of_days(start_date, today) % length
 
     count = 0
     days = []

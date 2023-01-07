@@ -244,9 +244,16 @@ Heroku
 
 Stripe payments
 
-AWS for s3 bucket
+AWS s3 bucket for hosting media
+
+ElephantSQL
 
 ### Languages Used
+Python
+HTML
+CSS
+Javascript
+Jquery
 
 ### References 
 The circular cycle_phases links were taken from codepen.
