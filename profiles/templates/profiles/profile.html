@@ -52,7 +52,7 @@
                         <form action="{% url 'profile' %}" method="POST" id="period_date">
                             {% csrf_token %}
                             <p class="lime-text text-accent-3">
-                                <i class="material-icons">date_range</i> Your current cycle started on {{ period_details.period_start_date }}
+                                <i class="material-icons">date_range</i> Period start date / Date tracking started: {{ period_details.period_start_date }}
                             </p>
                             {{ form.period_start_date }}
                             <p class="lime-text text-accent-3">

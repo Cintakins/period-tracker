@@ -187,6 +187,7 @@ the a tags in the tamplate needed to be buttons and the event listener in the js
 
 #### Registered User
 * View profile - Registered users can view their personal profile with period and account information without anybody else being able to view them on other accounts.
+* See what day of the cycle user is on - The user can see where they are in their cycle.
 * Get personalised information about cycle - The cycle information can be updated to display th user's cycle using their data.
 * Buy menstrual products - Registered users can successfully buy products, and update their info on checkout.
 * Learn about cycle - Registered users can see the day of the month they are on and click on the day for more information.
